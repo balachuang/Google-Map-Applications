@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Google Map Magnifier</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-family: Calibri, Arial, Helvetica, sans-serif;
+		font-size: 62.5%;
+	}
+	body {
+		overflow: hidden;
+	}
+	#google-map-container {
+		width: 100%;
+	}
+	#magnifier-container {
+		border: 5px solid rgba(0,0,255,0.5);
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px;
+		z-index: 100;
+		left: 200px;
+		top: 200px;
+		display: block;
+		pointer-events: none; /* make mouse event pass through */
+	}
+	</style>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#idx-navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../index.html">Applications</a>
+			</div>
+			<div id="idx-navbar" class="navbar-collapse collapse" aria-expanded="false">
+				<ul class="nav navbar-nav">
+					<li><a href="Landmark Finder/main.html">Landmark Finder</a></li>
+					<li class="active"><a href="Magnifier/main.html">Magnifier</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="col-md-12" style="margin-top: 5rem;">
+		<div id="mother" class="panel panel-default">
+			<div class="google" id="google-map-container"></div>
+			<div class="google" id="magnifier-container"></div>
+		</div>
+	</div>
+</body>
+</html>
