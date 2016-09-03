@@ -3,42 +3,64 @@
 <html lang="en-us">
 
 <head>
-<meta charset="utf-8">
-<title>Find Position</title>
-<style type="text/css">
-html {
-	font-family: Calibri, Arial, Helvetica, sans-serif;
-	font-size: 62.5%;
-}
-body {
-	overflow: hidden;
-}
-.google {
-	border: 1px solid rgba(0,0,255,0.5);
-	position: absolute;
-}
-.aim-center {
-	background-image: url("images/aim.png");
-	background-size: 30px 30px;
-	background-repeat: no-repeat;
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	z-index: 100;
-}
-</style>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE"></script>
-<script type="text/javascript" src="js/main.js"></script>
-
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Find Position</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+		font-size: 62.5%;
+	}
+	body {
+		overflow: hidden;
+		padding: 0 1em;
+	}
+	.google {
+		width: 100%;
+	}
+	.aim-center {
+		background-image: url("images/aim.png");
+		background-size: 30px 30px;
+		background-repeat: no-repeat;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		z-index: 100;
+	}
+	</style>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </head>
-
 <body>
-	<div class="google" id="google-map-container"></div>
-	<div class="google" id="street-view-container-1"></div>
-	<div class="google" id="street-view-container-2"></div>
-	<div class="aim-center" id="aim-center-1"></div>
-	<div class="aim-center" id="aim-center-2"></div>
+	<div id="menubar"></div>
+	<div class="row">
+		<div class="col-md-6" style="margin-top: 5rem;">
+			<div id="left" class="panel panel-default">
+				<div class="google" id="google-map-container"></div>
+			</div>
+		</div>
+		<div class="col-md-6" style="margin-top: 5rem;">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="right-1" class="panel panel-default">
+						<div class="google" id="street-view-container-1"></div>
+						<div class="aim-center" id="aim-center-1"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="right-2" class="panel panel-default">
+						<div class="google" id="street-view-container-2"></div>
+						<div class="aim-center" id="aim-center-2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
