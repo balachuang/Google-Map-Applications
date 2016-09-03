@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<style type="text/css">
 	html {
-		font-family: Calibri, Arial, Helvetica, sans-serif;
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
 		font-size: 62.5%;
 	}
 	body {
@@ -35,29 +35,11 @@
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script src="js/main.js"></script>
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#idx-navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="../index.html">Applications</a>
-			</div>
-			<div id="idx-navbar" class="navbar-collapse collapse" aria-expanded="false">
-				<ul class="nav navbar-nav">
-					<li><a href="Landmark Finder/main.html">Landmark Finder</a></li>
-					<li class="active"><a href="Magnifier/main.html">Magnifier</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div id="menubar"></div>
 	<div class="col-md-12" style="margin-top: 5rem;">
 		<div id="mother" class="panel panel-default">
 			<div class="google" id="google-map-container"></div>

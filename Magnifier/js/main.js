@@ -2,11 +2,14 @@ var glMap = null,
     glMag = null,
     glMapPos = null,
     glMagPos = null;
-var coder = null;
 
 $(document).ready(function(){
-    onReSize();
-    initGoogle();
+	$('#menubar').load('../menubar.html', function(){
+	    $('#nav-MF').addClass('active');
+
+        onReSize();
+        initGoogle();
+	});
 });
 
 $(window).resize(onReSize);
