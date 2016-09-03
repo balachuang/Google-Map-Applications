@@ -5,7 +5,7 @@ var glMap = null,
 
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
-	    $('#nav-MF').addClass('active');
+	    $('#nav-MG').addClass('active');
 
         onReSize();
         initGoogle();

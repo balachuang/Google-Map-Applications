@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Google Map Magnifier</title>
+	<title>Google Map Rearview Mirror</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<style type="text/css">
 	html {
@@ -19,15 +19,21 @@
 	#google-map-container {
 		width: 100%;
 	}
-	#magnifier-container {
+	#rearview-container {
 		border: 5px solid rgba(0,0,255,0.5);
 		position: absolute;
-		width: 200px;
-		height: 200px;
-		border-radius: 100px;
+		border-radius: 15px;
 		z-index: 100;
-		left: 200px;
-		top: 200px;
+		top: 0px;
+		display: block;
+		pointer-events: none; /* make mouse event pass through */
+	}
+	#rearview-container-back {
+		background-color: white;
+		position: absolute;
+		border-radius: 0px 0px 20px 20px;
+		z-index: 90;
+		top: 0px;
 		display: block;
 		pointer-events: none; /* make mouse event pass through */
 	}
@@ -42,8 +48,9 @@
 	<div id="menubar"></div>
 	<div class="col-md-12" style="margin-top: 5rem;">
 		<div id="mother" class="panel panel-default">
-			<div class="google" id="google-map-container"></div>
-			<div class="google" id="magnifier-container"></div>
+			<div class="google" id="street-view-container"></div>
+			<div class="google" id="rearview-container"></div>
+			<div id="rearview-container-back"></div>
 		</div>
 	</div>
 </body>
