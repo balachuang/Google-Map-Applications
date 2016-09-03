@@ -8,30 +8,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Google Map Applications</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style type="text/css">
+	html {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+		font-size: 62.5%;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#menubar').load('menubar.html');
+		});
+	</script>
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#idx-navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="javascript:void(0);">Applications</a>
-			</div>
-			<div id="idx-navbar" class="navbar-collapse collapse" aria-expanded="false">
-				<ul class="nav navbar-nav">
-					<li><a href="Landmark Finder/main.html">Landmark Finder</a></li>
-					<li><a href="Magnifier/main.html">Magnifier</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div id="menubar"></div>
 	<br>
 	<div class="container">
 		<div class="jumbotron">
@@ -48,7 +41,7 @@
 						<br>
 						<center>
 							<a href="Landmark Finder/main.html">
-								<img class="img-thumbnail" alt="200x200" src="images/LF.png" data-holder-rendered="true" style="width: 90%;">
+								<img class="img-thumbnail" alt="200x200" src="tb_LF.png" data-holder-rendered="true" style="width: 90%;">
 							</a>
 						</center>
 						<div class="panel-body">
@@ -63,7 +56,7 @@
 						<br>
 						<center>
 							<a href="Magnifier/main.html">
-								<img class="img-thumbnail" alt="200x200" src="images/MG.png" data-holder-rendered="true" style="width: 90%;">
+								<img class="img-thumbnail" alt="200x200" src="tb_MG.png" data-holder-rendered="true" style="width: 90%;">
 							</a>
 						</center>
 						<div class="panel-body">
