@@ -81,8 +81,8 @@ function initGoogle(){
         draggable: true,
         title: 'View 1',
         zIndex: 50,
-        label: {text: 'O', color: 'yellow', fontWeight: 'bolder'},
-        icon: {url: 'images/eye1.png', anchor: new google.maps.Point(12, 12)}
+        label: {text: '1', color: 'white', fontWeight: 'bolder'},
+        icon: {url: 'images/eye.png', anchor: new google.maps.Point(12, 12)}
     });
     glMarker[2] = new google.maps.Marker({
         position: glPos[2],
@@ -90,8 +90,8 @@ function initGoogle(){
         draggable: true,
         title: 'View 2',
         zIndexl: 50,
-        label: {text: 'O', color: 'blue', fontWeight: 'bolder'},
-        icon: {url: 'images/eye2.png', anchor: new google.maps.Point(12, 12)}
+        label: {text: '2', color: 'white', fontWeight: 'bolder'},
+        icon: {url: 'images/eye.png', anchor: new google.maps.Point(12, 12)}
     });
     glTarget = new google.maps.Marker({
         position: glPos[0],
