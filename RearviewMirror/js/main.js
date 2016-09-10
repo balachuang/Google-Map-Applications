@@ -6,6 +6,12 @@ $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
 	    $('#nav-RM').addClass('active');
 
+		var userLang = navigator.language || navigator.userLanguage;
+		$('i18n').each(function(){
+			var txt = $(this).attr(userLang);
+			$(this).replaceWith(txt);
+		});
+
         onReSize();
         initGoogle();
 	});
@@ -32,8 +38,24 @@ function initGoogle(){
 
     glPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
 
-    glFView = new google.maps.StreetViewPanorama(document.getElementById('street-view-container'), {position: glPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
-    glBView = new google.maps.StreetViewPanorama(document.getElementById('rearview-container'), {position: glPos, pov: {heading: 180, pitch: 0}, disableDoubleClickZoom: true});
+    glFView = new google.maps.StreetViewPanorama(document.getElementById('street-view-container'), {
+                                                position: glPos,
+                                                pov: {heading: 0, pitch: 0},
+                                                disableDoubleClickZoom: true,
+                                                zoomControl: false,
+                                                addressControl: false,
+                                                linksControl: false,
+                                                panControl: false,
+                                                fullscreenControl: false});
+    glBView = new google.maps.StreetViewPanorama(document.getElementById('rearview-container'), {
+                                                position: glPos,
+                                                pov: {heading: 180, pitch: 0},
+                                                disableDoubleClickZoom: true,
+                                                zoomControl: false,
+                                                addressControl: false,
+                                                linksControl: false,
+                                                panControl: false,
+                                                fullscreenControl: false});
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Google Map Applications</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-size: 62.5%;
+	}
+	body, nav {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#menubar').load('../menubar.html', function(){
+				var userLang = navigator.language || navigator.userLanguage;
+				$('i18n').each(function(){
+					var txt = $(this).attr(userLang);
+					$(this).replaceWith(txt);
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="menubar"></div>
+	<br>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h2><i18n en="Google Map Applications" zh-TW="Google 地圖應用" /></h2>
+				<p>
+					<i18n	en="Some userfull Google Map applications."
+							zh-TW="這裡放的是一些有趣或有用的 Google 地圖應用"
+					/>
+				</p>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-success">
+						<div class="panel-heading"><h3 class="panel-title"><i18n en="Landmark Finder" zh-TW="尋找地標"></i18n></h3></div>
+						<br>
+						<center>
+							<a href="../LandmarkFinder/main.html">
+								<img class="img-thumbnail" alt="200x200" src="../LandmarkFinder/tb_LF.png" data-holder-rendered="true" style="width: 90%;">
+							</a>
+						</center>
+						<div class="panel-body">
+							<i18n	en="Find the position of a landmark through two different points of view."
+									zh-TW="調整兩個 Streeview 的視角, 把你的目標放在中間的圓圈中, 就可以在大地圖上看到目標的所在位置. 點擊目標圖示也可以進到目標附近的 Streeview."
+							></i18n>
+							<br><br>
+							<a class="btn btn-default" href="../LandmarkFinder/main.html" role="button"><i18n en="View details" zh-TW="進入"></i18n> »</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-success">
+						<div class="panel-heading"><h3 class="panel-title"><i18n en="Magnifier" zh-TW="地圖放大鏡"></i18n></h3></div>
+						<br>
+						<center>
+							<a href="../Magnifier/main.html">
+								<img class="img-thumbnail" alt="200x200" src="../Magnifier/tb_MG.png" data-holder-rendered="true" style="width: 90%;">
+							</a>
+						</center>
+						<div class="panel-body">
+							<i18n	en="Right-click on the Google Map to toggle a magnifier on it."
+									zh-TW="移動遊標來放大遊標附近的地圖. 點擊右鍵可以隱藏放大鏡."
+							></i18n>
+							<br><br>
+							<a class="btn btn-default" href="../Magnifier/main.html" role="button"><i18n en="View details" zh-TW="進入"></i18n> »</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-success">
+						<div class="panel-heading"><h3 class="panel-title"><i18n en="Rearview Mirror" zh-TW="街景後視鏡"></i18n></h3></div>
+						<br>
+						<center>
+							<a href="../RearviewMirror/main.html">
+								<img class="img-thumbnail" alt="200x200" src="../RearviewMirror/tb_RM.png" data-holder-rendered="true" style="width: 90%;">
+							</a>
+						</center>
+						<div class="panel-body">
+							<i18n	en="Look forward and backup on Streeview at the same time."
+									zh-TW="摸擬後視鏡效果."
+							></i18n>
+							<br><br>
+							<a class="btn btn-default" href="../RearviewMirror/main.html" role="button"><i18n en="View details" zh-TW="進入"></i18n> »</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

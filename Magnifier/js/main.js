@@ -7,6 +7,12 @@ $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
 	    $('#nav-MG').addClass('active');
 
+		var userLang = navigator.language || navigator.userLanguage;
+		$('i18n').each(function(){
+			var txt = $(this).attr(userLang);
+			$(this).replaceWith(txt);
+		});
+
         onReSize();
         initGoogle();
 	});
