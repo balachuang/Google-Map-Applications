@@ -56,12 +56,11 @@ function initGoogle()
             title: camePos[i].title,
             zIndex: 200,
             icon: {
-                path: 'M 2 1 L 2 -1 L 1 -2 L -1 -2 L -2 -1 L -2 1 L -1 2 L 1 2 Z',
+                path: 'M 2 0 C 2 -1 1 -2 0 -2 C -1 -2 -2 -1 -2 0 C -2 1 -1 2 0 2 C 1 2 2 1 2 0 Z',
                 fillColor: 'blue',
-                fillOpacity: 0.6,
+                fillOpacity: 1,
                 strokeColor: 'blue',
-                strokeWeight: 2,
-                strokeOpacity: 0.6,
+                strokeOpacity: 0,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
             }
