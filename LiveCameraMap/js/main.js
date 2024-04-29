@@ -67,7 +67,7 @@ function initGoogle()
             zIndex: 100,
             //icon: svgCamMark
             icon: {
-                path: 'M0 0 L15 5 V-10 Z',
+                path: 'M0 0 L15 5 L15 -5 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.8,
                 strokeColor: 'blue',
