@@ -7,7 +7,7 @@ var camePos = [
 
 // pre-defined camera icon marker
 var svgCamMarker1 = {
-    path: 'M 4 0 A 1 1 0 0 0 -4 0 A 1 1 0 0 0 4 0 Z',
+    path: 'M 4 0 A 2 2 0 0 0 -4 0 A 2 2 0 0 0 4 0 Z',
     fillColor: 'blue',
     fillOpacity: 1,
     strokeColor: 'blue',
