@@ -52,11 +52,19 @@ function initGoogle()
         let cameTitle = camePos[i].title + ' (' + camePos[i].url + ')';
 
         // add Point
-        let camera1 = new google.maps.Marker(svgCamMarker1);
-        camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
+        let camera1 = new google.maps.Marker({
+            title: cameTitle, position: camePosition, icon: svgCamMarker1,
+            map: mapView, draggable: false, zIndex: 200
+        });
 
         // add Camera Look
-        let camera2 = new google.maps.Marker(svgCamMarker2);
+        let camera2 = new google.maps.Marker({
+            title: cameTitle, position: camePosition, icon: svgCamMarker2,
+            map: mapView, draggable: false, zIndex: 100
+        });
+
+        // set icon click handler
+        camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
         camera2.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
     }
 }

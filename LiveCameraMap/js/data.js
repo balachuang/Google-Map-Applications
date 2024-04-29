@@ -7,32 +7,24 @@ var camePos = [
 
 // pre-defined camera icon marker
 var svgCamMarker1 = {
-    title: cameTitle, position: camePosition,
-    map: mapView, draggable: false, zIndex: 200,
-    icon: {
-        path: 'M 4 0 C 4 -3 3 -4 0 -4 C -3 -4 -4 -3 -4 0 C -4 3 -3 4 0 4 C 3 4 4 3 4 0 Z',
-        fillColor: 'blue',
-        fillOpacity: 1,
-        strokeColor: 'blue',
-        strokeOpacity: 0,
-        scale: 2,
-        anchor: new google.maps.Point(0, 0)
-    }
+    path: 'M 4 0 C 4 -3 3 -4 0 -4 C -3 -4 -4 -3 -4 0 C -4 3 -3 4 0 4 C 3 4 4 3 4 0 Z',
+    fillColor: 'blue',
+    fillOpacity: 1,
+    strokeColor: 'blue',
+    strokeOpacity: 0,
+    scale: 2,
+    anchor: new google.maps.Point(0, 0)
 };
 
 var svgCamMarker2 = {
-    title: cameTitle, position: camePosition,
-    map: mapView, draggable: false, zIndex: 100,
-    icon: {
-        path: 'M 0 0 L 20 -8 L 20 8 Z',
-        fillColor: 'yellow',
-        fillOpacity: 0.6,
-        strokeColor: 'blue',
-        strokeWeight: 3,
-        strokeOpacity: 0.6,
-        rotation: camePos[i].angle,
-        scale: 2,
-        anchor: new google.maps.Point(0, 0)
-    }
+    path: 'M 0 0 L 20 -8 L 20 8 Z',
+    fillColor: 'yellow',
+    fillOpacity: 0.6,
+    strokeColor: 'blue',
+    strokeWeight: 3,
+    strokeOpacity: 0.6,
+    rotation: camePos[i].angle,
+    scale: 2,
+    anchor: new google.maps.Point(0, 0)
 };
 
