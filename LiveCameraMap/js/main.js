@@ -55,7 +55,7 @@ function initGoogle()
             title: camePos[i].title,
             zIndex: 100,
             icon: {
-                path: 'M 0 0 L 15 -5 L 15 0 Z M 2 0 Q 2 -2 0 -2 Q -2 -2 -2 0 Q -2 2 0 2 Q 2 2 2 0 Z',
+                path: 'M0 0 L15 -5 L15 5 Z M-2 0 A1 1 0 0 0 2 0 A1 1 0 0 0 -2 0 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.6,
                 strokeColor: 'blue',
