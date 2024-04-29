@@ -54,14 +54,13 @@ function initGoogle()
             draggable: false,
             title: camePos[i].title,
             zIndex: 100,
-            //icon: svgCamMark
             icon: {
-                path: 'M0 0 L15 -5 V-10 Z',
+                path: 'M0 0 L15 -5 L15 5 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.6,
                 strokeColor: 'blue',
-                // strokeWeight: 5,
-                strokeWidth: 5,
+                strokeWeight: 5,
+                //strokeWidth: 5,
                 strokeOpacity: 0.6,
                 rotation: 0,
                 scale: 2,

@@ -6,6 +6,12 @@ var camePos = [
         'camUrl': 'https://www.youtube.com/watch?v=6wDmAmr7Lqg'
     },
     {
+        'title':  '墾丁大灣',
+        'camPos': {'lng': 21.94604182674932, 'lat': 120.79554740193250},
+        'camTrg': {'lng': 21.94551712821170, 'lat': 120.79571209710382},
+        'camUrl': 'https://www.youtube.com/watch?v=0V_9uQhdibU'
+    },
+    {
         'title':  '',
         'camPos': {'lng': 0.0, 'lat': 0.0},
         'camTrg': {'lng': 0.0, 'lat': 0.0},
