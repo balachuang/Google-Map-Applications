@@ -4,6 +4,15 @@ I built some funny applications based on Google Map here.
 
 --
 To-Do-List:
-- "for development purpose only" error -- BillingNotEnabledMapError:
-  - https://developers.google.com/maps/documentation/javascript/error-messages?hl=zh-tw#billing-not-enabled-map-error
-  - https://console.cloud.google.com/projectselector2/billing/enable?utm_source=Docs_BillingNudge&hl=zh-tw&_gl=1*1n0m7f7*_ga*MTAzOTMzMDE3Ni4xNzEzOTI0MjQ4*_ga_NRWSTWS78N*MTcxMzk0ODMzOC4zLjEuMTcxMzk1MjMwMS4wLjAuMA..&pli=1
+
+js?key=AIzaSyBktHqxJ…Ueg0Iu33FkenvqE:219 
+Google Maps JavaScript API has been loaded directly without loading=async. 
+This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading
+
+js?key=AIzaSyBktHqxJ…Ueg0Iu33FkenvqE:167 
+As of February 21st, 2024, google.maps.Marker is deprecated. 
+Please use google.maps.marker.AdvancedMarkerElement instead. 
+At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker.
+While google.maps.Marker will continue to receive bug fixes for any major regressions, existing bugs in google.maps.Marker will not be addressed. 
+At least 12 months notice will be given before support is discontinued. 
+Please see https://developers.google.com/maps/deprecations for additional details and https://developers.google.com/maps/documentation/javascript/advanced-markers/migration for the migration guide.
