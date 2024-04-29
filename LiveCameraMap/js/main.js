@@ -1,15 +1,4 @@
 var mapGeoCoder = null;
-const svgCamMark = {
-	path: 'M0 0 L10 -5 V10 Z',
-	fillColor: 'yellow',
-	fillOpacity: 0.8,
-    strokeColor: 'blue',
-	strokeWeight: 1,
-    strokeWidth: 1,
-	rotation: 0,
-	scale: 2,
-	anchor: new google.maps.Point(0, 0)
-};
 
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
@@ -67,7 +56,7 @@ function initGoogle()
             zIndex: 100,
             //icon: svgCamMark
             icon: {
-                path: 'M0 0 L15 5 L15 -5 Z',
+                path: 'M0 0 L15 5 L15 0 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.8,
                 strokeColor: 'blue',
