@@ -55,7 +55,7 @@ function initGoogle()
             title: camePos[i].title,
             zIndex: 100,
             icon: {
-                path: 'M 0 0 L 15 -5 L 15 5 Z M 2 0 A 1 1 0 0 0 -2 0 A 1 1 0 0 0 2 0',
+                path: 'M 0 0 L 15 -5 L 15 5 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.6,
                 strokeColor: 'blue',
@@ -63,6 +63,22 @@ function initGoogle()
                 //strokeWidth: 5,
                 strokeOpacity: 0.6,
                 rotation: camePos[i].angle,
+                scale: 2,
+                anchor: new google.maps.Point(0, 0)
+            }
+        });
+        new google.maps.Marker({
+            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
+            map: mapView,
+            draggable: false,
+            title: camePos[i].title,
+            zIndex: 100,
+            icon: {
+                path: 'M 2 0 A 1 1 0 0 0 -2 0 A 1 1 0 0 0 2 0 Z',
+                strokeColor: 'blue',
+                strokeWeight: 5,
+                strokeOpacity: 0.6,
+                rotation: 0,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
             }
