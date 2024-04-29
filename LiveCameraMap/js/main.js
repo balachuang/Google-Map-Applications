@@ -56,12 +56,12 @@ function initGoogle()
             zIndex: 100,
             //icon: svgCamMark
             icon: {
-                path: 'M0 0 L15 5 L15 0 Z',
+                path: 'M0 0 L15 -5 V10 Z',
                 fillColor: 'yellow',
                 fillOpacity: 0.8,
                 strokeColor: 'blue',
-                strokeWeight: 1,
-                strokeWidth: 3,
+                strokeWeight: 5,
+                strokeWidth: 5,
                 rotation: 0,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
