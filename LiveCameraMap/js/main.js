@@ -58,8 +58,10 @@ function initGoogle()
             icon: {
                 path: 'M 2 1 L 2 -1 L 1 -2 L -1 -2 L -2 -1 L -2 1 L -1 2 L 1 2 Z',
                 fillColor: 'blue',
-                stroke: 'none',
-                strokeOpacity: 0,
+                fillOpacity: 0.6,
+                strokeColor: 'blue',
+                strokeWeight: 2,
+                strokeOpacity: 0.6,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
             }
