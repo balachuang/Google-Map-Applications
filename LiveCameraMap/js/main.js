@@ -56,7 +56,7 @@ function initGoogle()
             title: camePos[i].title,
             zIndex: 100,
             icon: {
-                circle: 'CX 0 CY 0 R 3',
+                path: 'M 2 1 L 2 -1 L 1 -2 L -1 -2 L -2 -1 L -2 1 L -1 2 L 1 2 Z',
                 fillColor: 'blue',
                 fillOpacity: 0.6,
                 // stroke: 'none',
@@ -87,7 +87,8 @@ function initGoogle()
         });
 
         camera.addListener('click', function(){
-            alert('url: ' + camePos[i].url);
+            //alert('open url: ' + camePos[i].url);
+            window.open(camePos[i].url, '_blank');
         });
     }
 }
