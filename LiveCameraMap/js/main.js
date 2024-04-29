@@ -48,47 +48,15 @@ function initGoogle()
     {
         if (camePos[i].title == '') continue;
 
+        let camePosition = new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat });
+        let cameTitle = camePos[i].title + ' (' + camePos[i].url + ')';
+
         // add Point
-        new google.maps.Marker({
-            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
-            map: mapView,
-            draggable: false,
-            title: camePos[i].title,
-            zIndex: 200,
-            icon: {
-                path: 'M 2 0 C 2 -1 1 -2 0 -2 C -1 -2 -2 -1 -2 0 C -2 1 -1 2 0 2 C 1 2 2 1 2 0 Z',
-                fillColor: 'blue',
-                fillOpacity: 1,
-                strokeColor: 'blue',
-                strokeOpacity: 0,
-                scale: 2,
-                anchor: new google.maps.Point(0, 0)
-            }
-        });
+        let camera1 = new google.maps.Marker(svgCamMarker1);
+        camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
 
         // add Camera Look
-        let camera = new google.maps.Marker({
-            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
-            map: mapView,
-            draggable: false,
-            title: camePos[i].title,
-            zIndex: 100,
-            icon: {
-                path: 'M 0 0 L 15 -5 L 15 5 Z',
-                fillColor: 'yellow',
-                fillOpacity: 0.6,
-                strokeColor: 'blue',
-                strokeWeight: 2,
-                strokeOpacity: 0.6,
-                rotation: camePos[i].angle,
-                scale: 2,
-                anchor: new google.maps.Point(0, 0)
-            }
-        });
-
-        camera.addListener('click', function(){
-            //alert('open url: ' + camePos[i].url);
-            window.open(camePos[i].url, '_blank');
-        });
+        let camera2 = new google.maps.Marker(svgCamMarker2);
+        camera2.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
     }
 }
