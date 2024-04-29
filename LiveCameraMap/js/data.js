@@ -23,7 +23,7 @@ var svgCamMarker2 = {
     strokeColor: 'blue',
     strokeWeight: 3,
     strokeOpacity: 0.6,
-    rotation: camePos[i].angle,
+    rotation: 0,
     scale: 2,
     anchor: new google.maps.Point(0, 0)
 };

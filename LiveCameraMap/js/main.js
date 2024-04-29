@@ -58,6 +58,7 @@ function initGoogle()
         });
 
         // add Camera Look
+        svgCamMarker2.rotation = camePos[i].angle;
         let camera2 = new google.maps.Marker({
             title: cameTitle, position: camePosition, icon: svgCamMarker2,
             map: mapView, draggable: false, zIndex: 100
