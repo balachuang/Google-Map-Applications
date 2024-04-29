@@ -48,7 +48,26 @@ function initGoogle()
     {
         if (camePos[i].title == '') continue;
 
+        // add Point
         new google.maps.Marker({
+            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
+            map: mapView,
+            draggable: false,
+            title: camePos[i].title,
+            zIndex: 100,
+            icon: {
+                circle: 'CX 0 CY 0 R 3',
+                fillColor: 'blue',
+                fillOpacity: 0.6,
+                // stroke: 'none',
+                // rotation: 0,
+                scale: 2,
+                anchor: new google.maps.Point(0, 0)
+            }
+        });
+
+        // add Camera Look
+        let camera = new google.maps.Marker({
             position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
             map: mapView,
             draggable: false,
@@ -66,21 +85,9 @@ function initGoogle()
                 anchor: new google.maps.Point(0, 0)
             }
         });
-        new google.maps.Marker({
-            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
-            map: mapView,
-            draggable: false,
-            title: camePos[i].title,
-            zIndex: 100,
-            icon: {
-                path: 'M 3 0 A 1 1 0 0 0 -3 0 A 1 1 0 0 0 3 0 Z',
-                fillColor: 'blue',
-                fillOpacity: 0.6,
-                stroke: 'none',
-                rotation: 0,
-                scale: 2,
-                anchor: new google.maps.Point(0, 0)
-            }
+
+        camera.addListener('click', function(){
+            alert('url: ' + camePos[i].url);
         });
     }
 }
