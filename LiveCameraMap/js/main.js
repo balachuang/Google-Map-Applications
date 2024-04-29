@@ -49,7 +49,7 @@ function initGoogle()
         if (camePos[i].title == '') continue;
 
         new google.maps.Marker({
-            position: new google.maps.LatLng({ lat: camePos[i].camPos.lng, lng: camePos[i].camPos.lat }),
+            position: new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat }),
             map: mapView,
             draggable: false,
             title: camePos[i].title,
@@ -62,7 +62,7 @@ function initGoogle()
                 strokeWeight: 5,
                 //strokeWidth: 5,
                 strokeOpacity: 0.6,
-                rotation: 0,
+                rotation: camePos[i].angle,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
             }
