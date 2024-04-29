@@ -58,8 +58,8 @@ function initGoogle()
             icon: {
                 path: 'M 2 1 L 2 -1 L 1 -2 L -1 -2 L -2 -1 L -2 1 L -1 2 L 1 2 Z',
                 fillColor: 'blue',
-                fillOpacity: 0.6,
-                // stroke: 'none',
+                // fillOpacity: 0.6,
+                stroke: 'none',
                 // rotation: 0,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
@@ -73,6 +73,12 @@ function initGoogle()
             draggable: false,
             title: camePos[i].title,
             zIndex: 100,
+            label: {
+                text: camePos[i].title,
+                fontFamily: "Material Icons",
+                color: "#ffffff",
+                fontSize: "18px",
+            },
             icon: {
                 path: 'M 0 0 L 15 -5 L 15 5 Z',
                 fillColor: 'yellow',
