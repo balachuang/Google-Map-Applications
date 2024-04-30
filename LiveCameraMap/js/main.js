@@ -65,9 +65,9 @@ function onClickCamera(idx)
     //mapView.setZoom(12);
 
     console.log('initPos');
-    let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
-    // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
-    mapView.panTo(initPos);
+    let cameraPos = new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat});
+    // mapView.setCenter(new google.maps.LatLng());
+    mapView.panTo(cameraPos);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
