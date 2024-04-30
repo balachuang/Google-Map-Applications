@@ -56,7 +56,7 @@ function initGoogle()
             title: cameTitle, position: camePosition, 
             map: mapView, draggable: false, zIndex: 200,
             icon: {
-                path: 'M -4 0 A 2 2 0 1 0 4 0 A 2 2 0 1 0 -4 0',
+                path: 'M -4 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0',
                 fillColor: 'blue',
                 fillOpacity: 1,
                 strokeColor: 'blue',
