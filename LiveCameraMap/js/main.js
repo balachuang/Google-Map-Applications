@@ -56,9 +56,13 @@ function initGoogle()
 
 function onClickCamera(idx)
 {
+    alert('idx: ' + idx);
+
     // Focus to clicked camera
-    alert('set zoom n center');
+    alert('set zoom');
     mapView.setZoom(12);
+
+    alert('set center: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
     mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
 
     // test
