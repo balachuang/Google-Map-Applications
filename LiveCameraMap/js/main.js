@@ -49,7 +49,7 @@ function initGoogle()
         if (camePos[i].title == '') continue;
 
         let camePosition = new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat });
-        let cameTitle = camePos[i].title + '\r\n(' + camePos[i].url + ')';
+        let cameTitle = camePos[i].title + '\r\n' + camePos[i].url;
 
         // add Point
         let camera1 = new google.maps.Marker({
