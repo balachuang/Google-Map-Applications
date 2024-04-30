@@ -1,4 +1,5 @@
 var mapGeoCoder = null;
+var mapView = null;
 
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
@@ -28,7 +29,7 @@ function initGoogle()
     mapGeoCoder = new google.maps.Geocoder();
 
     let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
-    let mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
+    mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
 
     if (navigator.geolocation) {
         // Browser support Geolocation, get actual position
@@ -57,9 +58,9 @@ function onClickCamera(idx)
 {
     // Focus to clicked camera
     let camPos = new google.maps.LatLng({ lat: cameraInfo[idx].position.lat, lng: cameraInfo[idx].position.lng });
-    let mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: camPos, zoom: 16 });
 
-    //mapView.setCenter(camPos);
+    mapView.setCenter(camPos);
+    mapView.setZoom(16);
 
     // test
     // alert('show camera: ' + cameraInfo[idx].title);
