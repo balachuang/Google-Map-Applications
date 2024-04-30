@@ -57,10 +57,7 @@ function initGoogle()
 function onClickCamera(idx)
 {
     // Focus to clicked camera
-    let camPos = new google.maps.LatLng({ lat: cameraInfo[idx].position.lat, lng: cameraInfo[idx].position.lng });
-
-    mapView.setCenter(camPos);
-    mapView.setZoom(16);
+    mapView.setCenter(cameraInfo[idx].position.lng, cameraInfo[idx].position.lat, 16);
 
     // test
     // alert('show camera: ' + cameraInfo[idx].title);
