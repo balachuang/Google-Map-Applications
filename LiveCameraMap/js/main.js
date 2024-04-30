@@ -64,7 +64,7 @@ function onClickCamera(idx)
 
     alert('pan to: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
     // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
-    mapView.panTo(cameraInfo[idx].position.lng, cameraInfo[idx].position.lat);
+    mapView.panTo(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
