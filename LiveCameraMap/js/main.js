@@ -52,27 +52,27 @@ function initGoogle()
         let cameTitle = camePos[i].title + '\r\n(' + camePos[i].url + ')';
 
         // add Point
-        let camera1 = new google.maps.Marker({
-            title: cameTitle, position: camePosition, 
-            map: mapView, draggable: false, zIndex: 200,
-            icon: {
-                path: 'M -3 0 a 3 3 0 1 0 3 0 a 3 3 0 1 0 -3 0',
-                fillColor: 'blue',
-                fillOpacity: 1,
-                strokeColor: 'blue',
-                strokeWeight: 0,
-                strokeOpacity: 0,
-                scale: 2,
-                anchor: new google.maps.Point(0, 0)
-            }
-        });
+        // let camera1 = new google.maps.Marker({
+        //     title: cameTitle, position: camePosition, 
+        //     map: mapView, draggable: false, zIndex: 200,
+        //     icon: {
+        //         path: 'M -3 0 a 3 3 0 1 0 3 0 a 3 3 0 1 0 -3 0',
+        //         fillColor: 'blue',
+        //         fillOpacity: 1,
+        //         strokeColor: 'blue',
+        //         strokeWeight: 0,
+        //         strokeOpacity: 0,
+        //         scale: 2,
+        //         anchor: new google.maps.Point(0, 0)
+        //     }
+        // });
 
         // add Camera Look
         let camera2 = new google.maps.Marker({
             title: cameTitle, position: camePosition, 
             map: mapView, draggable: false, zIndex: 100,
             icon: {
-                path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
+                path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z M 3 0.1 A 3 3 0 1 0 3 -0.1 Z',
                 fillColor: 'blue',
                 fillOpacity: 1,
                 strokeColor: 'blue',
@@ -85,7 +85,7 @@ function initGoogle()
         });
 
         // set icon click handler
-        camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
+        // camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
         camera2.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
     }
 }
