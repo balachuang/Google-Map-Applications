@@ -56,10 +56,11 @@ function initGoogle()
             title: cameTitle, position: camePosition, 
             map: mapView, draggable: false, zIndex: 200,
             icon: {
-                path: 'M 4 0 Q 4 -4 0 -4 Q -4 -4 -4 0 Q -4 4 0 4 Q 4 4 4 0 Z',
+                path: 'M -4, 0 a 2,2 0 1,0 4,0 a 2,2 0 1,0 -4,0',
                 fillColor: 'blue',
                 fillOpacity: 1,
                 strokeColor: 'blue',
+                strokeWeight: 0,
                 strokeOpacity: 0,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
@@ -73,7 +74,7 @@ function initGoogle()
             icon: {
                 path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
                 fillColor: 'blue',
-                fillOpacity: 0,
+                fillOpacity: 1,
                 strokeColor: 'blue',
                 strokeWeight: 0,
                 strokeOpacity: 0.6,
