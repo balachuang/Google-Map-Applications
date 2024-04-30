@@ -62,7 +62,7 @@ function onClickCamera(idx)
     // alert('set zoom');
     // mapView.setZoom(12);
 
-    console.log('return false: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
+    console.log('AdvancedMarkerElement: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
     // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
     mapView.panTo(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
 
