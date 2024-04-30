@@ -123,7 +123,7 @@ function addPngIcon(idx, mapView)
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add PNG Icon
-    let camera = new google.maps.Marker({
+    let camera = new google.maps.marker.AdvancedMarkerElement({
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 100,
         icon: {
