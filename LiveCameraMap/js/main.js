@@ -53,15 +53,34 @@ function initGoogle()
 
         // add Point
         let camera1 = new google.maps.Marker({
-            title: cameTitle, position: camePosition, icon: svgCamMarker1,
-            map: mapView, draggable: false, zIndex: 200
+            title: cameTitle, position: camePosition, 
+            map: mapView, draggable: false, zIndex: 200,
+            icon: {
+                path: 'M 4 0 A 1 1 0 0 0 -4 0 A 1 1 0 0 0 4 0 Z',
+                fillColor: 'blue',
+                fillOpacity: 1,
+                strokeColor: 'blue',
+                strokeOpacity: 0,
+                scale: 2,
+                anchor: new google.maps.Point(0, 0)
+            }
         });
 
         // add Camera Look
-        svgCamMarker2.rotation = camePos[i].angle;
         let camera2 = new google.maps.Marker({
-            title: cameTitle, position: camePosition, icon: svgCamMarker2,
-            map: mapView, draggable: false, zIndex: 100
+            title: cameTitle, position: camePosition, 
+            map: mapView, draggable: false, zIndex: 100,
+            icon: {
+                path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
+                fillColor: 'yellow',
+                fillOpacity: 0.6,
+                strokeColor: 'blue',
+                strokeWeight: 3,
+                strokeOpacity: 0.6,
+                rotation: camePos[i].angle,
+                scale: 2,
+                anchor: new google.maps.Point(0, 0)
+            }
         });
 
         // set icon click handler
