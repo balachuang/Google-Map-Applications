@@ -1,4 +1,4 @@
-var camePos = [
+var cameraInfo = [
     // 新店
     {'title': '新北市碧潭',     'position': {'lng': 24.95592248953202, 'lat': 121.53516184925392}, 'angle': -20, 'url': 'https://www.youtube.com/watch?v=6wDmAmr7Lqg' },
     {'title': '北新路寶橋路口', 'position': {'lng': 24.97290306043396, 'lat': 121.54293743810781}, 'angle': -90, 'url': 'https://taiwancctv.live/taiwan/newtaipei/231xindian/get_id.html?id=C000150' },

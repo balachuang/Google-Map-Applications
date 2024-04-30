@@ -44,59 +44,74 @@ function initGoogle()
         handleLocationError(false, infoWindow, mapView.getCenter());
     }
 
-    for (let i=0; i<camePos.length; ++i)
+    for (let i=0; i<cameraInfo.length; ++i)
     {
-        if (camePos[i].title == '') continue;
+        if (cameraInfo[i].title == '') continue;
 
-        let camePosition = new google.maps.LatLng({ lat: camePos[i].position.lng, lng: camePos[i].position.lat });
-        let cameTitle = camePos[i].title + '\r\n' + camePos[i].url;
-
-        // // add Point
-        // let camera1 = new google.maps.Marker({
-        //     title: cameTitle, position: camePosition, 
-        //     map: mapView, draggable: false, zIndex: 200,
-        //     icon: {
-        //         path: 'M -3 0.01 A 3 3 0 1 0 -3 -0.01 Z',
-        //         fillColor: 'blue',
-        //         fillOpacity: 1,
-        //         strokeColor: 'blue',
-        //         strokeWeight: 2,
-        //         strokeOpacity: 1,
-        //         scale: 2,
-        //         anchor: new google.maps.Point(0, 0)
-        //     }
-        // });
-
-        // // add Camera Look
-        // let camera2 = new google.maps.Marker({
-        //     title: cameTitle, position: camePosition, 
-        //     map: mapView, draggable: false, zIndex: 100,
-        //     icon: {
-        //         path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
-        //         fillColor: 'blue',
-        //         fillOpacity: 1,
-        //         strokeColor: 'blue',
-        //         strokeWeight: 0,
-        //         strokeOpacity: 0.6,
-        //         rotation: camePos[i].angle,
-        //         scale: 2,
-        //         anchor: new google.maps.Point(0, 0)
-        //     }
-        // });
-
-        // add PNG Icon
-        let camera3 = new google.maps.Marker({
-            title: cameTitle, position: camePosition, 
-            map: mapView, draggable: false, zIndex: 100,
-            icon: {
-                url: 'images/camera_64.png',
-                anchor: new google.maps.Point(0, 0)
-            }
-        });
-
-        // set icon click handler
-        // camera1.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
-        // camera2.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
-        camera3.addListener('click', function(){ window.open(camePos[i].url, '_blank'); });
+        // Add Icon
+        // addSvgIcon(i);
+        addPngIcon(i);
     }
+}
+
+function addSvgIcon(idx)
+{
+    let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
+    let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
+
+    // add Point
+    let camera1 = new google.maps.Marker({
+        title: cameTitle, position: camePosition, 
+        map: mapView, draggable: false, zIndex: 200,
+        icon: {
+            path: 'M -3 0.01 A 3 3 0 1 0 -3 -0.01 Z',
+            fillColor: 'blue',
+            fillOpacity: 1,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            strokeOpacity: 1,
+            scale: 2,
+            anchor: new google.maps.Point(0, 0)
+        }
+    });
+
+    // add Camera Look
+    let camera2 = new google.maps.Marker({
+        title: cameTitle, position: camePosition, 
+        map: mapView, draggable: false, zIndex: 100,
+        icon: {
+            path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
+            fillColor: 'blue',
+            fillOpacity: 1,
+            strokeColor: 'blue',
+            strokeWeight: 0,
+            strokeOpacity: 0.6,
+            rotation: cameraInfo[idx].angle,
+            scale: 2,
+            anchor: new google.maps.Point(0, 0)
+        }
+    });
+
+    // set icon click handler
+    camera1.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
+    camera2.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
+}
+
+function addPngIcon(idx)
+{
+    let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
+    let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
+
+    // add PNG Icon
+    let camera3 = new google.maps.Marker({
+        title: cameTitle, position: camePosition, 
+        map: mapView, draggable: false, zIndex: 100,
+        icon: {
+            url: 'images/camera_64.png',
+            anchor: new google.maps.Point(32, 18)
+        }
+    });
+
+    // set icon click handler
+    camera3.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
 }
