@@ -89,7 +89,7 @@ function initGoogle()
             title: cameTitle, position: camePosition, 
             map: mapView, draggable: false, zIndex: 100,
             icon: {
-                url: 'images/camera_128.png',
+                url: 'images/camera_64.png',
                 anchor: new google.maps.Point(0, 0)
             }
         });
