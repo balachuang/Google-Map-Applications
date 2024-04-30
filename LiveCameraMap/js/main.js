@@ -59,7 +59,7 @@ function onClickCamera(idx)
     // Focus to clicked camera
     alert('set zoom');
     //mapView.setCenter(new google.maps.LatLng({lat: cameraInfo[idx].position.lat, lng: cameraInfo[idx].position.lng}));
-    map.setZoom(10);
+    mapView.setZoom(10);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
