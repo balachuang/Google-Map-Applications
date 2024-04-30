@@ -1,4 +1,4 @@
-const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+// const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
 var mapGeoCoder = null;
 var mapView = null;
@@ -62,11 +62,11 @@ function onClickCamera(idx)
 
     // Focus to clicked camera
     // alert('set zoom');
-    // mapView.setZoom(12);
+    mapView.setZoom(12);
 
     console.log('AdvancedMarkerElement: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
     // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
-    mapView.panTo(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
+    //mapView.panTo(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
@@ -125,7 +125,7 @@ function addPngIcon(idx, mapView)
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add PNG Icon
-    let camera = new AdvancedMarkerElement({
+    let camera = new google.maps.Marker({
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 100,
         icon: {
