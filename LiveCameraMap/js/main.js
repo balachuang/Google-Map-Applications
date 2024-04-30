@@ -66,7 +66,10 @@ function onClickCamera(idx)
 
     console.log(cameraInfo[idx].position.lng);
     console.log(cameraInfo[idx].position.lat);
-    let cameraPos = new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat});
+    let cameraPos = new google.maps.LatLng({
+        lng: val(cameraInfo[idx].position.lng),
+        lat: val(cameraInfo[idx].position.lat)
+    });
     mapView.panTo(cameraPos);
 
     // test
