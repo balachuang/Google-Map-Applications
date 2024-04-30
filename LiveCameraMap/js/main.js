@@ -1,3 +1,5 @@
+const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+
 var mapGeoCoder = null;
 var mapView = null;
 
@@ -123,7 +125,7 @@ function addPngIcon(idx, mapView)
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add PNG Icon
-    let camera = new google.maps.marker.AdvancedMarkerElement({
+    let camera = new AdvancedMarkerElement({
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 100,
         icon: {
