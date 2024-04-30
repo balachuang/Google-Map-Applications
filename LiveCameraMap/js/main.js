@@ -36,12 +36,12 @@ function initGoogle()
             mapView.setCenter(new google.maps.LatLng({ lat: position.coords.latitude, lng: position.coords.longitude }));
         }, function() {
             var infoWindow = new google.maps.InfoWindow({map: mapView});
-            handleLocationError(true, infoWindow, mapView.getCenter());
+            // handleLocationError(true, infoWindow, mapView.getCenter());
         });
     } else {
         // Browser doesn't support Geolocation
         var infoWindow = new google.maps.InfoWindow({map: mapView});
-        handleLocationError(false, infoWindow, mapView.getCenter());
+        // handleLocationError(false, infoWindow, mapView.getCenter());
     }
 
     for (let i=0; i<cameraInfo.length; ++i)
@@ -51,6 +51,13 @@ function initGoogle()
         // Add Icon
         addPngIcon(i, mapView);
     }
+}
+
+function onClickCamera(idx)
+{
+    // test
+    alert('show camera: ' + cameraInfo[idx].title);
+    window.open(cameraInfo[idx].url, '_blank');
 }
 
 function addSvgIcon(idx, mapView)
@@ -92,8 +99,10 @@ function addSvgIcon(idx, mapView)
     });
 
     // set icon click handler
-    camera1.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
-    camera2.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    // camera1.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    // camera2.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    camera1.addListener('click', function(){ onClickCamera(idx); });
+    camera2.addListener('click', function(){ onClickCamera(idx); });
 }
 
 function addPngIcon(idx, mapView)
@@ -112,5 +121,6 @@ function addPngIcon(idx, mapView)
     });
 
     // set icon click handler
-    camera.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    // camera.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    camera.addListener('click', function(){ onClickCamera(idx); });
 }
