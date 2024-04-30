@@ -73,7 +73,7 @@ function initGoogle()
             map: mapView, draggable: false, zIndex: 100,
             icon: {
                 path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
-                fillColor: 'blue',
+                fillColor: 'red',
                 fillOpacity: 1,
                 strokeColor: 'blue',
                 strokeWeight: 0,
