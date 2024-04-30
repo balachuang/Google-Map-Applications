@@ -56,14 +56,15 @@ function initGoogle()
 
 function onClickCamera(idx)
 {
-    alert('idx: ' + idx);
+    // alert('idx: ' + idx);
 
     // Focus to clicked camera
-    alert('set zoom');
-    mapView.setZoom(12);
+    // alert('set zoom');
+    // mapView.setZoom(12);
 
     alert('set center: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
-    //mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
+    // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
+    mapView.setCenter(new google.maps.LatLng(cameraInfo[idx].position.lat, cameraInfo[idx].position.lng));
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
