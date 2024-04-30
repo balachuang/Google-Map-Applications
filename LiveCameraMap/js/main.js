@@ -49,12 +49,12 @@ function initGoogle()
         if (cameraInfo[i].title == '') continue;
 
         // Add Icon
-        // addSvgIcon(i);
-        addPngIcon(i);
+        // addSvgIcon(i, mapView);
+        addPngIcon(i, mapView);
     }
 }
 
-function addSvgIcon(idx)
+function addSvgIcon(idx, mapView)
 {
     let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
@@ -97,7 +97,7 @@ function addSvgIcon(idx)
     camera2.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
 }
 
-function addPngIcon(idx)
+function addPngIcon(idx, mapView)
 {
     let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
