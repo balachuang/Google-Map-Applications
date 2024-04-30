@@ -33,6 +33,7 @@ function initGoogle()
 
     if (navigator.geolocation) {
         // Browser support Geolocation, get actual position
+        alert('navigator.geolocation OK');
         navigator.geolocation.getCurrentPosition(function(position) {
             mapView.setCenter(new google.maps.LatLng({ lat: position.coords.latitude, lng: position.coords.longitude }));
         }, function() {
