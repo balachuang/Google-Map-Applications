@@ -55,9 +55,15 @@ function initGoogle()
 
 function onClickCamera(idx)
 {
+    // Focus to clicked camera
+    let camPos = new google.maps.LatLng({ lat: cameraInfo[idx].position.lat, lng: cameraInfo[idx].position.lng });
+    let mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: camPos, zoom: 16 });
+
+    //mapView.setCenter(camPos);
+
     // test
-    alert('show camera: ' + cameraInfo[idx].title);
-    window.open(cameraInfo[idx].url, '_blank');
+    // alert('show camera: ' + cameraInfo[idx].title);
+    //window.open(cameraInfo[idx].url, '_blank');
 }
 
 function addSvgIcon(idx, mapView)
