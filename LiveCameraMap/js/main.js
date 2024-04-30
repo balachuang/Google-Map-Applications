@@ -2,7 +2,7 @@ var mapGeoCoder = null;
 
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
-	    $('#nav-LF').addClass('active');
+	    $('#nav-LC').addClass('active');
 
 		var userLang = navigator.language || navigator.userLanguage;
 		$('i18n').each(function(){
@@ -60,8 +60,8 @@ function initGoogle()
                 fillColor: 'blue',
                 fillOpacity: 1,
                 strokeColor: 'blue',
-                strokeWeight: 0,
-                strokeOpacity: 0,
+                strokeWeight: 2,
+                strokeOpacity: 1,
                 scale: 2,
                 anchor: new google.maps.Point(0, 0)
             }
@@ -73,7 +73,7 @@ function initGoogle()
             map: mapView, draggable: false, zIndex: 100,
             icon: {
                 path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
-                fillColor: 'red',
+                fillColor: 'blue',
                 fillOpacity: 1,
                 strokeColor: 'blue',
                 strokeWeight: 0,
