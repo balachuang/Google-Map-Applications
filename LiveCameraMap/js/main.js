@@ -33,7 +33,6 @@ function initGoogle()
 
     if (navigator.geolocation) {
         // Browser support Geolocation, get actual position
-        alert('navigator.geolocation OK');
         navigator.geolocation.getCurrentPosition(function(position) {
             mapView.setCenter(new google.maps.LatLng({ lat: position.coords.latitude, lng: position.coords.longitude }));
         }, function() {
@@ -65,7 +64,7 @@ function onClickCamera(idx)
 
     alert('pan to: ' + cameraInfo[idx].position.lng + ',' + cameraInfo[idx].position.lat);
     // mapView.setCenter(new google.maps.LatLng({lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat}));
-    mapView.panTo(new google.maps.LatLng(cameraInfo[idx].position.lat, cameraInfo[idx].position.lng));
+    mapView.panTo(cameraInfo[idx].position.lat, cameraInfo[idx].position.lng);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
