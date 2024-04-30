@@ -49,7 +49,6 @@ function initGoogle()
         if (cameraInfo[i].title == '') continue;
 
         // Add Icon
-        // addSvgIcon(i, mapView);
         addPngIcon(i, mapView);
     }
 }
@@ -93,8 +92,8 @@ function addSvgIcon(idx, mapView)
     });
 
     // set icon click handler
-    camera1.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
-    camera2.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
+    camera1.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
+    camera2.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
 }
 
 function addPngIcon(idx, mapView)
@@ -103,7 +102,7 @@ function addPngIcon(idx, mapView)
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add PNG Icon
-    let camera3 = new google.maps.Marker({
+    let camera = new google.maps.Marker({
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 100,
         icon: {
@@ -113,5 +112,5 @@ function addPngIcon(idx, mapView)
     });
 
     // set icon click handler
-    camera3.addListener('click', function(){ window.open(cameraInfo[i].url, '_blank'); });
+    camera.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
 }
