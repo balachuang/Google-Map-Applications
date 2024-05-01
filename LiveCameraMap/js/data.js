@@ -17,6 +17,13 @@ var cameraInfo = [
         'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
     },
 
+    // 台灣
+    {
+        'title': '高雄蓮池潭',
+        'position': {'lat': 22.681153658432603, 'lng': 120.29185075040097}, 'angle': 45, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
+    },
+
     // 日本
     {
         'title': '函館山百萬夜景',
@@ -34,10 +41,13 @@ var cameraInfo = [
     // 瑞士
     {
         'title': 'Lausanne, pont Bessières',
-        'position': {'lat': 46.52170951702846, 'lng': 6.63569485877106}, 'angle': -90, 'zoom': 20,
+        'position': {'lat': 46.52170951702846, 'lng': 6.63569485877106}, 'angle': 45, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=y3sMI1HtZfE'
     },
 
     // Ending
     {'title':  '', 'position': {'lat': 0.0, 'lng': 0.0}, 'angle': 0, 'url': 'url' }
 ];
+
+
+, 
