@@ -38,7 +38,7 @@ function initGoogle()
     mapGeoCoder = new google.maps.Geocoder();
 
     let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
-    mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
+    mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 4 });
 
     if (navigator.geolocation) {
         // Browser support Geolocation, get actual position
@@ -96,7 +96,9 @@ function afterChangeZoomLevel()
         targetZoom = -1;
 
         // window.open(cameraInfo[targetCameraIdx].url, '_blank');
-        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', 'width=800,height=600');
+        let l = (window.innerWidth - 800) / 2;
+        let t = (window.innerHeight - 600) / 2;
+        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', 'width=800,height=600,scrollbars=no,top=${t},left=${l}');
 
         // reset camera range
         hideAllCameraRange();
