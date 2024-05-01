@@ -59,20 +59,19 @@ function initGoogle()
 function onClickCamera(idx)
 {
     // 一直把 lat 和 lng 弄反了, 直到把數字打出來才發現
-    // Focus to clicked camera
-    alert('set zoom');
-    mapView.setZoom(12);
 
+    // Focus to clicked camera
     let cameraPos = new google.maps.LatLng({
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
     mapView.panTo(cameraPos);
+    mapView.setZoom(12);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
 
-    return false;
+    // return false;
 }
 
 function addSvgIcon(idx, mapView)
