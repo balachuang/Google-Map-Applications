@@ -3,6 +3,7 @@
 var mapGeoCoder = null;
 var mapView = null;
 
+var targetCameraIdx = -1;
 var targetZoom = -1;
 var centerChangeHandler = null;
 var zoomLvlChangeHandler = null;
@@ -58,7 +59,7 @@ function initGoogle()
         if (cameraInfo[i].title == '') break;
 
         // Add Camera Range and Icon
-        cameraRange.push(addCameraRange(i, null));
+        cameraRange.push(addCameraRange(i));
         addCameraIcon(i, mapView);
     }
 }
@@ -67,6 +68,7 @@ function onClickCamera(idx)
 {
     // 一直把 lat 和 lng 弄反了, 直到把數字打出來才發現
     // panTo 和 setCenter 一樣, 跳太多都不會有動畫
+    targetCameraIdx = idx;
 
     // Focus to clicked camera
     let cameraPos = new google.maps.LatLng({
@@ -78,10 +80,6 @@ function onClickCamera(idx)
     targetZoom = cameraInfo[idx].zoom;
     mapView.panTo(cameraPos);
 
-    hideAllCameraRange();
-    showCameraRange(idx);
-
-    // test
     //window.open(cameraInfo[idx].url, '_blank');
 }
 
@@ -94,6 +92,15 @@ function afterChangeZoomLevel()
         google.maps.event.removeListener(zoomLvlChangeHandler);
         zoomLvlChangeHandler = null;
         targetZoom = -1;
+
+        // reset camera range
+        hideAllCameraRange();
+        if (targetCameraIdx != -1)
+        {
+            showCameraRange(targetCameraIdx);
+            targetCameraIdx = -1;
+        }
+
         return false;
     }
 
@@ -117,38 +124,19 @@ function afterChangeCenter()
     return false;
 }
 
-function addCameraRange(idx, mapView)
+function addCameraRange(idx)
 {
     let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
-    let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
-
-    // // add Point
-    // let camera1 = new google.maps.Marker({
-    //     title: cameTitle, position: camePosition, 
-    //     map: mapView, draggable: false, zIndex: 200,
-    //     icon: {
-    //         path: 'M -3 0.01 A 3 3 0 1 0 -3 -0.01 Z',
-    //         fillColor: 'blue',
-    //         fillOpacity: 1,
-    //         strokeColor: 'blue',
-    //         strokeWeight: 2,
-    //         strokeOpacity: 1,
-    //         scale: 2,
-    //         anchor: new google.maps.Point(0, 0)
-    //     }
-    // });
 
     // add Camera Look
     let camera2 = new google.maps.Marker({
-        title: cameTitle, position: camePosition, 
-        map: mapView, draggable: false, zIndex: 100,
+        position: camePosition, 
+        map: null, draggable: false, zIndex: 100,
         icon: {
             path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
-            fillColor: 'yellow',
+            fillColor: 'blue',
             fillOpacity: 0.5,
-            // strokeColor: 'blue',
             strokeWeight: 0,
-            // strokeOpacity: 0.6,
             rotation: cameraInfo[idx].angle,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
