@@ -7,6 +7,8 @@ var targetZoom = -1;
 var centerChangeHandler = null;
 var zoomLvlChangeHandler = null;
 
+var cameraRange = [];
+
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
 	    $('#nav-LC').addClass('active');
@@ -53,10 +55,11 @@ function initGoogle()
 
     for (let i=0; i<cameraInfo.length; ++i)
     {
-        if (cameraInfo[i].title == '') continue;
+        if (cameraInfo[i].title == '') break;
 
-        // Add Icon
-        addPngIcon(i, mapView);
+        // Add Camera Range and Icon
+        cameraRange.push(addCameraRange(i, null));
+        addCameraIcon(i, mapView);
     }
 }
 
@@ -74,6 +77,9 @@ function onClickCamera(idx)
     centerChangeHandler = mapView.addListener('idle', function(){ afterChangeCenter(); });
     targetZoom = cameraInfo[idx].zoom;
     mapView.panTo(cameraPos);
+
+    hideAllCameraRange();
+    showCameraRange(idx);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
@@ -111,26 +117,26 @@ function afterChangeCenter()
     return false;
 }
 
-function addSvgIcon(idx, mapView)
+function addCameraRange(idx, mapView)
 {
     let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
-    // add Point
-    let camera1 = new google.maps.Marker({
-        title: cameTitle, position: camePosition, 
-        map: mapView, draggable: false, zIndex: 200,
-        icon: {
-            path: 'M -3 0.01 A 3 3 0 1 0 -3 -0.01 Z',
-            fillColor: 'blue',
-            fillOpacity: 1,
-            strokeColor: 'blue',
-            strokeWeight: 2,
-            strokeOpacity: 1,
-            scale: 2,
-            anchor: new google.maps.Point(0, 0)
-        }
-    });
+    // // add Point
+    // let camera1 = new google.maps.Marker({
+    //     title: cameTitle, position: camePosition, 
+    //     map: mapView, draggable: false, zIndex: 200,
+    //     icon: {
+    //         path: 'M -3 0.01 A 3 3 0 1 0 -3 -0.01 Z',
+    //         fillColor: 'blue',
+    //         fillOpacity: 1,
+    //         strokeColor: 'blue',
+    //         strokeWeight: 2,
+    //         strokeOpacity: 1,
+    //         scale: 2,
+    //         anchor: new google.maps.Point(0, 0)
+    //     }
+    // });
 
     // add Camera Look
     let camera2 = new google.maps.Marker({
@@ -150,11 +156,12 @@ function addSvgIcon(idx, mapView)
     });
 
     // set icon click handler
-    camera1.addListener('click', function(){ onClickCamera(idx); });
-    camera2.addListener('click', function(){ onClickCamera(idx); });
+    // camera1.addListener('click', function(){ onClickCamera(idx); });
+    // camera2.addListener('click', function(){ onClickCamera(idx); });
+    return camera2;
 }
 
-function addPngIcon(idx, mapView)
+function addCameraIcon(idx, mapView)
 {
     let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
@@ -171,4 +178,16 @@ function addPngIcon(idx, mapView)
 
     // set icon click handler
     camera.addListener('click', function(){ onClickCamera(idx); });
+}
+
+function hideAllCameraRange()
+{
+    for (let i=0; i<cameraRange.length; i++) {
+        cameraRange[i].setMap(null);
+    }
+}
+
+function showCameraRange(idx)
+{
+    cameraRange[idx].setMap(mapView);
 }
