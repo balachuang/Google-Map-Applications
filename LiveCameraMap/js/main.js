@@ -85,6 +85,8 @@ function afterChangeZoomLevel()
 {
     // stop zooming
     let currZoomLvl = mapView.getZoom();
+    console.log('currZoomLvl: ' + currZoomLvl);
+    console.log('targetZoom: ' + targetZoom);
     if ((currZoomLvl == targetZoom) || (targetZoom == -1))
     {
         console.log('remove zoom handler');
@@ -98,10 +100,9 @@ function afterChangeZoomLevel()
     let zoomLvlGap = targetZoom - currZoomLvl;
     let zoomLvlGapSign = zoomLvlGap / Math.abs(zoomLvlGap);
     let nxtZoomLvl = currZoomLvl + zoomLvlGapSign * Math.min(4, Math.abs(zoomLvlGap));
-    // if (Math.abs(nxtZoomLvl) >= 4) nxtZoomLvl = currZoomLvl + 4 * nxtZoomLvl / Math.abs(nxtZoomLvl);
-    console.log(zoomLvlGap);
-    console.log(zoomLvlGapSign);
-    console.log(nxtZoomLvl);
+    console.log('zoomLvlGap: ' + zoomLvlGap);
+    console.log('zoomLvlGapSign: ' + zoomLvlGapSign);
+    console.log('nxtZoomLvl: ' + nxtZoomLvl);
     mapView.setZoom(nxtZoomLvl);
 }
 
