@@ -24,6 +24,20 @@ var cameraInfo = [
         'url': 'https://www.youtube.com/watch?v=s--MDmshT3I&list=PLtPJtE4_gezc20D5xv6MYtjPIti8xLWRZ'
     },
 
+    // 美國
+    {
+        'title': 'Fairbanks Aurora Camera (大致地點)',
+        'position': {'lat': 64.87168015770968, 'lng': -147.7432528168914}, 'angle': -90, 'zoom': 12,
+        'url': 'https://www.youtube.com/watch?v=O52zDyxg5QI'
+    },
+
+    // 瑞士
+    {
+        'title': 'Lausanne, pont Bessières',
+        'position': {'lat': 46.52170951702846, 'lng': 6.63569485877106}, 'angle': -90, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=y3sMI1HtZfE'
+    },
+
     // Ending
     {'title':  '', 'position': {'lat': 0.0, 'lng': 0.0}, 'angle': 0, 'url': 'url' }
 ];
