@@ -70,8 +70,7 @@ function onClickCamera(idx)
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
-    // centerChangeHandler = mapView.addListener('idle', function(){ afterChangeCenter(); });
-    centerChangeHandler = mapView.addListener('center_changed', function(){ afterChangeCenter(); });
+    centerChangeHandler = mapView.addListener('idle', function(){ afterChangeCenter(); });
     mapView.panTo(cameraPos);
 
     // zoom_changed
@@ -86,11 +85,8 @@ function afterChangeZoomLevel()
 {
     // stop zooming
     let currZoomLvl = mapView.getZoom();
-    console.log('currZoomLvl: ' + currZoomLvl);
-    console.log('targetZoom: ' + targetZoom);
     if ((currZoomLvl == targetZoom) || (targetZoom == -1))
     {
-        console.log('remove zoom handler');
         google.maps.event.removeListener(zoomLvlChangeHandler);
         zoomLvlChangeHandler = null;
         targetZoom = -1;
@@ -101,11 +97,6 @@ function afterChangeZoomLevel()
     let zoomLvlGap = targetZoom - currZoomLvl;
     let zoomLvlGapSign = zoomLvlGap / Math.abs(zoomLvlGap);
     let nxtZoomLvl = currZoomLvl + zoomLvlGapSign * Math.min(4, Math.abs(zoomLvlGap));
-    console.log('zoomLvlGap: ' + zoomLvlGap);
-    console.log('zoomLvlGapSign: ' + zoomLvlGapSign);
-    console.log('nxtZoomLvl: ' + nxtZoomLvl);
-
-    console.log('setZoom()');
     mapView.setZoom(nxtZoomLvl);
     return true;
 }
