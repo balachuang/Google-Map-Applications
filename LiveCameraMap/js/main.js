@@ -93,7 +93,7 @@ function afterChangeZoomLevel()
         google.maps.event.removeListener(zoomLvlChangeHandler);
         zoomLvlChangeHandler = null;
         targetZoom = -1;
-        return;
+        return false;
     }
 
     // else change zoom level a little bit
@@ -103,7 +103,10 @@ function afterChangeZoomLevel()
     console.log('zoomLvlGap: ' + zoomLvlGap);
     console.log('zoomLvlGapSign: ' + zoomLvlGapSign);
     console.log('nxtZoomLvl: ' + nxtZoomLvl);
+
+    console.log('setZoom()');
     mapView.setZoom(nxtZoomLvl);
+    return true;
 }
 
 function afterChangeCenter()
@@ -115,6 +118,8 @@ function afterChangeCenter()
     targetZoom = 20;
     zoomLvlChangeHandler = mapView.addListener('zoom_changed', function(){ afterChangeZoomLevel(); });
     afterChangeZoomLevel();
+
+    return false;
 }
 
 function addSvgIcon(idx, mapView)
