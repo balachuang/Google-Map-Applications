@@ -65,7 +65,7 @@ function onClickCamera(idx)
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
-    mapView.panTo(cameraPos);
+    mapView.flyTo(cameraPos);
     mapView.setZoom(20);
 
     // test
