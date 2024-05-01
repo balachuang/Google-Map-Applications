@@ -110,11 +110,12 @@ function afterChangeZoomLevel()
 
         // reset camera range
         hideAllCameraRange();
-        if (targetCameraIdx != -1)
-        {
-            showCameraRange(targetCameraIdx);
-            targetCameraIdx = -1;
-        }
+        if (targetCameraIdx != -1) cameraRange[targetCameraIdx].setMap(mapView);
+        // {
+            
+        //     // showCameraRange(targetCameraIdx);
+        //     // targetCameraIdx = -1;
+        // }
 
         return false;
     }
@@ -179,24 +180,19 @@ function addCameraIcon(idx, mapView)
     iconMarker.addListener('click', function(){ onClickCamera(idx); });
 }
 
-// hide camera range if current ZoomLvl not equal to anyone of default zoom.
+// hide camera range if current ZoomLvl not equal to current camera's zoom
 function checkCameraRange()
 {
-    let currZoomLvl = mapView.getZoom();
-    for (let i=0; i<cameraInfo.length; i++) {
-        if (cameraInfo[i].zoom == currZoomLvl) return;
-    }
-    hideAllCameraRange();
+    if (targetCameraIdx == -1) return;
+    if (cameraInfo[targetCameraIdx].zoom != mapView.getZoom()) hideAllCameraRange();
 }
 
 function hideAllCameraRange()
 {
-    for (let i=0; i<cameraRange.length; i++) {
-        cameraRange[i].setMap(null);
-    }
+    for (let i=0; i<cameraRange.length; i++) cameraRange[i].setMap(null);
 }
 
-function showCameraRange(idx)
-{
-    cameraRange[idx].setMap(mapView);
-}
+// function showCameraRange(idx)
+// {
+//     cameraRange[idx].setMap(mapView);
+// }
