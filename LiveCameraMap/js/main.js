@@ -65,8 +65,9 @@ function onClickCamera(idx)
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
-    mapView.flyTo(cameraPos);
-    mapView.setZoom(20);
+    mapView.setZoom(1);
+    setTimeout(function(){ mapView.panTo(cameraPos); }, 1000)
+    setTimeout(function(){ mapView.setZoom(20); }, 2000)
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
