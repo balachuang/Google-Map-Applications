@@ -66,12 +66,10 @@ function onClickCamera(idx)
         lng: cameraInfo[idx].position.lng
     });
     mapView.panTo(cameraPos);
-    mapView.setZoom(12);
+    mapView.setZoom(20);
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
-
-    // return false;
 }
 
 function addSvgIcon(idx, mapView)
