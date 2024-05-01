@@ -59,15 +59,20 @@ function initGoogle()
 function onClickCamera(idx)
 {
     // 一直把 lat 和 lng 弄反了, 直到把數字打出來才發現
+    // panTo 和 setCenter 一樣, 跳太多都不會有動畫
 
     // Focus to clicked camera
     let cameraPos = new google.maps.LatLng({
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
-    mapView.setZoom(1);
-    setTimeout(function(){ mapView.panTo(cameraPos); }, 1000)
-    setTimeout(function(){ mapView.setZoom(20); }, 2000)
+    mapView.panTo(cameraPos);
+    mapView.setZoom(12);
+    mapView.setZoom(16);
+    mapView.setZoom(20);
+
+    // zoom_changed
+    // center_changed
 
     // test
     //window.open(cameraInfo[idx].url, '_blank');
