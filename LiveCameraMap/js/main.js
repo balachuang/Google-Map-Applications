@@ -69,8 +69,20 @@ function initGoogle()
     mapView.addListener('zoom_changed', function(){ checkCameraRange(); });
 }
 
+// 
 function onClickCamera(idx)
 {
+    // IF current Zoom Level equals to default zoom, show video.
+    let currZoomLvl = mapView.getZoom();
+    if (currZoomLvl == cameraInfo[idx].zoom)
+    {
+        let l = (window.innerWidth - 800) / 2;
+        let t = (window.innerHeight - 600) / 2;
+        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', `width=800,height=600,scrollbars=no,location=no,menubar=no,toolbar=no,top=${t},left=${l}`);
+        return;
+    }
+
+    // ELSE zooming to clicked camera
     // 一直把 lat 和 lng 弄反了, 直到把數字打出來才發現
     // panTo 和 setCenter 一樣, 跳太多都不會有動畫
     targetCameraIdx = idx;
@@ -95,11 +107,6 @@ function afterChangeZoomLevel()
         google.maps.event.removeListener(zoomLvlChangeHandler);
         zoomLvlChangeHandler = null;
         targetZoom = -1;
-
-        // window.open(cameraInfo[targetCameraIdx].url, '_blank');
-        let l = (window.innerWidth - 800) / 2;
-        let t = (window.innerHeight - 600) / 2;
-        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', `width=800,height=600,scrollbars=no,location=no,menubar=no,toolbar=no,top=${t},left=${l}`);
 
         // reset camera range
         hideAllCameraRange();
