@@ -78,7 +78,7 @@ function onClickCamera(idx)
     {
         let l = (window.innerWidth - 800) / 2;
         let t = (window.innerHeight - 600) / 2;
-        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', `width=800,height=600,scrollbars=no,location=no,menubar=no,toolbar=no,top=${t},left=${l}`);
+        window.open(cameraInfo[idx].url, 'YouTube', `width=800,height=600,scrollbars=no,location=no,menubar=no,toolbar=no,top=${t},left=${l}`);
         return;
     }
 
