@@ -83,9 +83,10 @@ function onClickCamera(idx)
 
 function afterChangeZoomLevel()
 {
-    console.log('Zoom level changed.');
     // stop zooming
     let currZoomLvl = mapView.getZoom();
+    console.log(currZoomLvl);
+    console.log(targetZoom);
     if ((currZoomLvl == targetZoom) || (targetZoom == -1))
     {
         google.maps.event.removeListener(zoomLvlChangeHandler);
@@ -97,13 +98,15 @@ function afterChangeZoomLevel()
     let zoomLvlGap = targetZoom - currZoomLvl;
     let zoomLvlGapSign = zoomLvlGap / Math.abs(zoomLvlGap);
     let nxtZoomLvl = currZoomLvl + zoomLvlGapSign * Math.min(4, Math.abs(zoomLvlGap));
-    if (Math.abs(nxtZoomLvl) >= 4) nxtZoomLvl = currZoomLvl + 4 * nxtZoomLvl / Math.abs(nxtZoomLvl);
+    // if (Math.abs(nxtZoomLvl) >= 4) nxtZoomLvl = currZoomLvl + 4 * nxtZoomLvl / Math.abs(nxtZoomLvl);
+    console.log(zoomLvlGap);
+    console.log(zoomLvlGapSign);
+    console.log(nxtZoomLvl);
     mapView.setZoom(nxtZoomLvl);
 }
 
 function afterChangeCenter()
 {
-    console.log('Center changed.');
     // Center changed, remove this handler
     google.maps.event.removeListener(centerChangeHandler);
     centerChangeHandler = null;
