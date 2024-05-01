@@ -83,6 +83,7 @@ function onClickCamera(idx)
 
 function afterChangeZoomLevel()
 {
+    console.log('Zoom level changed.');
     // stop zooming
     let currZoomLvl = mapView.getZoom();
     if ((currZoomLvl == targetZoom) || (targetZoom == -1))
@@ -102,6 +103,7 @@ function afterChangeZoomLevel()
 
 function afterChangeCenter()
 {
+    console.log('Center changed.');
     // Center changed, remove this handler
     google.maps.event.removeListener(centerChangeHandler);
     centerChangeHandler = null;
@@ -150,8 +152,6 @@ function addSvgIcon(idx, mapView)
     });
 
     // set icon click handler
-    // camera1.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
-    // camera2.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
     camera1.addListener('click', function(){ onClickCamera(idx); });
     camera2.addListener('click', function(){ onClickCamera(idx); });
 }
@@ -172,6 +172,5 @@ function addPngIcon(idx, mapView)
     });
 
     // set icon click handler
-    // camera.addListener('click', function(){ window.open(cameraInfo[idx].url, '_blank'); });
     camera.addListener('click', function(){ onClickCamera(idx); });
 }
