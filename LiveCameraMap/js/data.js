@@ -9,6 +9,10 @@ var cameraInfo = [
         'title': '北新路寶橋路口',
         'position': {'lat': 24.97290306043396, 'lng': 121.54293743810781}, 'angle': -90, 'zoom': 20,
         'url': 'https://taiwancctv.live/taiwan/newtaipei/231xindian/get_id.html?id=C000150'
+    },{
+        'title': '中興路三段裕隆城旁',
+        'position': {'lat': 24.979148868069082, 'lng': 121.54486044729134}, 'angle': 45, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=NWT0129'
     },
 
     // 台北
@@ -19,6 +23,11 @@ var cameraInfo = [
     },
 
     // 台灣
+    {
+        'title': '小東路成大光復校區旁',
+        'position': {'lat': 23.00116373461838, 'lng': 120.21679968241773}, 'angle': 10, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=C112053'
+    },
     {
         'title': '高雄蓮池潭',
         'position': {'lat': 22.681153658432603, 'lng': 120.29185075040097}, 'angle': 45, 'zoom': 20,
@@ -49,3 +58,5 @@ var cameraInfo = [
     // Ending
     {'title':  '', 'position': {'lat': 0.0, 'lng': 0.0}, 'angle': 0, 'url': 'url' }
 ];
+
+
