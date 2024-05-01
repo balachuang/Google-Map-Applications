@@ -98,7 +98,7 @@ function afterChangeZoomLevel()
         // window.open(cameraInfo[targetCameraIdx].url, '_blank');
         let l = (window.innerWidth - 800) / 2;
         let t = (window.innerHeight - 600) / 2;
-        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', 'width=800,height=600,scrollbars=no,top=${t},left=${l}');
+        window.open(cameraInfo[targetCameraIdx].url, 'YouTube', `width=800,height=600,scrollbars=no,top=${t},left=${l}`);
 
         // reset camera range
         hideAllCameraRange();
