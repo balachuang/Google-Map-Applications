@@ -44,14 +44,16 @@ function initGoogle()
         // Browser support Geolocation, get actual position
         navigator.geolocation.getCurrentPosition(function(position) {
             mapView.setCenter(new google.maps.LatLng({ lat: position.coords.latitude, lng: position.coords.longitude }));
-        }, function() {
-            var infoWindow = new google.maps.InfoWindow({map: mapView});
+        }, function(error) {
+            // var infoWindow = new google.maps.InfoWindow({map: mapView});
             // handleLocationError(true, infoWindow, mapView.getCenter());
+            console.log('Error in navigator.geolocation.getCurrentPosition: ' + error);
         });
     } else {
         // Browser doesn't support Geolocation
-        var infoWindow = new google.maps.InfoWindow({map: mapView});
+        // var infoWindow = new google.maps.InfoWindow({map: mapView});
         // handleLocationError(false, infoWindow, mapView.getCenter());
+        console.log('navigator.geolocation not support, set map to default view.');
     }
 
     for (let i=0; i<cameraInfo.length; ++i)
@@ -93,6 +95,8 @@ function afterChangeZoomLevel()
         zoomLvlChangeHandler = null;
         targetZoom = -1;
 
+        window.open(cameraInfo[targetCameraIdx].url, '_blank');
+
         // reset camera range
         hideAllCameraRange();
         if (targetCameraIdx != -1)
@@ -124,12 +128,12 @@ function afterChangeCenter()
     return false;
 }
 
+// add Range by SVG
 function addCameraRange(idx)
 {
     let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
 
-    // add Camera Look
-    let camera2 = new google.maps.Marker({
+    let rangeMarker = new google.maps.Marker({
         position: camePosition, 
         map: null, draggable: false, zIndex: 100,
         icon: {
@@ -143,19 +147,16 @@ function addCameraRange(idx)
         }
     });
 
-    // set icon click handler
-    // camera1.addListener('click', function(){ onClickCamera(idx); });
-    // camera2.addListener('click', function(){ onClickCamera(idx); });
-    return camera2;
+    return rangeMarker;
 }
 
+// add Icon by PNG
 function addCameraIcon(idx, mapView)
 {
     let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
-    // add PNG Icon
-    let camera = new google.maps.Marker({
+    let iconMarker = new google.maps.Marker({
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 200,
         icon: {
@@ -164,8 +165,7 @@ function addCameraIcon(idx, mapView)
         }
     });
 
-    // set icon click handler
-    camera.addListener('click', function(){ onClickCamera(idx); });
+    iconMarker.addListener('click', function(){ onClickCamera(idx); });
 }
 
 function hideAllCameraRange()
