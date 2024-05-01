@@ -172,10 +172,14 @@ function addCameraIcon(idx, mapView)
     iconMarker.addListener('click', function(){ onClickCamera(idx); });
 }
 
+// hide camera range if current ZoomLvl not equal to anyone of default zoom.
 function checkCameraRange()
 {
     let currZoomLvl = mapView.getZoom();
-    if (currZoomLvl <= 8) hideAllCameraRange();
+    for (let i=0; i<cameraInfo.length; i++) {
+        if (cameraInfo[i].zoom == currZoomLvl) return;
+    }
+    hideAllCameraRange();
 }
 
 function hideAllCameraRange()
