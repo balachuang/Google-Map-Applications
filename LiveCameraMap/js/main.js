@@ -143,12 +143,12 @@ function addCameraRange(idx, mapView)
         title: cameTitle, position: camePosition, 
         map: mapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 0 0 L 20 -8 C 21 -3 21 3 20 8 Z',
-            fillColor: 'blue',
-            fillOpacity: 1,
-            strokeColor: 'blue',
+            path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
+            fillColor: 'yellow',
+            fillOpacity: 0.5,
+            // strokeColor: 'blue',
             strokeWeight: 0,
-            strokeOpacity: 0.6,
+            // strokeOpacity: 0.6,
             rotation: cameraInfo[idx].angle,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
@@ -169,7 +169,7 @@ function addCameraIcon(idx, mapView)
     // add PNG Icon
     let camera = new google.maps.Marker({
         title: cameTitle, position: camePosition, 
-        map: mapView, draggable: false, zIndex: 100,
+        map: mapView, draggable: false, zIndex: 200,
         icon: {
             url: 'images/camera_64.png',
             anchor: new google.maps.Point(32, 18)
