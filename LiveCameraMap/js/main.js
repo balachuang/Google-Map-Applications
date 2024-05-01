@@ -85,13 +85,13 @@ function afterChangeZoomLevel()
 {
     // stop zooming
     let currZoomLvl = mapView.getZoom();
-    console.log(currZoomLvl);
-    console.log(targetZoom);
     if ((currZoomLvl == targetZoom) || (targetZoom == -1))
     {
+        console.log('remove zoom handler');
         google.maps.event.removeListener(zoomLvlChangeHandler);
         zoomLvlChangeHandler = null;
         targetZoom = -1;
+        return;
     }
 
     // else change zoom level a little bit
