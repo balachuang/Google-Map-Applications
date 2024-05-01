@@ -3,6 +3,10 @@
 var mapGeoCoder = null;
 var mapView = null;
 
+var targetZoom = -1;
+var centerChangeHandler = null;
+var zoomLvlChangeHandler = null;
+
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
 	    $('#nav-LC').addClass('active');
@@ -66,16 +70,45 @@ function onClickCamera(idx)
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
+    centerChangeHandler = mapView.addListener('center_changed', function(){ afterChangeCenter(); });
     mapView.panTo(cameraPos);
-    mapView.setZoom(12);
-    mapView.setZoom(16);
-    mapView.setZoom(20);
 
     // zoom_changed
     // center_changed
 
+
     // test
     //window.open(cameraInfo[idx].url, '_blank');
+}
+
+function afterChangeZoomLevel()
+{
+    // stop zooming
+    let currZoomLvl = mapView.getZoom();
+    if ((currZoomLvl == targetZoom) || (targetZoom == -1))
+    {
+        google.maps.event.removeListener(zoomLvlChangeHandler);
+        zoomLvlChangeHandler = null;
+        targetZoom = -1;
+    }
+
+    // else change zoom level a little bit
+    let zoomLvlGap = targetZoom - currZoomLvl;
+    let zoomLvlGapSign = zoomLvlGap / Math.abs(zoomLvlGap);
+    let nxtZoomLvl = currZoomLvl + zoomLvlGapSign * Math.min(4, Math.abs(zoomLvlGap));
+    if (Math.abs(nxtZoomLvl) >= 4) nxtZoomLvl = currZoomLvl + 4 * nxtZoomLvl / Math.abs(nxtZoomLvl);
+    mapView.setZoom(nxtZoomLvl);
+}
+
+function afterChangeCenter()
+{
+    // Center changed, remove this handler
+    google.maps.event.removeListener(centerChangeHandler);
+    centerChangeHandler = null;
+
+    targetZoom = 20;
+    zoomLvlChangeHandler = mapView.addListener('center_changed', function(){ afterChangeZoomLevel(); });
+    afterChangeZoomLevel();
 }
 
 function addSvgIcon(idx, mapView)
