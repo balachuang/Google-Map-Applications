@@ -110,12 +110,7 @@ function afterChangeZoomLevel()
 
         // reset camera range
         hideAllCameraRange();
-        if (targetCameraIdx != -1) cameraRange[targetCameraIdx].setMap(mapView);
-        // {
-            
-        //     // showCameraRange(targetCameraIdx);
-        //     // targetCameraIdx = -1;
-        // }
+        if (targetCameraIdx != -1) showCameraRange(targetCameraIdx);
 
         return false;
     }
@@ -184,7 +179,9 @@ function addCameraIcon(idx, mapView)
 function checkCameraRange()
 {
     if (targetCameraIdx == -1) return;
-    if (cameraInfo[targetCameraIdx].zoom != mapView.getZoom()) hideAllCameraRange();
+    let zoomGap = Math.abs(mapView.getZoom() - cameraInfo[targetCameraIdx].zoom);
+    if (zoomGap > 2) hideAllCameraRange();
+    else showCameraRange(targetCameraIdx);
 }
 
 function hideAllCameraRange()
@@ -192,7 +189,7 @@ function hideAllCameraRange()
     for (let i=0; i<cameraRange.length; i++) cameraRange[i].setMap(null);
 }
 
-// function showCameraRange(idx)
-// {
-//     cameraRange[idx].setMap(mapView);
-// }
+function showCameraRange(idx)
+{
+    cameraRange[idx].setMap(mapView);
+}
