@@ -112,7 +112,7 @@ function afterChangeCenter()
     centerChangeHandler = null;
 
     targetZoom = 20;
-    zoomLvlChangeHandler = mapView.addListener('center_changed', function(){ afterChangeZoomLevel(); });
+    zoomLvlChangeHandler = mapView.addListener('zoom_changed', function(){ afterChangeZoomLevel(); });
     afterChangeZoomLevel();
 }
 
