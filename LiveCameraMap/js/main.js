@@ -64,6 +64,9 @@ function initGoogle()
         cameraRange.push(addCameraRange(i));
         addCameraIcon(i, mapView);
     }
+
+    // set zoom handler
+    mapView.addListener('zoom_changed', function(){ checkCameraRange(); });
 }
 
 function onClickCamera(idx)
@@ -81,8 +84,6 @@ function onClickCamera(idx)
     centerChangeHandler = mapView.addListener('idle', function(){ afterChangeCenter(); });
     targetZoom = cameraInfo[idx].zoom;
     mapView.panTo(cameraPos);
-
-    //window.open(cameraInfo[idx].url, '_blank');
 }
 
 function afterChangeZoomLevel()
@@ -169,6 +170,12 @@ function addCameraIcon(idx, mapView)
     });
 
     iconMarker.addListener('click', function(){ onClickCamera(idx); });
+}
+
+function checkCameraRange()
+{
+    let currZoomLvl = mapView.getZoom();
+    if (currZoomLvl <= 8) hideAllCameraRange();
 }
 
 function hideAllCameraRange()
