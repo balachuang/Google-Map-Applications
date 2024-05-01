@@ -70,6 +70,7 @@ function onClickCamera(idx)
         lat: cameraInfo[idx].position.lat,
         lng: cameraInfo[idx].position.lng
     });
+    // centerChangeHandler = mapView.addListener('idle', function(){ afterChangeCenter(); });
     centerChangeHandler = mapView.addListener('center_changed', function(){ afterChangeCenter(); });
     mapView.panTo(cameraPos);
 
@@ -116,7 +117,7 @@ function afterChangeCenter()
     centerChangeHandler = null;
 
     targetZoom = 20;
-    zoomLvlChangeHandler = mapView.addListener('zoom_changed', function(){ afterChangeZoomLevel(); });
+    zoomLvlChangeHandler = mapView.addListener('idle', function(){ afterChangeZoomLevel(); });
     afterChangeZoomLevel();
 
     return false;
