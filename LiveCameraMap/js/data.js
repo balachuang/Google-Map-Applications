@@ -1,3 +1,4 @@
+// angle: 順時針為正
 var cameraInfo = [
     // 新店
     {
@@ -13,7 +14,7 @@ var cameraInfo = [
     // 台北
     {
         'title': '擎天崗草原',
-        'position': {'lat': 25.16468848295197, 'lng': 121.57558367401835}, 'angle': 100, 'zoom': 20,
+        'position': {'lat': 25.16468848295197, 'lng': 121.57558367401835}, 'angle': 180, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
     },
 
@@ -48,6 +49,3 @@ var cameraInfo = [
     // Ending
     {'title':  '', 'position': {'lat': 0.0, 'lng': 0.0}, 'angle': 0, 'url': 'url' }
 ];
-
-
-, 
