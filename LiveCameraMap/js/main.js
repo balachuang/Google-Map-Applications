@@ -58,18 +58,14 @@ function initGoogle()
 
 function onClickCamera(idx)
 {
-    // alert('idx: ' + idx);
-
+    // 一直把 lat 和 lng 弄反了, 直到把數字打出來才發現
     // Focus to clicked camera
-    // alert('set zoom');
-    //mapView.setZoom(12);
+    alert('set zoom');
+    mapView.setZoom(12);
 
-    // lat: 23.583169, lng: 121.2071099
-    console.log(cameraInfo[idx].position.lng);
-    console.log(cameraInfo[idx].position.lat);
     let cameraPos = new google.maps.LatLng({
-        lat: 25.16468848295197,
-        lng: 121.57558367401835
+        lat: cameraInfo[idx].position.lat,
+        lng: cameraInfo[idx].position.lng
     });
     mapView.panTo(cameraPos);
 
@@ -81,7 +77,7 @@ function onClickCamera(idx)
 
 function addSvgIcon(idx, mapView)
 {
-    let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
+    let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add Point
@@ -126,7 +122,7 @@ function addSvgIcon(idx, mapView)
 
 function addPngIcon(idx, mapView)
 {
-    let camePosition = new google.maps.LatLng({ lat: cameraInfo[idx].position.lng, lng: cameraInfo[idx].position.lat });
+    let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
     let cameTitle = cameraInfo[idx].title + '\r\n' + cameraInfo[idx].url;
 
     // add PNG Icon
