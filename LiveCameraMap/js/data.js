@@ -53,9 +53,9 @@ var cameraInfo = [
         'url': 'https://www.earthcam.com/usa/nevada/lasvegas/?cam=sign_hd'
     },
     {
-        'title': '拉斯維加斯 幻景賭場度假村水舞池\r\n(Las Vegas Blvd & Harrahs-Mirage Exit F1)',
+        'title': '拉斯維加斯 幻景賭場度假村水舞池',
         'position': {'lat': 36.12030206147902, 'lng': -115.17245839041291}, 'angle': -100, 'zoom': 12,
-        'url': 'https://www.nvroads.com/'
+        'url': 'https://www.nvroads.com/cctv?start=0&length=10&filters%5B0%5D%5Bi%5D=2&filters%5B0%5D%5Bs%5D=Las+Vegas&filters%5B1%5D%5Bi%5D=3&filters%5B1%5D%5Bs%5D=Las+Vegas+Blvd+%26+Harrahs-Mirage+Exit+F1&order%5Bi%5D=1&order%5Bdir%5D=asc'
     },
 
     // 瑞士
