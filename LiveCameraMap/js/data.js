@@ -48,9 +48,14 @@ var cameraInfo = [
         'url': 'https://www.youtube.com/watch?v=O52zDyxg5QI'
     },
     {
-        'title': '拉斯維加斯',
+        'title': '拉斯維加斯 歡迎招牌',
         'position': {'lat': 36.0818965166996, 'lng': -115.17291936927923}, 'angle': -45, 'zoom': 12,
         'url': 'https://www.earthcam.com/usa/nevada/lasvegas/?cam=sign_hd'
+    },
+    {
+        'title': '拉斯維加斯 幻景賭場度假村水舞池\r\n(Las Vegas Blvd & Harrahs-Mirage Exit F1)',
+        'position': {'lat': 36.12030206147902, 'lng': -115.17245839041291}, 'angle': -100, 'zoom': 12,
+        'url': 'https://www.nvroads.com/'
     },
 
     // 瑞士
