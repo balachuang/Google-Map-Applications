@@ -182,7 +182,7 @@ function checkCameraRange()
     if (mapView.getZoom() <= cameraInfo[targetCameraIdx].zoom - 2) 
     {
         hideAllCameraRange();
-        targetCameraIdx = -1;
+        // targetCameraIdx = -1;
     }
     else showCameraRange(targetCameraIdx);
 }
