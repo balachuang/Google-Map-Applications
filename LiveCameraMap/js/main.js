@@ -73,8 +73,10 @@ function initGoogle()
 function onClickCamera(idx)
 {
     // Show live camera video if this range is display
-    if (mapView.getZoom() >= cameraInfo[idx].zoom - 2)
-    //if (cameraRange[idx].map != null)
+    // --> this means that: 
+    //     1. this point is selected
+    //     2. it's close enough
+    if (cameraRange[idx].map != null)
     {
         let l = (window.innerWidth - 800) / 2;
         let t = (window.innerHeight - 600) / 2;
