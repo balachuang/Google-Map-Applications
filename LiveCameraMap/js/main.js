@@ -73,10 +73,8 @@ function initGoogle()
 function onClickCamera(idx)
 {
     // Show live camera video if this range is display
-    // IF current Zoom Level equals to default zoom, show video.
-    //let currZoomLvl = mapView.getZoom();
-    //if (currZoomLvl == cameraInfo[idx].zoom)
-    if (cameraRange[idx].map != null)
+    if (mapView.getZoom() >= cameraInfo[idx].zoom)
+    //if (cameraRange[idx].map != null)
     {
         let l = (window.innerWidth - 800) / 2;
         let t = (window.innerHeight - 600) / 2;
