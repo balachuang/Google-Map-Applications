@@ -47,6 +47,11 @@ var cameraInfo = [
         'position': {'lat': 64.87168015770968, 'lng': -147.7432528168914}, 'angle': -90, 'zoom': 12,
         'url': 'https://www.youtube.com/watch?v=O52zDyxg5QI'
     },
+    {
+        'title': '拉斯維加斯',
+        'position': {'lat': 36.0818965166996, 'lng': -115.17291936927923}, 'angle': -45, 'zoom': 12,
+        'url': 'https://www.earthcam.com/usa/nevada/lasvegas/?cam=sign_hd'
+    },
 
     // 瑞士
     {
