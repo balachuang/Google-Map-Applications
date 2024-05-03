@@ -11,7 +11,7 @@ var cameraInfo = [
         'url': 'https://taiwancctv.live/taiwan/newtaipei/231xindian/get_id.html?id=C000150'
     },{
         'title': '中興路三段裕隆城旁',
-        'position': {'lat': 24.979148868069082, 'lng': 121.54486044729134}, 'angle': 45, 'zoom': 20,
+        'position': {'lat': 24.979148868069082, 'lng': 121.54486044729134}, 'angle': 40, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0129'
     },
 

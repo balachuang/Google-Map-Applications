@@ -179,8 +179,11 @@ function addCameraIcon(idx, mapView)
 function checkCameraRange()
 {
     if (targetCameraIdx == -1) return;
-    let zoomGap = Math.abs(mapView.getZoom() - cameraInfo[targetCameraIdx].zoom);
-    if (zoomGap > 2) hideAllCameraRange();
+    if (mapView.getZoom() <= cameraInfo[targetCameraIdx].zoom - 2) 
+    {
+        hideAllCameraRange();
+        targetCameraIdx = -1;
+    }
     else showCameraRange(targetCameraIdx);
 }
 
