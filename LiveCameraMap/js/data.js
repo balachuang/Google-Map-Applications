@@ -24,7 +24,7 @@ var cameraInfo = [
     {
         'title': '大稻埕碼頭',
         'position': {'lat': 25.05654477482707, 'lng': 121.50786823884091}, 'angle': 120, 'zoom': 20,
-        'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
+        'url': 'https://www.youtube.com/watch?v=Ndo_8RuefH4'
     },
 
     // 台灣
@@ -36,7 +36,7 @@ var cameraInfo = [
     {
         'title': '高雄蓮池潭',
         'position': {'lat': 22.681153658432603, 'lng': 120.29185075040097}, 'angle': 45, 'zoom': 20,
-        'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
+        'url': 'https://www.youtube.com/watch?v=BnPoNatG-HE'
     },
 
     // 日本
