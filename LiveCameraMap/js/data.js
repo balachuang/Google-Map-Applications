@@ -26,6 +26,11 @@ var cameraInfo = [
         'position': {'lat': 25.05654477482707, 'lng': 121.50786823884091}, 'angle': 120, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=Ndo_8RuefH4'
     },
+    {
+        'title': '水源快上層 - 溪州街與汀州路4段140巷口',
+        'position': {'lat': 25.005007580146355, 'lng': 121.53479953093249}, 'angle': -135, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=BOT325'
+    },
 
     // 台灣
     {
