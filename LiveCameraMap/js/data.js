@@ -21,6 +21,11 @@ var cameraInfo = [
         'position': {'lat': 25.16468848295197, 'lng': 121.57558367401835}, 'angle': 180, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
     },
+    {
+        'title': '大稻埕碼頭',
+        'position': {'lat': 25.05654477482707, 'lng': 121.50786823884091}, 'angle': 120, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
+    },
 
     // 台灣
     {
