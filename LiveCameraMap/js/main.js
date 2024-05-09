@@ -38,7 +38,7 @@ function initGoogle()
     mapGeoCoder = new google.maps.Geocoder();
 
     let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
-    mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 2 });
+    mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
 
     if (navigator.geolocation) {
         // Browser support Geolocation, get actual position
