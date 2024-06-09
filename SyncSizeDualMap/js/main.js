@@ -28,8 +28,8 @@ function onReSize()
 function initGoogle()
 {
     let pos = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });
-    glViewLt = new google.maps.Map(document.getElementById('google-map-container-lt'), { center: pos, zoom: 16 });
-    glViewRt = new google.maps.Map(document.getElementById('google-map-container-rt'), { center: pos, zoom: 16 });
+    glViewLt = new google.maps.Map(document.getElementById('gMapL'), { center: pos, zoom: 16 });
+    glViewRt = new google.maps.Map(document.getElementById('gMapR'), { center: pos, zoom: 16 });
 
     // set google map container handler
     $('#gMapL').on('mouseenter', activeLeftGMap);
