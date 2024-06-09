@@ -63,6 +63,17 @@ function initGoogle()
     var pos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
     glMap = new google.maps.Map(document.getElementById('google-map-container'), { center: pos, zoom: 16 });
 
+    bombCircle = new google.maps.Circle({
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+        glMap,
+        center: pos,
+        radius: 500,
+    });
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             pos = new google.maps.LatLng({  lat: position.coords.latitude,  lng: position.coords.longitude });
@@ -85,16 +96,7 @@ function updateMap()
     if (bombInfo.index == null) return;
     if (bombInfo.position == null) return;
 
-    bombCircle = new google.maps.Circle({
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#FF0000",
-        fillOpacity: 0.35,
-        glMap,
-        center: bombInfo.position,
-        radius: 500,
-    });
+    bombCircle.setCenter(bombInfo.position);
 }
 
 // function setBombPos(event)
