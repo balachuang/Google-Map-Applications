@@ -69,9 +69,9 @@ function initGoogle()
         strokeWeight: 2,
         fillColor: "#FF0000",
         fillOpacity: 0.35,
-        glMap,
-        center: { lat: 24.978606, lng: 121.539033 },
-        radius: 500,
+        map: glMap,
+        center: pos,
+        radius: 500
     });
 
     if (navigator.geolocation) {
