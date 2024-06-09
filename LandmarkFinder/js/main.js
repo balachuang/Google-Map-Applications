@@ -40,7 +40,14 @@ function onReSize(){
         'top' : $('#street-view-container-2').position().top + $('#street-view-container-2').height()/2 - 15 });
 }
 
-function initGoogle(){
+function initGoogle()
+{
+    // block initGoogle() until google is loaded.
+    if((typeof(google) == 'undefined') || (google == null)) {
+        setTimeout(initGoogle, 200);
+        return;
+    }
+
     coder = new google.maps.Geocoder();
 
     glPos[0] = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });

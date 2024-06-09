@@ -38,7 +38,14 @@ function onReSize(){
     $('#reslist').height(sh);
 }
 
-function initGoogle(){
+function initGoogle()
+{
+    // block initGoogle() until google is loaded.
+    if((typeof(google) == 'undefined') || (google == null)) {
+        setTimeout(initGoogle, 200);
+        return;
+    }
+
     coder = new google.maps.Geocoder();
 
     var pos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });

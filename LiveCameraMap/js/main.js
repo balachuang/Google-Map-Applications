@@ -34,6 +34,12 @@ function onReSize()
 
 function initGoogle()
 {
+    // block initGoogle() until google is loaded.
+    if((typeof(google) == 'undefined') || (google == null)) {
+        setTimeout(initGoogle, 200);
+        return;
+    }
+
     let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
     mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
 
