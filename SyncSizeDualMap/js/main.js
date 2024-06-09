@@ -1,6 +1,6 @@
 let glViewLt = null;
 let glViewRt = null;
-let currentActiveMap = 0;
+let activeGMap = 0; // left: 1, right: 2
 
 $(window).resize(onReSize);
 $(document).ready(function(){
@@ -12,6 +12,12 @@ $(document).ready(function(){
 			var txt = $(this).attr(userLang);
 			$(this).replaceWith(txt);
 		});
+
+        // set google map container handler
+        $('#gMapL').on('mouseenter', focusToLGMap);
+        $('#gMapR').on('mouseenter', focusToRGMap);
+        $('#gMapL').on('mouseleave', leaveGMap);
+        $('#gMapR').on('mouseleave', leaveGMap);
 
         onReSize();
         initGoogle();
@@ -31,20 +37,25 @@ function initGoogle()
     glViewLt = new google.maps.Map(document.getElementById('gMapL'), { center: pos, zoom: 16 });
     glViewRt = new google.maps.Map(document.getElementById('gMapR'), { center: pos, zoom: 16 });
 
-    // set google map container handler
-    $('#gMapL').on('mouseenter', focusToLGMap);
-    $('#gMapR').on('mouseenter', focusToRGMap);
-    $('#gMapL').on('mouseleave', leaveLGMap);
-    $('#gMapR').on('mouseleave', leaveRGMap);
+    glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); });
+    glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); });
 }
 
-function focusToLGMap() { glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); }); }
-function focusToRGMap() { glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); }); }
-function leaveLGMap() { google.maps.event.clearListeners(glViewLt, 'zoom_changed'); }
-function leaveRGMap() { google.maps.event.clearListeners(glViewRt, 'zoom_changed'); }
+// function focusToLGMap() { glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); }); }
+// function focusToRGMap() { glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); }); }
+// function leaveLGMap() { google.maps.event.clearListeners(glViewLt, 'zoom_changed'); }
+// function leaveRGMap() { google.maps.event.clearListeners(glViewRt, 'zoom_changed'); }
+
+function focusToLGMap() { activeGMap = 1; }
+function focusToRGMap() { activeGMap = 2; }
+function leaveGMap() { activeGMap = 0; }
+// function leaveLGMap() { activeGMap = 0; }
+// function leaveRGMap() { activeGMap = 0; }
 
 function afterChangeZoomLevel(isLeft)
 {
-    if (isLeft) glViewRt.setZoom(glViewLt.getZoom());
-    else        glViewLt.setZoom(glViewRt.getZoom());
+    if ( isLeft && (activeGMap == 1)) glViewRt.setZoom(glViewLt.getZoom());
+    if (!isLeft && (activeGMap == 2)) glViewLt.setZoom(glViewRt.getZoom());
+    // if (isLeft) glViewRt.setZoom(glViewLt.getZoom());
+    // else        glViewLt.setZoom(glViewRt.getZoom());
 }
