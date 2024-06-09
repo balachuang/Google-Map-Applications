@@ -70,7 +70,7 @@ function initGoogle()
         fillColor: "#FF0000",
         fillOpacity: 0.35,
         glMap,
-        center: pos,
+        center: { lat: 24.978606, lng: 121.539033 },
         radius: 500,
     });
 
