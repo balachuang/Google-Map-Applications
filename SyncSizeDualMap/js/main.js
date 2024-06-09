@@ -33,6 +33,8 @@ function onReSize()
 
 function initGoogle()
 {
+    if((typeof(google) == 'undefined') || (google == null)) setTimeout(initGoogle, 200);
+
     let pos = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });
     glViewLt = new google.maps.Map(document.getElementById('gMapL'), { center: pos, zoom: 16 });
     glViewRt = new google.maps.Map(document.getElementById('gMapR'), { center: pos, zoom: 16 });
