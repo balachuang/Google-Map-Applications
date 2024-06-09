@@ -41,21 +41,12 @@ function initGoogle()
     glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); });
 }
 
-// function focusToLGMap() { glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); }); }
-// function focusToRGMap() { glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); }); }
-// function leaveLGMap() { google.maps.event.clearListeners(glViewLt, 'zoom_changed'); }
-// function leaveRGMap() { google.maps.event.clearListeners(glViewRt, 'zoom_changed'); }
-
 function focusToLGMap() { activeGMap = 1; }
 function focusToRGMap() { activeGMap = 2; }
 function leaveGMap() { activeGMap = 0; }
-// function leaveLGMap() { activeGMap = 0; }
-// function leaveRGMap() { activeGMap = 0; }
 
 function afterChangeZoomLevel(isLeft)
 {
     if ( isLeft && (activeGMap == 1)) glViewRt.setZoom(glViewLt.getZoom());
     if (!isLeft && (activeGMap == 2)) glViewLt.setZoom(glViewRt.getZoom());
-    // if (isLeft) glViewRt.setZoom(glViewLt.getZoom());
-    // else        glViewLt.setZoom(glViewRt.getZoom());
 }
