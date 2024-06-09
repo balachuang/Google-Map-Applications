@@ -2,7 +2,6 @@ let glViewLt = null;
 let glViewRt = null;
 let activeGMap = 0; // left: 1, right: 2
 
-$(window).resize(onReSize);
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
 	    $('#nav-LF').addClass('active');
@@ -24,6 +23,7 @@ $(document).ready(function(){
 	});
 });
 
+$(window).resize(onReSize);
 function onReSize()
 {
     var sh = $(window).height() - $('#idx-navbar').height() - 20;
