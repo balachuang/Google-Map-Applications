@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Google Map Best Path Plan</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-size: 62.5%;
+	}
+	body, nav {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+		overflow: hidden;
+	}
+	#google-map-container {
+		width: 100%;
+	}
+	.glyphicon {
+		float: right;
+		color: lightgray;
+		width: 1.5rem;
+		text-align: center;
+	}
+	.glyphicon:hover {
+		color: gray;
+	}
+	.list-group-item-info .glyphicon-pushpin {
+		color: blue;
+	}
+	#go-plan, #clear {
+		float: right;
+		cursor: pointer;
+		font-weight: bolder;
+		color: blue;
+	}
+	#result-info {
+		display: none;
+	}
+	#reslist {
+		overflow: scroll;
+	}
+	</style>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<div id="menubar"></div>
+	<div class="col-md-4" style="margin-top: 5rem;" id="point-list">
+		<div id="povlist" class="panel panel-default">
+			<div class="panel-heading">
+				<i18n en="Position List" zh-TW="目的地列表"></i18n>
+				<span id="go-plan"><i18n en="Go Plan" zh-TW="開始計算"></i18n></span>
+			</div>
+			<div class="panel-body">
+				<ul id="povlist-ul" class="list-group">
+					<li class="list-group-item disabled" id="povlist-init">
+						<i18n en="Click on Map to add a new location..."
+							  zh-TW="還沒有目的地, 右鍵點擊地圖可以新增目的地."></i18n>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4" style="margin-top: 5rem;" id="result-info">
+		<div id="reslist" class="panel panel-default">
+			<div class="panel-heading">
+				<i18n en="Result" zh-TW="計算結果"></i18n>
+				<span id="clear"><i18n en="Clear" zh-TW="清除"></i18n></span>
+			</div>
+			<div class="panel-body"  id="result-info-panel">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8" style="margin-top: 5rem;">
+		<div id="mother" class="panel panel-default">
+			<div class="google" id="google-map-container"></div>
+		</div>
+	</div>
+</body>
+</html>
+
