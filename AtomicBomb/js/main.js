@@ -1,11 +1,12 @@
-var glMap = null;
-var coder = null;
-var gRender = null;
-var glPosList = [];
-var glPosMark = [];
-var stationCandidate = [];
-var pathCandidate = [];
-var bombInfo = {
+let glMap = null;
+let coder = null;
+let gRender = null;
+// let glPosList = [];
+// let glPosMark = [];
+// let stationCandidate = [];
+// let pathCandidate = [];
+let bombCircle = null;
+let bombInfo = {
     index: 1,
     position: null
 };
@@ -84,7 +85,7 @@ function updateMap()
     if (bombInfo.index == null) return;
     if (bombInfo.position == null) return;
 
-    cc = new google.maps.Circle({
+    bombCircle = new google.maps.Circle({
         strokeColor: "#FF0000",
         strokeOpacity: 0.8,
         strokeWeight: 2,
