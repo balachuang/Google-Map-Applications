@@ -1,6 +1,5 @@
 // const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
-// var mapGeoCoder = null;
 var mapView = null;
 
 var targetCameraIdx = -1;
@@ -35,8 +34,6 @@ function onReSize()
 
 function initGoogle()
 {
-    // mapGeoCoder = new google.maps.Geocoder();
-
     let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
     mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8 });
 
