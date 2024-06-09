@@ -6,7 +6,7 @@ var glPosMark = [];
 var stationCandidate = [];
 var pathCandidate = [];
 var bombInfo = {
-    index: null,
+    index: 1,
     position: null
 };
 
@@ -38,7 +38,7 @@ function onDocumentLoaded()
         $('.list-group-item').removeClass('selected');
         $(this).addClass('selected');
 
-        bombInfo.index = $(this).attr('id').substring(5);
+        bombInfo.index = $(this).attr('bid');
         updateMap();
     });
 }
@@ -81,7 +81,19 @@ function initGoogle()
 
 function updateMap()
 {
-    alert('draw bomb: ' + bombInfo.index + bombInfo.position);
+    if (bombInfo.index == null) return;
+    if (bombInfo.position == null) return;
+
+    cc = new google.maps.Circle({
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+        glMap,
+        center: bombInfo.position,
+        radius: 500,
+    });
 }
 
 // function setBombPos(event)
