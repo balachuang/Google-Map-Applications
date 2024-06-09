@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Google Map Best Path Plan</title>
+	<title>Atomic Bomb Range Simulator</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<style type="text/css">
 	html {
@@ -31,55 +31,44 @@
 	.list-group-item-info .glyphicon-pushpin {
 		color: blue;
 	}
-	#go-plan, #clear {
-		float: right;
-		cursor: pointer;
-		font-weight: bolder;
+	.list-group-item:hover {
+		background-color: rgb(250,250,250);
 		color: blue;
+		font-weight: bolder;
 	}
-	#result-info {
-		display: none;
-	}
-	#reslist {
-		overflow: scroll;
+	.list-group-item.selected {
+		background-color: rgb(100,100,255);
+		color: white;
+		font-weight: bolder;
 	}
 	</style>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
 	<div id="menubar"></div>
-	<div class="col-md-4" style="margin-top: 5rem;" id="point-list">
-		<div id="povlist" class="panel panel-default">
+	<div class="col-md-2" style="margin-top: 5rem;" id="point-list">
+		<div id="bomb-list" class="panel panel-default">
 			<div class="panel-heading">
-				<i18n en="Position List" zh-TW="目的地列表"></i18n>
-				<span id="go-plan"><i18n en="Go Plan" zh-TW="開始計算"></i18n></span>
+				<i18n en="Bomb List" zh-TW="原子彈列表"></i18n>
 			</div>
 			<div class="panel-body">
-				<ul id="povlist-ul" class="list-group">
-					<li class="list-group-item disabled" id="povlist-init">
-						<i18n en="Click on Map to add a new location..."
-							  zh-TW="還沒有目的地, 右鍵點擊地圖可以新增目的地."></i18n>
+				<ul id="bomb-list-ul" class="list-group">
+					<li class="list-group-item" id="bomb-1">
+						<i18n en="Little Boy" zh-TW="小男孩"></i18n>
+					</li>
+					<li class="list-group-item" id="bomb-2">
+						<i18n en="Little Boy" zh-TW="沙皇"></i18n>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4" style="margin-top: 5rem;" id="result-info">
-		<div id="reslist" class="panel panel-default">
-			<div class="panel-heading">
-				<i18n en="Result" zh-TW="計算結果"></i18n>
-				<span id="clear"><i18n en="Clear" zh-TW="清除"></i18n></span>
-			</div>
-			<div class="panel-body"  id="result-info-panel">
-			</div>
-		</div>
-	</div>
-	<div class="col-md-8" style="margin-top: 5rem;">
-		<div id="mother" class="panel panel-default">
+	<div class="col-md-10" style="margin-top: 5rem;">
+		<div class="panel panel-default">
 			<div class="google" id="google-map-container"></div>
 		</div>
 	</div>
