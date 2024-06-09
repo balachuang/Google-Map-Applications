@@ -32,21 +32,16 @@ function initGoogle()
     glViewRt = new google.maps.Map(document.getElementById('gMapR'), { center: pos, zoom: 16 });
 
     // set google map container handler
-    $('#gMapL').on('mouseenter', activeLeftGMap);
-    $('#gMapR').on('mouseenter', activeRightGMap);
+    $('#gMapL').on('mouseenter', focusToLGMap);
+    $('#gMapR').on('mouseenter', focusToRGMap);
+    $('#gMapL').on('mouseleave', leaveLGMap);
+    $('#gMapR').on('mouseleave', leaveRGMap);
 }
 
-function activeLeftGMap()
-{
-    google.maps.event.clearListeners(glViewRt, 'zoom_changed');
-    glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); });
-}
-
-function activeRightGMap()
-{
-    google.maps.event.clearListeners(glViewLt, 'zoom_changed');
-    glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); });
-}
+function focusToLGMap() { glViewLt.addListener('zoom_changed', function(){ afterChangeZoomLevel(true); }); }
+function focusToRGMap() { glViewRt.addListener('zoom_changed', function(){ afterChangeZoomLevel(false); }); }
+function leaveLGMap() { google.maps.event.clearListeners(glViewLt, 'zoom_changed'); }
+function leaveRGMap() { google.maps.event.clearListeners(glViewRt, 'zoom_changed'); }
 
 function afterChangeZoomLevel(isLeft)
 {
