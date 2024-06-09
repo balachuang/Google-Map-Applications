@@ -31,7 +31,7 @@ function onReSize()
     $('#gMapR').height(sh);
 }
 
-async function initGoogle()
+function initGoogle()
 {
     let pos = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });
     glViewLt = new google.maps.Map(document.getElementById('gMapL'), { center: pos, zoom: 16 });
