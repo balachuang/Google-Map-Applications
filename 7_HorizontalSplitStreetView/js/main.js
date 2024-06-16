@@ -53,28 +53,21 @@ function initGoogle()
     }
 
     // add current position marker
+    // SVG Path Editor: https://yqnn.github.io/svg-path-editor/
     glMarker = new google.maps.Marker({
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
-            fillColor: 'blue',
-            fillOpacity: 0.5,
-            strokeWeight: 0,
+            path: 'M 0 0 L -1 -1 L 2 0 L -1 1 Z',
+            fillColor: 'white',
+            fillOpacity: 0,
+            strokeWeight: 1,
+            strokeColor: 'blue',
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
         }
     });
-
-    // glMarker = new google.maps.Marker({
-    //     position: glPos[0],
-    //     map: glView[0],
-    //     draggable: true,
-    //     title:"Map Center",
-    //     zIndex: 100,
-    //     icon: {url: 'images/eyeCen.png', anchor: new google.maps.Point(12, 12)}
-    // });
 
     glMarker.addListener('dragend', function(){ markerDragEnd(0); });
     glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
