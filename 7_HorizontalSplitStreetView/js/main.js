@@ -60,7 +60,7 @@ function initGoogle()
         icon: {
             path: 'M 0 0 L -5 -5 L 10 0 L -5 5 Z',
             fillColor: 'blue',
-            fillOpacity: 0,
+            // fillOpacity: 1,
             strokeWeight: 3,
             strokeColor: 'white',
             rotation: 0,
