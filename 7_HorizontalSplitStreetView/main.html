@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Atomic Bomb Range Simulator</title>
+	<title>Horizontal Split of Google Map</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<style type="text/css">
 	html {
@@ -16,7 +16,7 @@
 		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
 		overflow: hidden;
 	}
-	#google-map-container {
+	.gmap-container {
 		width: 100%;
 	}
 	.glyphicon {
@@ -28,19 +28,6 @@
 	.glyphicon:hover {
 		color: gray;
 	}
-	.list-group-item-info .glyphicon-pushpin {
-		color: blue;
-	}
-	.list-group-item:hover {
-		background-color: rgb(250,250,250);
-		color: blue;
-		font-weight: bolder;
-	}
-	.list-group-item.selected {
-		background-color: rgb(100,100,255);
-		color: white;
-		font-weight: bolder;
-	}
 	</style>
 	<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -50,26 +37,14 @@
 
 <body>
 	<div id="menubar"></div>
-	<div class="col-md-2" style="margin-top: 5rem;" id="point-list">
-		<div id="bomb-list" class="panel panel-default">
-			<div class="panel-heading">
-				<i18n en="Bomb List" zh-TW="原子彈列表"></i18n>
-			</div>
-			<div class="panel-body">
-				<ul id="bomb-list-ul" class="list-group">
-					<li class="list-group-item selected" id="bomb-1" bid=1>
-						<i18n en="Little Boy" zh-TW="小男孩"></i18n>
-					</li>
-					<li class="list-group-item" id="bomb-2" bid=2>
-						<i18n en="Little Boy" zh-TW="沙皇"></i18n>
-					</li>
-				</ul>
-			</div>
+	<div class="col-md-6" style="margin-top: 5rem;">
+		<div class="panel panel-default">
+			<div class="gmap-container" id="gmap-map"></div>
 		</div>
 	</div>
-	<div class="col-md-10" style="margin-top: 5rem;">
+	<div class="col-md-6" style="margin-top: 5rem;">
 		<div class="panel panel-default">
-			<div class="google" id="google-map-container"></div>
+			<div class="gmap-container" id="gmap-street"></div>
 		</div>
 	</div>
 </body>
