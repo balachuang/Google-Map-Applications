@@ -61,7 +61,7 @@ function initGoogle()
             fillColor: 'blue',
             fillOpacity: 0.5,
             strokeWeight: 0,
-            rotation: cameraInfo[idx].angle,
+            rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
         }
