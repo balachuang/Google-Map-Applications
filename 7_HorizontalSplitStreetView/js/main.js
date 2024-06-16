@@ -55,7 +55,7 @@ function initGoogle()
     // add current position marker
     glMarker = new google.maps.Marker({
         position: glCurrPos, 
-        map: null, draggable: false, zIndex: 100,
+        map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
             path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
             fillColor: 'blue',
