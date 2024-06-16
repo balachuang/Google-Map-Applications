@@ -62,7 +62,7 @@ function initGoogle()
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 3,
-            strokeColor: 'blue',
+            strokeColor: 'white',
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
