@@ -60,7 +60,7 @@ function initGoogle()
         icon: {
             // path: 'M 8 0 A 1 1 0 0 0 -8 0 A 1 1 0 0 0 8 0 M -4 0 L -5 -4 L 6 0 L -5 4 Z Z',
             // path: 'M 8 0 A 1 1 0 0 0 -8 0 A 1 1 0 0 0 8 0 M -4 0 L -5 -4 L 6 0 L -5 4 Z Z',
-            path: 'M 8 0 A 1 1 0 0 0 -8 0 A 1 1 0 0 0 8 0 Z',
+            path: 'M 5 0 A 5 5 90 0 0 0 -5 A 5 5 90 0 0 -5 0 A 5 5 90 0 0 0 5 A 5 5 90 0 0 5 0 Z',
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 3,
