@@ -2,7 +2,8 @@ let coder = null;
 let glMapView = null;
 let glStreetView = null;
 let glCurrPos = null;
-let glMarker = null;
+let glMarkerBk = null;
+let glMarkerAr = null;
 
 $(window).resize(onReSize);
 $(document).ready(function()
@@ -54,11 +55,25 @@ function initGoogle()
 
     // add current position marker
     // SVG Path Editor: https://yqnn.github.io/svg-path-editor/
-    glMarker = new google.maps.Marker({
+    glMarkerBk = new google.maps.Marker({
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 5 0 A 5 5 90 0 0 0 -5 A 5 5 90 0 0 -5 0 A 5 5 90 0 0 0 5 A 5 5 90 0 0 5 0 Z M -4 0 L -5 -4 L 6 0 L -5 4 Z',
+            path: 'M 8 0 A 8 8 90 0 0 0 -8 A 8 8 90 0 0 -8 0 A 8 8 90 0 0 0 8 A 8 8 90 0 0 8 0 Z',
+            fillColor: 'blue',
+            fillOpacity: 1,
+            strokeWeight: 3,
+            strokeColor: 'white',
+            rotation: 0,
+            scale: 2,
+            anchor: new google.maps.Point(0, 0)
+        }
+    });
+    glMarkerAr = new google.maps.Marker({
+        position: glCurrPos, 
+        map: glGglMapView, draggable: false, zIndex: 110,
+        icon: {
+            path: 'M -4 0 L -5 -4 L 6 0 L -5 4 Z',
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 3,
