@@ -45,23 +45,36 @@ function initGoogle()
             glGglMapView.setCenter(glCurrPos);
             glStreetView.setPosition(glCurrPos);
         }, function() {
-            var infoWindow = new google.maps.InfoWindow({map: glGglMapView});
-            handleLocationError(true, infoWindow, glGglMapView.getCenter());
+            console.log('Error in navigator.geolocation.getCurrentPosition: ' + error);
         });
     } else {
         // Browser doesn't support Geolocation
-        var infoWindow = new google.maps.InfoWindow({map: glGglMapView});
-        handleLocationError(false, infoWindow, glGglMapView.getCenter());
+        console.log('navigator.geolocation not support, set map to default view.');
     }
 
+    // add current position marker
     glMarker = new google.maps.Marker({
-        position: glPos[0],
-        map: glView[0],
-        draggable: true,
-        title:"Map Center",
-        zIndex: 100,
-        icon: {url: 'images/eyeCen.png', anchor: new google.maps.Point(12, 12)}
+        position: glCurrPos, 
+        map: null, draggable: false, zIndex: 100,
+        icon: {
+            path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
+            fillColor: 'blue',
+            fillOpacity: 0.5,
+            strokeWeight: 0,
+            rotation: cameraInfo[idx].angle,
+            scale: 2,
+            anchor: new google.maps.Point(0, 0)
+        }
     });
+
+    // glMarker = new google.maps.Marker({
+    //     position: glPos[0],
+    //     map: glView[0],
+    //     draggable: true,
+    //     title:"Map Center",
+    //     zIndex: 100,
+    //     icon: {url: 'images/eyeCen.png', anchor: new google.maps.Point(12, 12)}
+    // });
 
     glMarker.addListener('dragend', function(){ markerDragEnd(0); });
     glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
@@ -209,4 +222,13 @@ function checkStatus()
             glView[n].setVisible(false);
         }
     }
+}
+
+// add Range by SVG
+function addCameraRange(idx)
+{
+    let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
+
+
+    return rangeMarker;
 }
