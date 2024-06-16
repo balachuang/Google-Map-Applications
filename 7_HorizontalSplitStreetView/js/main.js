@@ -35,21 +35,23 @@ function initGoogle()
 
     coder = new google.maps.Geocoder();
 
+    glCurrPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
+    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 16 });
+    glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
+
     // set current position to real position
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             glCurrPos = new google.maps.LatLng({ lat: position.coords.latitude, lng: position.coords.longitude });
+            glGglMapView.setCenter(glCurrPos);
+            glStreetView.setPosition(glCurrPos);
         }, function() {
             console.log('Error in navigator.geolocation.getCurrentPosition: ' + error);
         });
     } else {
         // Browser doesn't support Geolocation
-        glCurrPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
         console.log('navigator.geolocation not support, set map to default view.');
     }
-
-    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 16 });
-    glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
 
     // add current position marker
     // SVG Path Editor: https://yqnn.github.io/svg-path-editor/
