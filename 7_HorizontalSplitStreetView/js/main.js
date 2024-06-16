@@ -58,11 +58,11 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 0 0 L -3 -3 L 6 0 L -3 3 Z',
-            fillColor: 'white',
+            path: 'M 0 0 L -5 -5 L 10 0 L -5 5 Z',
+            fillColor: 'blue',
             fillOpacity: 0,
-            strokeWeight: 1,
-            strokeColor: 'blue',
+            strokeWeight: 3,
+            strokeColor: 'white',
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
