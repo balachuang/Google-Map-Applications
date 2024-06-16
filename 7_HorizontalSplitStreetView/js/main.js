@@ -60,10 +60,10 @@ function initGoogle()
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
             path: 'M 8 0 A 8 8 90 0 0 0 -8 A 8 8 90 0 0 -8 0 A 8 8 90 0 0 0 8 A 8 8 90 0 0 8 0 Z',
-            fillColor: 'blue',
+            fillColor: 'white',
             fillOpacity: 1,
             strokeWeight: 3,
-            strokeColor: 'white',
+            strokeColor: 'blue',
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
@@ -76,8 +76,7 @@ function initGoogle()
             path: 'M -4 0 L -5 -4 L 6 0 L -5 4 Z',
             fillColor: 'blue',
             fillOpacity: 1,
-            strokeWeight: 3,
-            strokeColor: 'white',
+            strokeWeight: 0,
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
