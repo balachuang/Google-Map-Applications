@@ -60,9 +60,9 @@ function initGoogle()
         icon: {
             path: 'M 0 0 L -5 -5 L 10 0 L -5 5 Z',
             fillColor: 'blue',
-            // fillOpacity: 1,
+            fillOpacity: 1,
             strokeWeight: 3,
-            strokeColor: 'white',
+            strokeColor: 'blue',
             rotation: 0,
             scale: 2,
             anchor: new google.maps.Point(0, 0)
