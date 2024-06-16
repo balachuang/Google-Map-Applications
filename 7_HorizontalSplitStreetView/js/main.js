@@ -81,7 +81,7 @@ function initGoogle()
         }
     });
 
-    glMarker.addListener('dragend', function(){ markerDragEnd(0); });
+    // glMarker.addListener('dragend', function(){ markerDragEnd(0); });
     glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
     glStreetView.addListener('position_changed', function(){ panoPosChange(2); });
     glGglMapView[1].addListener('pov_changed', function(){ panoPovChange(1); });
