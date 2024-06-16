@@ -58,7 +58,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 2 0 A 1 1 0 0 0 -2 0 A 1 1 0 0 0 2 0 Z M 0 0 L -5 -5 L 10 0 L -5 5 Z',
+            path: 'M 8 0 A 1 1 0 0 0 -8 0 A 1 1 0 0 0 8 0 M -4 0 L -5 -4 L 6 0 L -5 4 Z Z',
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 3,
