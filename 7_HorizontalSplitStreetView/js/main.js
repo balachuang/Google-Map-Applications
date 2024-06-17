@@ -35,7 +35,7 @@ function initGoogle()
 
     coder = new google.maps.Geocoder();
     glCurrPos = new google.maps.LatLng({ lat: 25.032957706195887, lng: 121.56056000860389 });
-    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 20 });
+    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 18 });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
 
     // set current position to real position
@@ -88,27 +88,6 @@ function initGoogle()
     glStreetView.addListener('pov_changed', streetPosChanged);
 }
 
-// function markerDragEnd(idx)
-// {
-//     switch(idx) {
-//         case 0:
-//             glPos[0] = glMarker[0].getPosition();
-//             glPos[1] = new google.maps.LatLng({lat: glPos[0].lat() + 0.001, lng: glPos[0].lng() + 0.001});
-//             glPos[2] = new google.maps.LatLng({lat: glPos[0].lat() - 0.001, lng: glPos[0].lng() - 0.001});
-//             glView[0].setCenter(glPos[0]);
-//             glView[1].setPosition(glPos[1]);
-//             glView[2].setPosition(glPos[2]);
-//             break;
-//         case 1:
-//         case 2:
-//             glPos[idx] = glMarker[idx].getPosition();
-//             glView[idx].setPosition(glPos[idx]);
-//            break;
-//         default:
-//             break;
-//     }
-// }
-
 function mapPosChanged(e)
 {
     glCurrPos = e.latLng;
@@ -122,6 +101,7 @@ function streetPosChanged()
     glCurrPos = glStreetView.getPosition();
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
+    glGglMapView.setCenter(glCurrPos);
 
     var heading = glStreetView.getPov().heading;
     // glMarkerAr.rotaion = Math.PI * heading / 180;
