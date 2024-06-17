@@ -36,7 +36,7 @@ function initGoogle()
     coder = new google.maps.Geocoder();
 
     glCurrPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
-    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 16 });
+    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 12 });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
 
     // set current position to real position
@@ -84,9 +84,9 @@ function initGoogle()
     });
 
     // glMarker.addListener('dragend', function(){ markerDragEnd(0); });
-    // glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
+    glGglMapView.addListener('click', function(){ mapPosChanged(); });
     glStreetView.addListener('position_changed', function(){ streePosChanged(); });
-    glStreetView.addListener('pov_changed', function(){ panoPovChange(2); });
+    glStreetView.addListener('pov_changed', function(){ streePosChanged(); });
 }
 
 function markerDragEnd(idx)
@@ -110,11 +110,21 @@ function markerDragEnd(idx)
     }
 }
 
+function mapPosChanged(e)
+{
+    glCurrPos = e.latLng;
+    glMarkerBk.setPosition(glCurrPos);
+    glMarkerAr.setPosition(glCurrPos);
+}
+
 function streetPosChanged()
 {
     glCurrPos = glStreetView.getPosition();
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
+
+    var heading = glStreetView.getPov().heading;
+    glMarkerAr.rotaion = Math.PI * heading / 180;
 }
 
 function panoPovChange(idx)
