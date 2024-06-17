@@ -115,6 +115,7 @@ function mapPosChanged(e)
     glCurrPos = e.latLng;
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
+    glStreetView.setPosition(glCurrPos);
 }
 
 function streetPosChanged()
