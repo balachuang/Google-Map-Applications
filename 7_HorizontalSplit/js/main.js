@@ -101,8 +101,9 @@ function mapPosChanged(e)
 function streetPosChanged()
 {
     let glCurrPos = glStreetView.getPosition();
-    glMarkerBk.setPosition(glCurrPos);
-    glMarkerAr.setPosition(glCurrPos);
+    moveMarkerTo(glCurrPos)
+    // glMarkerBk.setPosition(glCurrPos);
+    // glMarkerAr.setPosition(glCurrPos);
     // glGglMapView.setCenter(glCurrPos);
     glGglMapView.panTo(glCurrPos);
 
@@ -116,4 +117,26 @@ function streetPosChanged()
         scale: 2,
         anchor: new google.maps.Point(0, 0)
     });
+}
+
+function moveMarkerTo(newPos)
+{
+    let timeSpan = 200;
+    let timeIntv = 20;
+    let steps = timeSpan / timeIntv;
+
+    let fromPos = glMarkerCr.getPosition();
+    let latDelta = (newPos.lat() - fromPos.lat()) / steps;
+    let lngDelta = (newPos.lng() - fromPos.lng()) / steps;
+
+    for (let i=0; i<steps; ++i)
+    {
+        let posTemp = new google.maps.LatLng({
+            lat: fromPos.lat() + latDelta * i,
+            lng: fromPos.lng() + lngDelta * i });
+        setTimeout(function(){
+            glMarkerBk.setPosition(posTemp);
+            glMarkerAr.setPosition(posTemp);
+        }, (i+1) * timeIntv);
+    }
 }
