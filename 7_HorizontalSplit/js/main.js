@@ -93,7 +93,7 @@ function initGoogle()
 function mapPosChanged(e)
 {
     let glCurrPos = e.latLng;
-    moveMarkerTo(glCurrPos)
+    // moveMarkerTo(glCurrPos)
     // glMarkerBk.setPosition(glCurrPos);
     // glMarkerAr.setPosition(glCurrPos);
     glStreetView.setPosition(glCurrPos);
