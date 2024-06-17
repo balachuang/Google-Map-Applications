@@ -93,8 +93,9 @@ function initGoogle()
 function mapPosChanged(e)
 {
     let glCurrPos = e.latLng;
-    glMarkerBk.setPosition(glCurrPos);
-    glMarkerAr.setPosition(glCurrPos);
+    moveMarkerTo(glCurrPos)
+    // glMarkerBk.setPosition(glCurrPos);
+    // glMarkerAr.setPosition(glCurrPos);
     glStreetView.setPosition(glCurrPos);
 }
 
@@ -102,10 +103,10 @@ function streetPosChanged()
 {
     let glCurrPos = glStreetView.getPosition();
     moveMarkerTo(glCurrPos)
+    glGglMapView.panTo(glCurrPos);
     // glMarkerBk.setPosition(glCurrPos);
     // glMarkerAr.setPosition(glCurrPos);
     // glGglMapView.setCenter(glCurrPos);
-    glGglMapView.panTo(glCurrPos);
 
     var heading = glStreetView.getPov().heading;
     glMarkerAr.setIcon({
@@ -122,7 +123,7 @@ function streetPosChanged()
 function moveMarkerTo(newPos)
 {
     let timeSpan = 200;
-    let timeIntv = 20;
+    let timeIntv = 10;
     let steps = timeSpan / timeIntv;
 
     let fromPos = glMarkerBk.getPosition();
