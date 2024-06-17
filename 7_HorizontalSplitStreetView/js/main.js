@@ -60,7 +60,7 @@ function initGoogle()
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
             path: 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z',
-            fillColor: 'white',
+            fillColor: 'yellow',
             fillOpacity: 1,
             strokeWeight: 3,
             strokeColor: 'blue',
