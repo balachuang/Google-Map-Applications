@@ -125,16 +125,16 @@ function moveMarkerTo(newPos)
     let timeIntv = 20;
     let steps = timeSpan / timeIntv;
 
-    let fromPos = glMarkerCr.getPosition();
+    let fromPos = glMarkerBk.getPosition();
     let latDelta = (newPos.lat() - fromPos.lat()) / steps;
     let lngDelta = (newPos.lng() - fromPos.lng()) / steps;
 
     for (let i=0; i<steps; ++i)
     {
-        let posTemp = new google.maps.LatLng({
-            lat: fromPos.lat() + latDelta * i,
-            lng: fromPos.lng() + lngDelta * i });
         setTimeout(function(){
+            let posTemp = new google.maps.LatLng({
+                lat: fromPos.lat() + latDelta * i,
+                lng: fromPos.lng() + lngDelta * i });
             glMarkerBk.setPosition(posTemp);
             glMarkerAr.setPosition(posTemp);
         }, (i+1) * timeIntv);
