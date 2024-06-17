@@ -1,9 +1,11 @@
-let coder = null;
+// let coder = null;
 let glMapView = null;
 let glStreetView = null;
-let glCurrPos = null;
 let glMarkerBk = null;
 let glMarkerAr = null;
+
+const markerCr = 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z';
+const markerAr = 'M -0 3 L -4 4 L 0 -6 L 4 4 Z';
 
 $(window).resize(onReSize);
 $(document).ready(function()
@@ -33,8 +35,8 @@ function initGoogle()
         return;
     }
 
-    coder = new google.maps.Geocoder();
-    glCurrPos = new google.maps.LatLng({ lat: 25.032957706195887, lng: 121.56056000860389 });
+    // coder = new google.maps.Geocoder();
+    let glCurrPos = new google.maps.LatLng({ lat: 25.032957706195887, lng: 121.56056000860389 });
     glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 18 });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
 
@@ -58,7 +60,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z',
+            path: markerCr,
             fillColor: 'yellow',
             fillOpacity: 1,
             strokeWeight: 3,
@@ -72,7 +74,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 110,
         icon: {
-            path: 'M -0 3 L -4 4 L 0 -6 L 4 4 Z',
+            path: markerAr,
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 0,
@@ -90,7 +92,7 @@ function initGoogle()
 
 function mapPosChanged(e)
 {
-    glCurrPos = e.latLng;
+    let glCurrPos = e.latLng;
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
     glStreetView.setPosition(glCurrPos);
@@ -98,15 +100,14 @@ function mapPosChanged(e)
 
 function streetPosChanged()
 {
-    glCurrPos = glStreetView.getPosition();
+    let glCurrPos = glStreetView.getPosition();
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
     glGglMapView.setCenter(glCurrPos);
 
     var heading = glStreetView.getPov().heading;
-    console.log('angle: ' + heading);
     glMarkerAr.setIcon({
-        path: 'M -0 3 L -4 4 L 0 -6 L 4 4 Z',
+        path: markerAr,
         fillColor: 'blue',
         fillOpacity: 1,
         strokeWeight: 0,
@@ -114,15 +115,4 @@ function streetPosChanged()
         scale: 2,
         anchor: new google.maps.Point(0, 0)
     });
-}
-
-function resetPosByCenter(lat, lng) { glCurrPos = new google.maps.LatLng({ lat: lat, lng: lng }); }
-
-// add Range by SVG
-function addCameraRange(idx)
-{
-    let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
-
-
-    return rangeMarker;
 }
