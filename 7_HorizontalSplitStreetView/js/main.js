@@ -36,7 +36,7 @@ function initGoogle()
     coder = new google.maps.Geocoder();
 
     glCurrPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.539033 });
-    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 12 });
+    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 20 });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
 
     // set current position to real position
