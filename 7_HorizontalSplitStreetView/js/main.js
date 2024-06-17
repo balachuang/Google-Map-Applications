@@ -59,7 +59,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: 'M 8 0 A 8 8 90 0 0 0 -8 A 8 8 90 0 0 -8 0 A 8 8 90 0 0 0 8 A 8 8 90 0 0 8 0 Z',
+            path: 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z',
             fillColor: 'white',
             fillOpacity: 1,
             strokeWeight: 3,
@@ -73,7 +73,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 110,
         icon: {
-            path: 'M -4 0 L -5 -4 L 6 0 L -5 4 Z',
+            path: 'M -3 0 L -4 -4 L 6 0 L -4 4 Z',
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 0,
