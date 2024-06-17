@@ -106,7 +106,16 @@ function streetPosChanged()
     var heading = glStreetView.getPov().heading;
     console.log('angle: ' + heading);
     // glMarkerAr.rotaion = Math.PI * heading / 180;
-    glMarkerAr.icon.rotaion = heading;
+    // glMarkerAr.icon.rotaion = heading;
+    glMarkerAr.setIcon({
+        path: 'M -3 0 L -4 -4 L 6 0 L -4 4 Z',
+        fillColor: 'blue',
+        fillOpacity: 1,
+        strokeWeight: 0,
+        rotation: heading,
+        scale: 2,
+        anchor: new google.maps.Point(0, 0)
+    });
 }
 
 // function panoPovChange(idx)
