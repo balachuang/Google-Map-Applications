@@ -104,6 +104,7 @@ function streetPosChanged()
     glGglMapView.setCenter(glCurrPos);
 
     var heading = glStreetView.getPov().heading;
+    console.log('angle: ' + heading);
     // glMarkerAr.rotaion = Math.PI * heading / 180;
     glMarkerAr.rotaion = heading;
 }
