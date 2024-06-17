@@ -103,7 +103,8 @@ function streetPosChanged()
     let glCurrPos = glStreetView.getPosition();
     glMarkerBk.setPosition(glCurrPos);
     glMarkerAr.setPosition(glCurrPos);
-    glGglMapView.setCenter(glCurrPos);
+    // glGglMapView.setCenter(glCurrPos);
+    glGglMapView.panTo(glCurrPos);
 
     var heading = glStreetView.getPov().heading;
     glMarkerAr.setIcon({
