@@ -85,8 +85,8 @@ function initGoogle()
 
     // glMarker.addListener('dragend', function(){ markerDragEnd(0); });
     glGglMapView.addListener('click', function(){ mapPosChanged(); });
-    glStreetView.addListener('position_changed', function(){ streePosChanged(); });
-    glStreetView.addListener('pov_changed', function(){ streePosChanged(); });
+    glStreetView.addListener('position_changed', function(){ streetPosChanged(); });
+    glStreetView.addListener('pov_changed', function(){ streetPosChanged(); });
 }
 
 function markerDragEnd(idx)
