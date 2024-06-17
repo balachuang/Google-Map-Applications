@@ -84,10 +84,9 @@ function initGoogle()
     });
 
     // glMarker.addListener('dragend', function(){ markerDragEnd(0); });
-    glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
-    glStreetView.addListener('position_changed', function(){ panoPosChange(2); });
-    glGglMapView[1].addListener('pov_changed', function(){ panoPovChange(1); });
-    glStreetView[2].addListener('pov_changed', function(){ panoPovChange(2); });
+    // glGglMapView.addListener('position_changed', function(){ panoPosChange(1); });
+    glStreetView.addListener('position_changed', function(){ streePosChanged(); });
+    glStreetView.addListener('pov_changed', function(){ panoPovChange(2); });
 }
 
 function markerDragEnd(idx)
@@ -111,21 +110,11 @@ function markerDragEnd(idx)
     }
 }
 
-function panoPosChange(idx)
+function streetPosChanged()
 {
-    switch(idx) {
-        case 1:
-        case 2:
-            glPos[idx] = glView[idx].getPosition();
-            glMarker[idx].setPosition(glPos[idx]);
-            setDirectionLine(idx);
-
-            var tpos = calTargetPoint();
-            if (tpos != null) glTarget.setPosition(tpos);
-            break;
-        default:
-            break;
-    }
+    glCurrPos = glStreetView.getPosition();
+    glMarkerBk.setPosition(glCurrPos);
+    glMarkerAr.setPosition(glCurrPos);
 }
 
 function panoPovChange(idx)
