@@ -1,11 +1,12 @@
-// let coder = null;
 let glMapView = null;
 let glStreetView = null;
 let glMarkerBk = null;
 let glMarkerAr = null;
 
-const markerCr = 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z';
-const markerAr = 'M -0 3 L -4 4 L 0 -6 L 4 4 Z';
+const MARKER_BACKGROUND = 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z';
+const MARKER_ARROW = 'M -0 3 L -4 4 L 0 -6 L 4 4 Z';
+const MARKER_ANIMATE_TIME_SPAN = 200;
+const MARKER_ANIMATE_TIME_INTERVAL = 10;
 
 $(window).resize(onReSize);
 $(document).ready(function()
@@ -21,11 +22,10 @@ $(document).ready(function()
 
         onReSize();
         initGoogle();
-        // setInterval(checkStatus, 1000);
 	});
 });
 
-function onReSize(){ $('.gmap-container').height($(window).height() - $('#idx-navbar').height() - 20); }
+function onReSize(){ $('.gmap-container').height($(window).height() - $('#idx-navbar').height()); }
 
 function initGoogle()
 {
@@ -39,6 +39,7 @@ function initGoogle()
     let glCurrPos = new google.maps.LatLng({ lat: 25.032957706195887, lng: 121.56056000860389 });
     glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 18 });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
+    glGglMapView.setOptions({draggableCursor:'pointer'});
 
     // set current position to real position
     if (navigator.geolocation) {
@@ -60,7 +61,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 100,
         icon: {
-            path: markerCr,
+            path: MARKER_BACKGROUND,
             fillColor: 'yellow',
             fillOpacity: 1,
             strokeWeight: 3,
@@ -74,7 +75,7 @@ function initGoogle()
         position: glCurrPos, 
         map: glGglMapView, draggable: false, zIndex: 110,
         icon: {
-            path: markerAr,
+            path: MARKER_ARROW,
             fillColor: 'blue',
             fillOpacity: 1,
             strokeWeight: 0,
@@ -84,33 +85,44 @@ function initGoogle()
         }
     });
 
-    // glMarker.addListener('dragend', function(){ markerDragEnd(0); });
-    glGglMapView.addListener('click', mapPosChanged);
+    glGglMapView.addListener('click', mapClicked);
     glStreetView.addListener('position_changed', streetPosChanged);
-    glStreetView.addListener('pov_changed', streetPosChanged);
+    glStreetView.addListener('pov_changed', streetPovChanged);
 }
 
-function mapPosChanged(e)
+function mapClicked(e)
 {
+    // check StreetView data existing
     let glCurrPos = e.latLng;
-    // moveMarkerTo(glCurrPos)
-    // glMarkerBk.setPosition(glCurrPos);
-    // glMarkerAr.setPosition(glCurrPos);
-    glStreetView.setPosition(glCurrPos);
+    (new google.maps.StreetViewService()).getPanoramaByLocation(glCurrPos, 50, function(result, status){
+        if (status == google.maps.StreetViewStatus.OK) glStreetView.setPosition(glCurrPos);
+        else
+        {
+            // show error message if there is no StreetView data
+            let infowindow = new google.maps.InfoWindow({
+                position: glCurrPos,
+                content: $('#error-msg').html()
+            });
+            infowindow.addListener('close', ()=>{ glGglMapView.panTo(glStreetView.getPosition()); });
+            infowindow.addListener('domready', ()=>{ $('.gm-style-iw-ch').next('button').hide(); });
+            infowindow.open({ map: glGglMapView });
+            setTimeout(function(){ infowindow.close(); }, 1500);
+        }
+    });
 }
 
 function streetPosChanged()
 {
+    // move marker first, then pan map
     let glCurrPos = glStreetView.getPosition();
-    moveMarkerTo(glCurrPos)
-    glGglMapView.panTo(glCurrPos);
-    // glMarkerBk.setPosition(glCurrPos);
-    // glMarkerAr.setPosition(glCurrPos);
-    // glGglMapView.setCenter(glCurrPos);
+    moveMarkerTo(-1, glCurrPos);
+}
 
+function streetPovChanged()
+{
     var heading = glStreetView.getPov().heading;
     glMarkerAr.setIcon({
-        path: markerAr,
+        path: MARKER_ARROW,
         fillColor: 'blue',
         fillOpacity: 1,
         strokeWeight: 0,
@@ -120,24 +132,35 @@ function streetPosChanged()
     });
 }
 
-function moveMarkerTo(newPos)
+function moveMarkerTo(idx, newPos)
 {
-    let timeSpan = 200;
-    let timeIntv = 10;
-    let steps = timeSpan / timeIntv;
-
-    let fromPos = glMarkerBk.getPosition();
-    let latDelta = (newPos.lat() - fromPos.lat()) / steps;
-    let lngDelta = (newPos.lng() - fromPos.lng()) / steps;
-
-    for (let i=0; i<steps; ++i)
+    if (idx < 0)
     {
-        setTimeout(function(){
-            let posTemp = new google.maps.LatLng({
-                lat: fromPos.lat() + latDelta * i,
-                lng: fromPos.lng() + lngDelta * i });
-            glMarkerBk.setPosition(posTemp);
-            glMarkerAr.setPosition(posTemp);
-        }, (i+1) * timeIntv);
+        // create steps
+        let steps = MARKER_ANIMATE_TIME_SPAN / MARKER_ANIMATE_TIME_INTERVAL;
+        let fromPos = glMarkerBk.getPosition();
+        let latDelta = (newPos.lat() - fromPos.lat()) / steps;
+        let lngDelta = (newPos.lng() - fromPos.lng()) / steps;
+        newPos = [];
+        for (let i=0; i<steps; ++i)
+        {
+            newPos[i] = new google.maps.LatLng({
+                lat: fromPos.lat() + latDelta * (i+1),
+                lng: fromPos.lng() + lngDelta * (i+1)
+            });
+        }
+        idx = -1;
+    }else{
+        // perform animation
+        if (idx >= newPos.length) {
+            glGglMapView.panTo(newPos[newPos.length - 1]);
+            return;
+        }
+        glMarkerBk.setPosition(newPos[idx]);
+        glMarkerAr.setPosition(newPos[idx]);
     }
+
+    setTimeout(() => {
+        moveMarkerTo(idx + 1, newPos);
+    }, MARKER_ANIMATE_TIME_INTERVAL);
 }
