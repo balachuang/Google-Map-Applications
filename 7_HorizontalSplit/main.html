@@ -32,6 +32,23 @@
 		color: black;
 		background-color: antiquewhite;
 	}
+	.spliter-mover {
+		filter: drop-shadow(0px 0px 5px white);
+		opacity: 0.5;
+		width: 32px;
+		height: 32px;
+		position: fixed;
+		z-index: 1000;
+	}
+	.spliter-mover:hover {
+		opacity: 0.8;
+	}
+	#spliter-mover-left {
+		background-image: url("images/left-arrow.png");
+	}
+	#spliter-mover-right {
+		background-image: url("images/right-arrow.png");
+	}
 	</style>
 	<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -41,12 +58,12 @@
 
 <body>
 	<div id="menubar"></div>
-	<div class="col-md-4" style="margin-top: 5rem; padding: 0px;">
+	<div class="col-md-6" id="gmap-map-container" style="margin-top: 5rem; padding: 0px;">
 		<div class="panel panel-default" style="padding-bottom: 0px;">
 			<div class="gmap-container" id="gmap-map"></div>
 		</div>
 	</div>
-	<div class="col-md-8" style="margin-top: 5rem; padding: 0px;">
+	<div class="col-md-6" id="gmap-street-container" style="margin-top: 5rem; padding: 0px;">
 		<div class="panel panel-default" style="padding-bottom: 0px;">
 			<div class="gmap-container" id="gmap-street"></div>
 		</div>
@@ -54,6 +71,8 @@
 	<div id="error-msg">
 		<i18n en="No StreetView data in your selected location." zh-TW="你點選的地方沒有街景視圖資料"></i18n>
 	</div>
+	<div class="spliter-mover" id="spliter-mover-left" >&nbsp;</div>
+	<div class="spliter-mover" id="spliter-mover-right">&nbsp;</div>
 </body>
 </html>
 

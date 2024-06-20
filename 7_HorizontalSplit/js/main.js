@@ -23,9 +23,18 @@ $(document).ready(function()
         onReSize();
         initGoogle();
 	});
+
+    $('#spliter-mover-left' ).click(function(){ moveSlipter(true ); });
+    $('#spliter-mover-right').click(function(){ moveSlipter(false); });
+    
 });
 
-function onReSize(){ $('.gmap-container').height($(window).height() - $('#idx-navbar').height()); }
+function onReSize()
+{
+    $('.gmap-container').height($(window).height() - $('#idx-navbar').height());
+
+    setArrowPosition();
+}
 
 function initGoogle()
 {
@@ -163,4 +172,32 @@ function moveMarkerTo(idx, newPos)
     setTimeout(() => {
         moveMarkerTo(idx + 1, newPos);
     }, MARKER_ANIMATE_TIME_INTERVAL);
+}
+
+function moveSlipter(moveLeft)
+{
+    if (moveLeft) $('#spliter-mover-right').show();
+    else          $('#spliter-mover-left' ).show();
+
+    let currSpliterPos = eval($('#gmap-map-container').attr('class').split('-')[2]);
+    let nextSpliterPos = moveLeft ? Math.max(currSpliterPos - 2, 2) : Math.min(currSpliterPos + 2, 10);
+
+    $('#gmap-map-container').removeClass('col-md-' + currSpliterPos);
+    $('#gmap-map-container').addClass('col-md-' + nextSpliterPos);
+    $('#gmap-street-container').removeClass('col-md-' + (12-currSpliterPos));
+    $('#gmap-street-container').addClass('col-md-' + (12-nextSpliterPos));
+
+    if (nextSpliterPos == 2 ) $('#spliter-mover-left' ).hide();
+    if (nextSpliterPos == 10) $('#spliter-mover-right').hide();
+
+    setArrowPosition();
+}
+
+function setArrowPosition()
+{
+    let arrowTop = ($('.gmap-container').height() / 2 - 16);
+    $('.spliter-mover').css('top', arrowTop);
+
+    $('#spliter-mover-left' ).css('left', $('#gmap-map').width() - 32);
+    $('#spliter-mover-right').css('left', $('#gmap-map').width());
 }
