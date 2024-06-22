@@ -26,7 +26,7 @@ $(document).ready(function(){
 $(window).resize(onReSize);
 function onReSize()
 {
-    var sh = $(window).height() - $('#idx-navbar').height() - 20;
+    var sh = $(window).height() - $('#idx-navbar').height();
     $('#gMapL').height(sh);
     $('#gMapR').height(sh);
 }
