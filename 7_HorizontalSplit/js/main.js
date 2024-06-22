@@ -12,7 +12,7 @@ $(window).resize(onReSize);
 $(document).ready(function()
 {
 	$('#menubar').load('../menubar.html', function(){
-	    $('#nav-LF').addClass('active');
+	    $('#nav-HS').addClass('active');
 
 		var userLang = navigator.language || navigator.userLanguage;
 		$('i18n').each(function(){
