@@ -13,6 +13,10 @@ var cameraInfo = [
         'title': '中興路三段裕隆城旁',
         'position': {'lat': 24.979148868069082, 'lng': 121.54486044729134}, 'angle': 40, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0129'
+    },{
+        'title': '中央路口小碧潭站旁',
+        'position': {'lat': 24.9720950, 'lng': 121.5291421}, 'angle': 100, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=NWT0129'
     },
 
     // 台北
@@ -30,6 +34,13 @@ var cameraInfo = [
         'title': '水源快上層 - 溪州街與汀州路4段140巷口',
         'position': {'lat': 25.005007580146355, 'lng': 121.53479953093249}, 'angle': -125, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=BOT325'
+    },
+
+    // 屏東 (not work)
+    {
+        'title': '廣安路口',
+        'position': {'lat': 22.612164, 'lng': 120.485024}, 'angle': 180, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=PIF0010'
     },
 
     // 台灣
