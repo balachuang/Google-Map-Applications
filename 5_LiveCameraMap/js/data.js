@@ -15,8 +15,8 @@ var cameraInfo = [
         'url': 'https://tw.live/cam/?id=NWT0129'
     },{
         'title': '中央路口小碧潭站旁',
-        'position': {'lat': 24.9720950, 'lng': 121.5291421}, 'angle': 100, 'zoom': 20,
-        'url': 'https://tw.live/cam/?id=NWT0129'
+        'position': {'lat': 24.9720950, 'lng': 121.5291421}, 'angle': 250, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=NWT0151'
     },
 
     // 台北
