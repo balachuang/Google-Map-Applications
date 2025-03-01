@@ -8,14 +8,18 @@ var cameraInfo = [
     },{
         'title': '北新路寶橋路口',
         'position': {'lat': 24.97290306043396, 'lng': 121.54293743810781}, 'angle': -90, 'zoom': 20,
-        'url': 'https://taiwancctv.live/taiwan/newtaipei/231xindian/get_id.html?id=C000150'
+        'url': 'https://tw.live/cam/?id=NWT0150'
     },{
         'title': '中興路三段裕隆城旁',
         'position': {'lat': 24.979148868069082, 'lng': 121.54486044729134}, 'angle': 40, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0129'
     },{
+        'title': '寶中路裕隆城旁',
+        'position': {'lat': 24.979778117377244, 'lng': 121.54596147140508}, 'angle': 130, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=NWT0486'
+    },{
         'title': '中央路口小碧潭站旁',
-        'position': {'lat': 24.9720950, 'lng': 121.5291421}, 'angle': 250, 'zoom': 20,
+        'position': {'lat': 24.972145920787188, 'lng': 121.52914668248695}, 'angle': 250, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0151'
     },
 
@@ -39,7 +43,7 @@ var cameraInfo = [
     // 屏東 (not work)
     {
         'title': '廣安路口',
-        'position': {'lat': 22.612164, 'lng': 120.485024}, 'angle': 180, 'zoom': 20,
+        'position': {'lat': 22.612149946061516, 'lng': 120.48501558918575}, 'angle': 10, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=PIF0010'
     },
 

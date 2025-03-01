@@ -64,6 +64,10 @@ function initGoogle()
         console.log('navigator.geolocation not support, set map to default view.');
     }
 
+    // add streetview coverage layer
+    var streetViewLayer = new google.maps.StreetViewCoverageLayer();
+    streetViewLayer.setMap(glGglMapView);
+
     // add current position marker
     // SVG Path Editor: https://yqnn.github.io/svg-path-editor/
     glMarkerBk = new google.maps.Marker({
