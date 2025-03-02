@@ -1,7 +1,9 @@
 let glMapView = null;
 let glStreetView = null;
+let glStreetCoverage = null;
 let glMarkerBk = null;
 let glMarkerAr = null;
+let glDispCoverage = true;
 
 const MARKER_BACKGROUND = 'M 7 0 A 7 7 90 0 0 0 -7 A 7 7 90 0 0 -7 0 A 7 7 90 0 0 0 7 A 7 7 90 0 0 7 0 Z';
 const MARKER_ARROW = 'M -0 3 L -4 4 L 0 -6 L 4 4 Z';
@@ -26,6 +28,7 @@ $(document).ready(function()
 
     $('#spliter-mover-left' ).click(function(){ moveSlipter(true ); });
     $('#spliter-mover-right').click(function(){ moveSlipter(false); });
+    $('#toggle-streetview-coverage').click(toggleCoverage);
     
 });
 
@@ -33,7 +36,7 @@ function onReSize()
 {
     $('.gmap-container').height($(window).height() - $('#idx-navbar').height());
 
-    setArrowPosition();
+    setIconPosition();
 }
 
 function initGoogle()
@@ -46,7 +49,7 @@ function initGoogle()
 
     // coder = new google.maps.Geocoder();
     let glCurrPos = new google.maps.LatLng({ lat: 25.032957706195887, lng: 121.56056000860389 });
-    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 18 });
+    glGglMapView = new google.maps.Map(document.getElementById('gmap-map'), { center: glCurrPos, zoom: 18, fullscreenControl: false, streetViewControl: false, cameraControl: false });
     glStreetView = new google.maps.StreetViewPanorama(document.getElementById('gmap-street'), {position: glCurrPos, pov: {heading: 0, pitch: 0}, disableDoubleClickZoom: true});
     glGglMapView.setOptions({draggableCursor:'pointer'});
 
@@ -65,8 +68,8 @@ function initGoogle()
     }
 
     // add streetview coverage layer
-    var streetViewLayer = new google.maps.StreetViewCoverageLayer();
-    streetViewLayer.setMap(glGglMapView);
+    glStreetCoverage = new google.maps.StreetViewCoverageLayer();
+    glStreetCoverage.setMap(glGglMapView);
 
     // add current position marker
     // SVG Path Editor: https://yqnn.github.io/svg-path-editor/
@@ -194,14 +197,28 @@ function moveSlipter(moveLeft)
     if (nextSpliterPos == 2 ) $('#spliter-mover-left' ).hide();
     if (nextSpliterPos == 10) $('#spliter-mover-right').hide();
 
-    setArrowPosition();
+    setIconPosition();
 }
 
-function setArrowPosition()
+function toggleCoverage()
+{
+    glDispCoverage = !glDispCoverage;
+    if (glDispCoverage)
+        glStreetCoverage.setMap(glGglMapView);
+    else
+        glStreetCoverage.setMap(null);
+}
+
+function setIconPosition()
 {
     let arrowTop = ($('.gmap-container').height() / 2 - 16);
     $('.spliter-mover').css('top', arrowTop);
 
     $('#spliter-mover-left' ).css('left', $('#gmap-map').width() - 32);
     $('#spliter-mover-right').css('left', $('#gmap-map').width());
+
+    $('#toggle-streetview-coverage').css({
+        'top': $('.gmap-container').height() - 40,
+        'left': $('#gmap-map').width() - 70
+    });
 }
