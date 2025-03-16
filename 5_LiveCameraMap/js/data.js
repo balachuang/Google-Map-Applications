@@ -18,6 +18,10 @@ var cameraInfo = [
         'position': {'lat': 24.979778117377244, 'lng': 121.54596147140508}, 'angle': 130, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0486'
     },{
+        'title': '新店家樂福門口',
+        'position': {'lat': 24.976018820804224, 'lng': 121.54702289484379}, 'angle': 200, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/nwt-000114'
+    },{
         'title': '中央路口小碧潭站旁',
         'position': {'lat': 24.972145920787188, 'lng': 121.52914668248695}, 'angle': 250, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0151'
@@ -45,6 +49,14 @@ var cameraInfo = [
         'title': '廣安路口',
         'position': {'lat': 22.612149946061516, 'lng': 120.48501558918575}, 'angle': 10, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=PIF0010'
+    },{
+        'title': '復興路上全聯前',
+        'position': {'lat': 22.650545519888507, 'lng': 120.48593557324807}, 'angle': 265, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/t27-58k+600'
+    },{
+        'title': '復興路/自由路口',
+        'position': {'lat': 22.66672492517902, 'lng': 120.48890382527567}, 'angle': 110, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/t27-56k+450'
     },
 
     // 台灣
@@ -52,11 +64,26 @@ var cameraInfo = [
         'title': '小東路成大光復校區旁',
         'position': {'lat': 23.00116373461838, 'lng': 120.21679968241773}, 'angle': 10, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=C112053'
-    },
-    {
+    },{
+        'title': '小東路/前鋒路口',
+        'position': {'lat': 23.001449267753635, 'lng': 120.2145107263673}, 'angle': 190, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/tnn-000111'
+    },{
+        'title': '民族路/前鋒路口',
+        'position': {'lat': 22.994405645456833, 'lng': 120.2132321118772}, 'angle': 180, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/tnn-000104'
+    },{
         'title': '高雄蓮池潭',
         'position': {'lat': 22.681153658432603, 'lng': 120.29185075040097}, 'angle': 45, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=BnPoNatG-HE'
+    },{
+        'title': '西螺服務區 - 1',
+        'position': {'lat': 23.788604196922535, 'lng': 120.47739814702622}, 'angle': 45, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/n1-s-229k+600'
+    },{
+        'title': '西螺服務區 - 2',
+        'position': {'lat': 23.78755380211563, 'lng': 120.47752731781947}, 'angle': 275, 'zoom': 20,
+        'url': 'https://www.twipcam.com/cam/n1-n-229k+280'
     },
 
     // 日本
