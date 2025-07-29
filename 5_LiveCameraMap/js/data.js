@@ -90,7 +90,15 @@ var cameraInfo = [
     {
         'title': '函館山百萬夜景',
         'position': {'lat': 41.759218473253824, 'lng': 140.70409562721238}, 'angle': -45, 'zoom': 14,
-        'url': 'https://www.youtube.com/watch?v=s--MDmshT3I&list=PLtPJtE4_gezc20D5xv6MYtjPIti8xLWRZ'
+        'url': 'https://www.youtube.com/watch?v=s--MDmshT3I'
+    },{
+        'title': '東京新宿歌舞伎町',
+        'position': {'lat': 35.694186510102455, 'lng': 139.70112808440652}, 'angle': 100, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=DjdUEyjx8GM'
+    },{
+        'title': '北海道札幌狸小路八条',
+        'position': {'lat': 43.05639148231004, 'lng': 141.34490412612354}, 'angle': 45, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=CF1vS8DdBIk'
     },
 
     // 美國
@@ -98,16 +106,18 @@ var cameraInfo = [
         'title': 'Fairbanks Aurora Camera (大致地點)',
         'position': {'lat': 64.87168015770968, 'lng': -147.7432528168914}, 'angle': -90, 'zoom': 12,
         'url': 'https://www.youtube.com/watch?v=O52zDyxg5QI'
-    },
-    {
+    },{
         'title': '拉斯維加斯 歡迎招牌',
         'position': {'lat': 36.0818965166996, 'lng': -115.17291936927923}, 'angle': -45, 'zoom': 12,
         'url': 'https://www.earthcam.com/usa/nevada/lasvegas/?cam=sign_hd'
-    },
-    {
+    },{
         'title': '拉斯維加斯 幻景賭場度假村水舞池',
         'position': {'lat': 36.12030206147902, 'lng': -115.17245839041291}, 'angle': -100, 'zoom': 12,
         'url': 'https://www.nvroads.com/cctv?start=0&length=10&filters%5B0%5D%5Bi%5D=2&filters%5B0%5D%5Bs%5D=Las+Vegas&filters%5B1%5D%5Bi%5D=3&filters%5B1%5D%5Bs%5D=Las+Vegas+Blvd+%26+Harrahs-Mirage+Exit+F1&order%5Bi%5D=1&order%5Bdir%5D=asc'
+    },{
+        'title': '阿拉斯加 Fairbanks Chena River',
+        'position': {'lat': 64.84598506021686, 'lng': -147.70520887119793}, 'angle': 105, 'zoom': 17,
+        'url': 'https://webcams.windy.com/webcams/public/embed/player/1219997733/day?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3ZWJjYW1faWQiOjEyMTk5OTc3MzMsInVzZXJfdHlwZSI6MSwiYXZhaWxhYmxlX3NpemVzIjoidGVhc2VyYmcsaWNvbix0aHVtYm5haWwscHJldmlldyxub3JtYWwsZnVsbCxwYW5vcmFtYSIsImlhdCI6MTc1Mzc5NTExNSwiZXhwIjoxNzUzODgxNTE1fQ.XY0dP0Hxxgp8s6WNy_1oHFAGHKotLqJSOltQrA9PF_o&autoPlay=1#'
     },
 
     // 瑞士
