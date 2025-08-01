@@ -19,8 +19,10 @@ $(document).ready(function(){
 			$(this).replaceWith(txt);
 		});
 
-        onReSize();
-        initGoogle();
+        window.setTimeout(function(){
+            onReSize();
+            initGoogle();
+        }, 1000);
 	});
 });
 

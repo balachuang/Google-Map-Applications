@@ -96,9 +96,29 @@ var cameraInfo = [
         'position': {'lat': 35.694186510102455, 'lng': 139.70112808440652}, 'angle': 100, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=DjdUEyjx8GM'
     },{
+        'title': '東京淺草寺寶蔵門',
+        'position': {'lat': 35.71358129771468, 'lng': 139.79693062210748}, 'angle': -125, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=LHPKP8PP6QY'
+    },{
         'title': '北海道札幌狸小路八条',
         'position': {'lat': 43.05639148231004, 'lng': 141.34490412612354}, 'angle': 45, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=CF1vS8DdBIk'
+    },{
+        'title': '北海道札幌大通公園',
+        'position': {'lat': 43.06227856690313, 'lng': 141.35508596068502}, 'angle': 80, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=kfIQBC0hrII'
+    },{
+        'title': '京都嵯峨嵐山竹林小径',
+        'position': {'lat': 35.01728997282734, 'lng': 135.6747127433119}, 'angle': -25, 'zoom': 18,
+        'url': 'https://www.youtube.com/watch?v=Op-lf2NRMzs'
+    },{
+        'title': '京都花見小路',
+        'position': {'lat': 35.003832896064246, 'lng': 135.77499137594347}, 'angle': 70, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=PXg3ZXgMkGk'
+    },{
+        'title': '沖縄那覇市',
+        'position': {'lat': 26.215767829587463, 'lng': 127.6786323474458}, 'angle': 45, 'zoom': 18,
+        'url': 'https://www.youtube.com/watch?v=6HYjCFkmDPAh'
     },
 
     // 美國

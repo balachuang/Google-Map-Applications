@@ -29,7 +29,6 @@ $(document).ready(function()
 	$('#spliter-mover-left' ).click(function(){ moveSlipter(true ); });
 	$('#spliter-mover-right').click(function(){ moveSlipter(false); });
 	$('#toggle-streetview-coverage').click(toggleCoverage);
-	
 });
 
 function onReSize()
