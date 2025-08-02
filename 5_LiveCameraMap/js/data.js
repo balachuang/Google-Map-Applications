@@ -119,6 +119,14 @@ var cameraInfo = [
         'title': '沖縄那覇市',
         'position': {'lat': 26.215767829587463, 'lng': 127.6786323474458}, 'angle': 45, 'zoom': 18,
         'url': 'https://www.youtube.com/watch?v=6HYjCFkmDPAh'
+    },{
+        'title': '大阪道頓堀格力高廣告牌',
+        'position': {'lat': 34.66918590791304, 'lng': 135.5009456044688}, 'angle': 45, 'zoom': 20,
+        'url': 'https://www.youtube.com/watch?v=ks7Xun3mAB8'
+    },{
+        'title': '神戶港塔',
+        'position': {'lat': 34.68035363278507, 'lng': 135.18813813301003}, 'angle': -100, 'zoom': 17,
+        'url': 'https://www.youtube.com/watch?v=AU_2zfM4m68'
     },
 
     // 美國
