@@ -25,6 +25,10 @@ var cameraInfo = [
         'title': '中央路口小碧潭站旁',
         'position': {'lat': 24.972145920787188, 'lng': 121.52914668248695}, 'angle': 250, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=NWT0151'
+    },{
+        'title': '水快上橋前',
+        'position': {'lat': 24.99127994055705, 'lng': 121.53373484514684}, 'angle': -120, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=NWT0042'
     },
 
     // 台北
@@ -32,16 +36,33 @@ var cameraInfo = [
         'title': '擎天崗草原',
         'position': {'lat': 25.16468848295197, 'lng': 121.57558367401835}, 'angle': 180, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=MnODaP-1JaE'
-    },
-    {
+    },{
         'title': '大稻埕碼頭',
         'position': {'lat': 25.05654477482707, 'lng': 121.50786823884091}, 'angle': 120, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=Ndo_8RuefH4'
-    },
-    {
+    },{
         'title': '水源快上層 - 溪州街與汀州路4段140巷口',
         'position': {'lat': 25.005007580146355, 'lng': 121.53479953093249}, 'angle': -125, 'zoom': 20,
         'url': 'https://tw.live/cam/?id=BOT325'
+    },{
+        'title': '羅斯福路五段211巷口 - 捷運萬隆站',
+        'position': {'lat': 25.002217339229926, 'lng': 121.53890340917962}, 'angle': -110, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=BOT361'
+    },{
+        'title': '信義松德 - 胖子家路口',
+        'position': {'lat': 25.033572147428547, 'lng': 121.57426797113034}, 'angle': 5, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=BOT074'
+    },{
+        'title': '文林北路94巷口 - 中正高中外',
+        'position': {'lat': 25.10534328732065, 'lng': 121.51765388464877}, 'angle': -140, 'zoom': 20,
+        'url': 'https://tw.live/cam/?id=BOT402'
+    },
+
+    // 新竹
+    {
+        'title': '台積 F12 P4',
+        'position': {'lat': 24.77128936888864, 'lng': 121.01290074188852}, 'angle': 25, 'zoom': 20,
+        'url': 'http://61.220.211.130:9991/Live?channel=1252&mode=0'
     },
 
     // 屏東 (not work)
