@@ -15,10 +15,12 @@
 	body, nav {
 		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
 		overflow: hidden;
-		padding: 0 1em;
+		/*padding: 0 1em;*/
+		padding: 0;
 	}
 	.google {
 		width: 100%;
+		display: block;
 	}
 	</style>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script>
@@ -30,10 +32,6 @@
 <body>
 	<div id="menubar"></div>
 	<div class="row">
-		<!-- <div class="col-md-2" style="margin-top: 5rem;">
-			<div class="panel panel-default">
-			</div>
-		</div> -->
 		<div class="col-md-12" style="margin-top: 5rem;">
 			<div class="panel panel-default">
 				<div class="google" id="google-map-container"></div>

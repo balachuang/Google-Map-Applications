@@ -30,7 +30,10 @@ $(window).resize(onReSize);
 
 function onReSize()
 {
-    var sh = $(window).height() - $('#idx-navbar').height() - 20;
+    // 原本用 $(window).height() - $('#idx-navbar').height() - 20;
+    // 可是會造成手機版下方有大片空白
+    // 改成 -55 後就不會了.
+    var sh = $(window).height() - 55;
     $('#google-map-container').height(sh);
 }
 
