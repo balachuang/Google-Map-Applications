@@ -13,15 +13,18 @@ $(document).ready(function(){
 			$(this).replaceWith(txt);
 		});
 
-        onReSize();
-        initGoogle();
+        window.setTimeout(function(){
+            onReSize();
+            initGoogle();
+        }, 1000);
 	});
 });
 
 $(window).resize(onReSize);
 
 function onReSize(){
-    $('#google-map-container').height($(window).height() - $('#idx-navbar').height() - 20);
+    // $('#google-map-container').height($(window).height() - $('#idx-navbar').height() - 20);
+    $('#google-map-container').height($(window).height() - 55);
 }
 
 function initGoogle()

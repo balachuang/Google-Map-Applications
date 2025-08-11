@@ -12,15 +12,20 @@ $(document).ready(function(){
 			$(this).replaceWith(txt);
 		});
 
-        onReSize();
-        initGoogle();
+        window.setTimeout(function(){
+            onReSize();
+            initGoogle();
+        }, 1000);
 	});
 });
 
 $(window).resize(onReSize);
 
-function onReSize(){
-    $('#street-view-container').height($(window).height() - $('#idx-navbar').height() - 20);
+function onReSize()
+{
+    // $('#street-view-container').height($(window).height() - $('#idx-navbar').height() - 20);
+    $('#street-view-container').height($(window).height() - 55);
+
     $('#rearview-container').css({
         'width' : $('#street-view-container').width() / 3,
         'height' : $('#street-view-container').height() / 4,
