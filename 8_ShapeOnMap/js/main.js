@@ -25,7 +25,7 @@ var shapeDisplay = {
 
 $(document).ready(function(){
 	$('#menubar').load('../menubar.html', function(){
-		$('#nav-LC').addClass('active');
+		$('#nav-SM').addClass('active');
 
 		var userLang = navigator.language || navigator.userLanguage;
 		$('i18n').each(function(){
