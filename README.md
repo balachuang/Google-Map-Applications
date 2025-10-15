@@ -13,6 +13,11 @@
    - 專門用來記錄我有興趣的線上即時影像. 從影像的內容儘量找到這個像機的地點和拍照方向.
 6. 同步縮放
    - 兩個會同步縮放的地圖, 可以用來方便的比較兩個區址的大小.
+7. 左右分割
+   - 把地圖和街景視圖左右分開, 讓寬螢幕看起來更舒服.
+8. 幾何形狀
+   - 在 Google Map 上繪製幾何形狀.
+
 
 ## 一些很讚的 Google Map 應用
 - 核彈模擬器: Nukemap
@@ -21,3 +26,9 @@
 - 行政區邊界: feedbackGoogle boundaries coverage
   - https://developers.google.com/maps/documentation/javascript/dds-boundaries/coverage
   - 這個是 Google 自己提供的. 剛好和我想做的一樣.
+- 在地圖上畫圖: Draw a circle
+  - https://www.mapdevelopers.com/draw-circle-tool.php
+  - 和我想做的一樣, 但是我還想加其他種形狀
+
+
+https://developers.google.com/codelabs/maps-platform/maps-platform-101-3d-maps-js?hl=zh-tw#0

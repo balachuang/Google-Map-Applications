@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shape on Map</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-size: 62.5%;
+	}
+	body, nav {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+		overflow: hidden;
+		padding: 0;
+	}
+	.google {
+		width: 100%;
+	}
+	#shape-selector-container {
+		background-color: #fff;
+		border: 2px solid #fff;
+		border-radius: 3px;
+		box-shadow: 0 2px 6px rgba(0,0,0,.3);
+		color: rgb(25,25,25);
+		cursor: pointer;
+		font-family: Roboto,Arial,sans-serif;
+		font-size: 16px;
+		line-height: 38px;
+		margin: 8px 0 22px;
+		padding: 0 10px;
+		text-align: left;
+	}
+	#shape-selector {
+		border: none;
+		text-align: center;
+		background-color: light-gray;
+		padding: 0 10px;
+	}
+	</style>
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script> -->
+	<!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&callback=initMap&v=weekly&libraries=marker"></script> -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&v=weekly&libraries=marker"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="js/data.js"></script> -->
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<div id="menubar"></div>
+	<div class="row">
+		<div class="col-md-12" style="margin-top: 5rem;">
+			<div class="panel panel-default">
+				<div class="google" id="google-map-container"></div>
+			</div>
+		</div>
+	</div>
+	<div id="shape-selector-container">
+		<span style="padding: 0;">Stape Type: </span>
+		<select id="shape-selector">
+			<option value="circle" selected>Circle</option>
+			<option value="rectangle">Rectangle</option>
+		</select>
+		<div id="circle-info" style="text-align: left;">
+			Radius: <span id="circle-info-radius">5000</span> m
+		</div>
+		<div id="rectangle-info" style="text-align: left;">
+			Width: <span id="rectangle-info-width"></span> m<br>
+			Height: <span id="rectangle-info-height"></span> m
+		</div>
+	</div>
+</body>
+</html>
