@@ -21,6 +21,7 @@
 		width: 100%;
 	}
 	#shape-selector-container {
+		display: none;
 		background-color: #fff;
 		border: 2px solid #fff;
 		border-radius: 3px;
@@ -41,12 +42,9 @@
 		padding: 0 10px;
 	}
 	</style>
-	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&callback=initMap"></script> -->
-	<!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&callback=initMap&v=weekly&libraries=marker"></script> -->
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&v=weekly&libraries=marker"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="js/data.js"></script> -->
 	<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
@@ -64,10 +62,10 @@
 			<option value="circle" selected>Circle</option>
 			<option value="rectangle">Rectangle</option>
 		</select>
-		<div id="circle-info" style="text-align: left;">
+		<div id="circle-info" style="text-align:left;">
 			Radius: <span id="circle-info-radius">5000</span> m
 		</div>
-		<div id="rectangle-info" style="text-align: left;">
+		<div id="rectangle-info" style="text-align:left;">
 			Width: <span id="rectangle-info-width"></span> m<br>
 			Height: <span id="rectangle-info-height"></span> m
 		</div>

@@ -59,8 +59,7 @@ function initGoogle()
 		return;
 	}
 
-	let initPos = new google.maps.LatLng({ lat: 23.583169, lng: 121.2071099 });
-	mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPos, zoom: 8, mapId: 'SHAPE_MAP' });
+	mapView = new google.maps.Map(document.getElementById('google-map-container'), { center: initPoint, zoom: 13, mapId: 'SHAPE_MAP' });
 
 	if (navigator.geolocation) {
 		// Browser support Geolocation, get actual position
@@ -76,12 +75,15 @@ function initGoogle()
 
 	// 自訂控制項, 其實就是自己做一個 dom object, 然後用 google api 放進 map 裡.
 	mapView.controls[google.maps.ControlPosition.TOP_RIGHT].push(document.getElementById("shape-selector-container"));
+	$('#shape-selector-container').show();
 	$('#shape-selector').change(changeShape);
 
+	// for init only.
 	initShape();
 	mapCircle.setMap(mapView);
+	$('#circle-info').show();
 
-	changeShape();
+	// changeShape();
 }
 
 function changeShape(e)
