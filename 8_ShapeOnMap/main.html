@@ -20,6 +20,12 @@
 	.google {
 		width: 100%;
 	}
+	input {
+		line-height: 0.8em;
+		border: none;
+		width: 100px;
+		text-align: center;
+	}
 	#shape-selector-container {
 		display: none;
 		background-color: #fff;
@@ -63,11 +69,11 @@
 			<option value="rectangle">Rectangle</option>
 		</select>
 		<div id="circle-info" style="text-align:left; display:none;">
-			Radius: <span id="circle-info-radius">5000</span> m
+			Radius: <input type="text" id="circle-info-radius" value="5000" /> m
 		</div>
 		<div id="rectangle-info" style="text-align:left; display:none;">
-			Width: <span id="rectangle-info-width"></span> m<br>
-			Height: <span id="rectangle-info-height"></span> m
+			Width: <input type="text" id="rectangle-info-width" value="" /> m<br>
+			Height: <input type="text" id="rectangle-info-height" value="" /> m
 		</div>
 	</div>
 </body>
