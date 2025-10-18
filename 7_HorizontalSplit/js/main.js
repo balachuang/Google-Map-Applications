@@ -10,26 +10,21 @@ const MARKER_ARROW = 'M -0 3 L -4 4 L 0 -6 L 4 4 Z';
 const MARKER_ANIMATE_TIME_SPAN = 200;
 const MARKER_ANIMATE_TIME_INTERVAL = 10;
 
-$(window).resize(onReSize);
 $(document).ready(function()
 {
-	$('#menubar').load('../menubar.html', function(){
-		$('#nav-HS').addClass('active');
+	generateMenubar($('#menubar'), 'HS');
 
-		var userLang = navigator.language || navigator.userLanguage;
-		$('i18n').each(function(){
-			var txt = $(this).attr(userLang);
-			$(this).replaceWith(txt);
-		});
-
+	window.setTimeout(function(){
 		onReSize();
 		initGoogle();
-	});
+	}, 1000);
 
 	$('#spliter-mover-left' ).click(function(){ moveSlipter(true ); });
 	$('#spliter-mover-right').click(function(){ moveSlipter(false); });
 	$('#toggle-streetview-coverage').click(toggleCoverage);
 });
+
+$(window).resize(onReSize);
 
 function onReSize()
 {

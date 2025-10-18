@@ -3,20 +3,12 @@ var glFView = null,
     glPos = null;
 
 $(document).ready(function(){
-	$('#menubar').load('../menubar.html', function(){
-	    $('#nav-RM').addClass('active');
+	generateMenubar($('#menubar'), 'RM');
 
-		var userLang = navigator.language || navigator.userLanguage;
-		$('i18n').each(function(){
-			var txt = $(this).attr(userLang);
-			$(this).replaceWith(txt);
-		});
-
-        window.setTimeout(function(){
-            onReSize();
-            initGoogle();
-        }, 1000);
-	});
+	window.setTimeout(function(){
+        onReSize();
+        initGoogle();
+	}, 1000);
 });
 
 $(window).resize(onReSize);

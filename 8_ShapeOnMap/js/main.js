@@ -27,20 +27,12 @@ var shapeDisplay = {
 
 
 $(document).ready(function(){
-	$('#menubar').load('../menubar.html', function(){
-		$('#nav-SM').addClass('active');
+	generateMenubar($('#menubar'), 'SM');
 
-		var userLang = navigator.language || navigator.userLanguage;
-		$('i18n').each(function(){
-			var txt = $(this).attr(userLang);
-			$(this).replaceWith(txt);
-		});
-
-		window.setTimeout(function(){
-			onReSize();
-			initGoogle();
-		}, 1000);
-	});
+	window.setTimeout(function(){
+		onReSize();
+		initGoogle();
+	}, 1000);
 });
 
 $(window).resize(onReSize);

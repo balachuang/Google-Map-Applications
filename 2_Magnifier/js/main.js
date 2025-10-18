@@ -1,80 +1,72 @@
 var glMap = null,
-    glMag = null,
-    glMapPos = null,
-    glMagPos = null;
+	glMag = null,
+	glMapPos = null,
+	glMagPos = null;
 
 $(document).ready(function(){
-	$('#menubar').load('../menubar.html', function(){
-	    $('#nav-MG').addClass('active');
+	generateMenubar($('#menubar'), 'MG');
 
-		var userLang = navigator.language || navigator.userLanguage;
-		$('i18n').each(function(){
-			var txt = $(this).attr(userLang);
-			$(this).replaceWith(txt);
-		});
-
-        window.setTimeout(function(){
-            onReSize();
-            initGoogle();
-        }, 1000);
-	});
+	window.setTimeout(function(){
+		onReSize();
+		initGoogle();
+	}, 1000);
 });
 
 $(window).resize(onReSize);
 
 function onReSize(){
-    // $('#google-map-container').height($(window).height() - $('#idx-navbar').height() - 20);
-    $('#google-map-container').height($(window).height() - 55);
+	// $('#google-map-container').height($(window).height() - $('#idx-navbar').height() - 20);
+	$('#google-map-container').height($(window).height() - 55);
 }
 
 function initGoogle()
 {
-    // block initGoogle() until google is loaded.
-    if((typeof(google) == 'undefined') || (google == null)) {
-        setTimeout(initGoogle, 200);
-        return;
-    }
+	// block initGoogle() until google is loaded.
+	if((typeof(google) == 'undefined') || (google == null)) {
+		setTimeout(initGoogle, 200);
+		return;
+	}
 
-    coder = new google.maps.Geocoder();
+	coder = new google.maps.Geocoder();
 
-    glMapPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });
-    glMagPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.541033 });
+	glMapPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.540033 });
+	glMagPos = new google.maps.LatLng({ lat: 24.978606, lng: 121.541033 });
 
-    glMap = new google.maps.Map(document.getElementById('google-map-container'), { center: glMapPos, zoom: 16 });
-    glMag = new google.maps.Map(document.getElementById('magnifier-container'), { center: glMagPos, zoom: 18 });
+	glMap = new google.maps.Map(document.getElementById('google-map-container'), { center: glMapPos, zoom: 16 });
+	glMag = new google.maps.Map(document.getElementById('magnifier-container'), { center: glMagPos, zoom: 18 });
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            resetPosByCenter(position.coords.latitude, position.coords.longitude);
-            glMap.setCenter(glMapPos);
-            glMag.setCenter(glMagPos);
-        }, function() {
-            // Browser doesn't support Geolocation
-        });
-    } else {
-        // Browser doesn't support Geolocation
-    }
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			resetPosByCenter(position.coords.latitude, position.coords.longitude);
+			glMap.setCenter(glMapPos);
+			glMag.setCenter(glMagPos);
+		}, function() {
+			// Browser doesn't support Geolocation
+		});
+	} else {
+		// Browser doesn't support Geolocation
+	}
 
-    glMap.addListener('mousemove', moveMag);
-    glMap.addListener('zoom_changed', zoomMag);
-    glMap.addListener('rightclick', toggleMag);
+	glMap.addListener('mousemove', moveMag);
+	glMap.addListener('zoom_changed', zoomMag);
+	glMap.addListener('rightclick', toggleMag);
 }
 
 function moveMag(event)
 {
-    glMag.setCenter(event.latLng);
-    $('#magnifier-container').css({
-         'left' : event.pixel.x - 100,
-         'top'  : event.pixel.y - 100
-    });
+	glMag.setCenter(event.latLng);
+	$('#magnifier-container').css({
+		'left' : event.pixel.x - 100,
+		'top'  : event.pixel.y - 100
+	});
 }
 
 function zoomMag(event)
 {
-    glMag.setZoom(glMap.getZoom() + 2);
+	glMag.setZoom(glMap.getZoom() + 2);
 }
 
 function toggleMag(event)
 {
-    $('#magnifier-container').fadeToggle(500);
+	$('#magnifier-container').fadeToggle(500);
 }
