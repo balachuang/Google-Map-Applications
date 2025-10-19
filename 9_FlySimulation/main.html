@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shape on Map</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+	html {
+		font-size: 62.5%;
+	}
+	body, nav {
+		font-family: Calibri, Arial, Helvetica, "Microsoft JhengHei", 微軟正黑體, sans-serif;
+		overflow: hidden;
+		padding: 0;
+	}
+	.google {
+		width: 100%;
+	}
+	#infomation {
+		position: fixed;
+		left: 10px;
+		bottom: 10px;
+		/*width: 200px;*/
+		background-color: #fff;
+		border: 2px solid #fff;
+		border-radius: 3px;
+		box-shadow: 0 2px 6px rgba(0,0,0,.3);
+		color: rgb(25,25,25);
+		cursor: pointer;
+		font-family: Roboto,Arial,sans-serif;
+		font-size: 16px;
+		line-height: 30px;
+		margin: 8px 0 22px;
+		padding: 0 10px;
+		text-align: left;
+		z-index: 1000;
+	}
+	</style>
+	<script>
+	(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+		key: "AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE",
+		v: "beta",
+	});
+	</script>
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktHqxJNMYJrmz1URBUeg0Iu33FkenvqE&loading=async&v=weekly&libraries=geometry"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../menubar.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<div id="menubar"></div>
+	<div class="row">
+		<div class="col-md-12" style="margin-top: 5rem;">
+			<div class="panel panel-default">
+				<div class="google" id="google-map-container"></div>
+			</div>
+		</div>
+	</div>
+	<div id="infomation">
+		Position: <span id="lng"></span> , <span id="lat"></span><br/>
+		Altitude: <span id="altitude"></span> ; Heading: <span id="heading"></span><br>
+		Fly Speed: <span id="flyspeed"></span> ; Turn Speed: <span id="turnspeed"></span>
+	</div>
+</body>
+</html>

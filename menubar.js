@@ -55,13 +55,13 @@ const apps = [
 			zh: '在 Google Map 上繪製幾何形狀.'
 		}
 	},
-	// {
-	// 	id: 'tb_SM', title: {en: 'Fly Simulation', zh: '虛擬飛行'}, path: '9_FlySimulation',
-	// 	desc: {
-	// 		en: 'Draw geometric shapes on Google Maps.',
-	// 		zh: '在 Google Map 上繪製幾何形狀.'
-	// 	}
-	// },
+	{
+		id: 'FS', title: {en: 'Fly Simulation', zh: '虛擬飛行'}, path: '9_FlySimulation',
+		desc: {
+			en: 'Fly Simulation on Google Map.',
+			zh: '在 Google Map 上用鍵盤虛擬飛行.'
+		}
+	},
 ];
 
 const appDomTemplate = 
@@ -95,7 +95,6 @@ function generateMenubar(jqMenubarObj, appId)
 					.replaceAll('{TITLE_EN}', app.title.en)
 					.replaceAll('{TITLE_ZH}', app.title.zh);
 		};
-		console.log(menuHtml);
 		$('#menubar-items').html(menuHtml);
 
 		if (appId != null) $('#nav-' + appId).addClass('active');
@@ -104,8 +103,6 @@ function generateMenubar(jqMenubarObj, appId)
 			var txt = $(this).attr(userLang);
 			$(this).replaceWith(txt);
 		});
-		// window.setTimeout(function(){
-		// }, 500);
 	});
 }
 
