@@ -24,18 +24,16 @@
 		position: fixed;
 		left: 10px;
 		bottom: 10px;
-		/*width: 200px;*/
 		background-color: #fff;
 		border: 2px solid #fff;
 		border-radius: 3px;
-		box-shadow: 0 2px 6px rgba(0,0,0,.3);
 		color: rgb(25,25,25);
 		cursor: pointer;
 		font-family: Roboto,Arial,sans-serif;
-		font-size: 16px;
-		line-height: 30px;
+		font-size: 14px;
+		line-height: 26px;
 		margin: 8px 0 22px;
-		padding: 0 10px;
+		padding: 10px 10px;
 		text-align: left;
 		z-index: 1000;
 	}
@@ -63,8 +61,17 @@
 	</div>
 	<div id="infomation">
 		Position: <span id="lng"></span> , <span id="lat"></span><br/>
-		Altitude: <span id="altitude"></span> ; Heading: <span id="heading"></span><br>
-		Fly Speed: <span id="flyspeed"></span> ; Turn Speed: <span id="turnspeed"></span>
+		Altitude: <span id="altitude"></span> ; Heading: <span id="heading"></span><br/>
+		Fly Speed: <span id="flyspeed"></span> ; Turn Speed: <span id="turnspeed"></span><br/>
+		<div id="toggle-sop" style="background-color:lightgray; padding: 0 10px;">Click to show SOP:</div>
+		<div id="sop" style="display:none; background-color:lightgray; padding: 0 10px;">
+			NumPad 8 : Fly Forward<br/>
+			NumPad 4 : Turn Left<br/>
+			NumPad 6 : Turn Right<br/>
+			Num 1 ~ 9 : Fly Speed Slow to Fast<br/>
+			A / Z : Tilt Up / Down<br/>
+			D / C : Altitude Up / Down
+		</div>
 	</div>
 </body>
 </html>

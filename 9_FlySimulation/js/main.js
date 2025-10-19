@@ -15,7 +15,7 @@ var geoCalculator = null;
 
 var shift = 0; // 擋位, 0 ~ 4
 var flySpeed = 5;  // 單位: 公尺 / 25ms (秒速要 x40), 每一擋加 2
-var turnSpeed = 0.3; // 每一擋加 0.2
+var turnSpeed = 0.3; // 每一擋加 0.05
 var flyInv = 25;
 
 let ctrlKeys = [
@@ -77,6 +77,10 @@ async function initGoogle()
 	window.setTimeout(updateView, 1000);
 	$('#google-map-container').focus();
 	$('#google-map-container').click();
+
+	$('#toggle-sop').click(function(){
+		$('#sop').slideToggle();
+	});
 }
 
 function keyDownHandler(e)
