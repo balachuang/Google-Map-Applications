@@ -92,10 +92,10 @@ function keyDownHandler(e)
 	if ((e.keyCode >= 49) && (e.keyCode <= 57))
 	{
 		shift = (e.keyCode - 49);
-		// flySpeed = 1 + shift * 5;
 		flySpeed = flySpeedInv[shift];
-		// turnSpeed = 0.1 + shift * 0.02;
 		turnSpeed = turnSpeedInv[shift];
+		// flySpeed = 1 + shift * 5;
+		// turnSpeed = 0.1 + shift * 0.02;
 	}
 
 	// press other keys
@@ -159,7 +159,9 @@ function turn(dir)
 function altitude(dir)
 {
 	// planeInfo.height += dir * 10 * (shift+1);
-	planeInfo.height += dir * Math.log10(planeInfo.height);
+	// planeInfo.height += dir * Math.log10(planeInfo.height);
+	let logHeight = Math.log10(planeInfo.height);
+	planeInfo.height += dir * Math.pow(logHeight, 0.8 * logHeight);
 	if (planeInfo.height < 10) planeInfo.height = 10;
 }
 
