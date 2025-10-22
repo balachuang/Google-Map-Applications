@@ -1,24 +1,26 @@
 // https://developers.google.com/maps/documentation/javascript/examples/3d/toggle-labels#maps_3d_label_toggle-html
 // ==> 最後還是自己算, altitude 固定為 0, 用 range 模擬高度
 
+// 新店: lat: 24.978899291207604, lng: 121.54248131780544
+// 東京: lat: 35.68462994847221,  lng: 139.75300611190949
+
 // plane parameter
 let planeInfo = {
-	pos: {
-		lat: 24.978899291207604,
-		lng: 121.54248131780544,
-	},
+	pos: { lat: 24.978899291207604, lng: 121.54248131780544 },
 	height: 300,
 	heading: 0,
 	tilt: 80,
 }
 
-var mapView = null;
-var geoCalculator = null;
+let mapView = null;
+let geoCalculator = null;
 
-var shift = 0; // 擋位, 0 ~ 8
-var flySpeed = 5;  // 單位: 公尺 / 25ms (秒速要 x40), 每一擋加 2
-var turnSpeed = 0.3; // 每一擋加 0.05
-var flyInv = 25;
+let shift = 0; // 擋位, 0 ~ 8
+let flySpeed = 1;  // 單位: 公尺 / 25ms (秒速要 x40), 直接指不同檔位速度
+let flySpeedInv = [1,2,10,50,100,500,1000,5000,10000];
+let turnSpeed = 0.1; // 每一擋加 0.03
+let turnSpeedInv = [0.1,0.2,0.5,1,1.5,1.5,2,5,10];
+let flyInv = 25;
 
 let ctrlKeys = [
 	{ keyCode: 68,  value: false, label: 'IsAltitudeUp',   action: function(){ altitude(+1); } },
@@ -90,8 +92,10 @@ function keyDownHandler(e)
 	if ((e.keyCode >= 49) && (e.keyCode <= 57))
 	{
 		shift = (e.keyCode - 49);
-		flySpeed = 5 + shift * 2;
-		turnSpeed = 0.3 + shift * 0.05;
+		// flySpeed = 1 + shift * 5;
+		flySpeed = flySpeedInv[shift];
+		// turnSpeed = 0.1 + shift * 0.02;
+		turnSpeed = turnSpeedInv[shift];
 	}
 
 	// press other keys
@@ -124,7 +128,7 @@ function updateView()
 
 	$('#lat').text(Math.round(10000 * planeInfo.pos.lat) / 10000);
 	$('#lng').text(Math.round(10000 * planeInfo.pos.lng) / 10000);
-	$('#altitude').text(planeInfo.height);
+	$('#altitude').text(Math.round(1000 * planeInfo.height) / 1000);
 	$('#heading').text(Math.round(1000 * planeInfo.heading) / 1000);
 	$('#flyspeed').text(flySpeed * 1000 / flyInv);
 	$('#turnspeed').text(Math.round(100 * (turnSpeed * 1000 / flyInv)) / 100);
@@ -154,8 +158,9 @@ function turn(dir)
 
 function altitude(dir)
 {
-	planeInfo.height += dir * (shift+1);
-	if (planeInfo.height < 0) planeInfo.height = 0;
+	// planeInfo.height += dir * 10 * (shift+1);
+	planeInfo.height += dir * Math.log10(planeInfo.height);
+	if (planeInfo.height < 10) planeInfo.height = 10;
 }
 
 function tilt(dir)
