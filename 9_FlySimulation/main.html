@@ -35,7 +35,13 @@
 		margin: 8px 0 22px;
 		padding: 10px 10px;
 		text-align: left;
-		z-index: 1000;
+	}
+	#manual {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0px;
+		text-align: center;
 	}
 	</style>
 	<script>
@@ -48,7 +54,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../menubar.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/main.v2.js"></script>
 </head>
 <body>
 	<div id="menubar"></div>
@@ -60,18 +66,15 @@
 		</div>
 	</div>
 	<div id="infomation">
-		Position: <span id="lng"></span> , <span id="lat"></span><br/>
-		Altitude: <span id="altitude"></span> ; Heading: <span id="heading"></span><br/>
-		Fly Speed: <span id="flyspeed"></span> ; Turn Speed: <span id="turnspeed"></span><br/>
-		<div id="toggle-sop" style="background-color:lightgray; padding: 0 10px;">Click to show SOP:</div>
-		<div id="sop" style="display:none; background-color:lightgray; padding: 0 10px;">
-			NumPad 8 : Fly Forward<br/>
-			NumPad 4 : Turn Left<br/>
-			NumPad 6 : Turn Right<br/>
-			Num 1 ~ 9 : Fly Speed Slow to Fast<br/>
-			A / Z : Tilt Up / Down<br/>
-			D / C : Altitude Up / Down
-		</div>
+		經度 <span id="lng"></span> &deg;<br/>
+		緯度 <span id="lat"></span> &deg;<br/>
+		高度: <span id="altitude"></span> m<br/>
+		航向: <span id="heading"></span> &deg;<br/>
+		飛行速度: <span id="flyspeed"></span> m/s<br/>
+		轉頭速度: <span id="turnspeed"></span> &deg;/s
+	</div>
+	<div id="manual">
+		<img src="images/manual.png" style="width:450px; margin-top: 30vh;">
 	</div>
 </body>
 </html>
