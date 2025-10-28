@@ -14,7 +14,7 @@ let mapView = null;
 let geoCalculator = null;
 
 let shift = 0; // 檔位, 0 ~ 8
-const renderInv = 50;
+const renderInv = 25;
 const stackSize = 1000 / renderInv;
 
 // 飛行速度, 單位: m/s, 直接指定不同檔位速度
@@ -36,9 +36,6 @@ for (let n=0; n<flySpeedInvBase.length; ++n) flySpeedInv[n] = renderInv * flySpe
 let minTurnChangeRate =  5 * renderInv / 1000; //  3 度/秒
 let maxTurnChangeRate = 15 * renderInv / 1000; // 10 度/秒
 let turnChangeRateInt = (maxTurnChangeRate - minTurnChangeRate) / 3;
-// let turnSpeedInvBase = [5, 5, 6, 6, 7, 7, 8, 9, 10];
-// let turnSpeedInv = new Array(turnSpeedInvBase.length);
-// for (let n=0; n<turnSpeedInvBase.length; ++n) turnSpeedInv[n] = renderInv * turnSpeedInvBase[n] / 1000;
 
 let currFlySpeed = 0;
 let currTurnSpeed = 0;
