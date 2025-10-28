@@ -2,9 +2,6 @@
 // ==> 最後還是自己算, altitude 固定為 0, 用 range 模擬高度
 // ==> 加上漸變功能
 
-// 新店: lat: 24.97889929120760, lng: 121.54248131780544
-// 東京: lat: 35.68462994847221, lng: 139.75300611190949
-
 // plane parameter
 let planeInfo = {
 	pos: { lat: 24.978899291207604, lng: 121.54248131780544 },
@@ -36,9 +33,12 @@ let flySpeedInv = new Array(flySpeedInvBase.length);
 for (let n=0; n<flySpeedInvBase.length; ++n) flySpeedInv[n] = renderInv * flySpeedInvBase[n] / 1000;
 
 // 轉頭速度, 單位: 度/秒, 直接指定不同檔位速度
-let turnSpeedInvBase = [5, 5, 6, 6, 7, 7, 8, 9, 10];
-let turnSpeedInv = new Array(turnSpeedInvBase.length);
-for (let n=0; n<turnSpeedInvBase.length; ++n) turnSpeedInv[n] = renderInv * turnSpeedInvBase[n] / 1000;
+let minTurnChangeRate =  5 * renderInv / 1000; //  3 度/秒
+let maxTurnChangeRate = 15 * renderInv / 1000; // 10 度/秒
+let turnChangeRateInt = (maxTurnChangeRate - minTurnChangeRate) / 3;
+// let turnSpeedInvBase = [5, 5, 6, 6, 7, 7, 8, 9, 10];
+// let turnSpeedInv = new Array(turnSpeedInvBase.length);
+// for (let n=0; n<turnSpeedInvBase.length; ++n) turnSpeedInv[n] = renderInv * turnSpeedInvBase[n] / 1000;
 
 let currFlySpeed = 0;
 let currTurnSpeed = 0;
@@ -109,6 +109,7 @@ async function initGoogle()
 	document.getElementById('google-map-container').append(mapView);
 
 	// key handler
+	$('#fly-mode').change(resetPlanePosition);
 	$('#google-map-container').on('keydown', keyDownHandler);
 	$('#google-map-container').on('keyup', keyUpHandler);
 	$('#manual').click(function(){
@@ -130,13 +131,20 @@ async function initGoogle()
 // Handler
 // =================================================================
 
+function resetPlanePosition(e)
+{
+	let option = $(this).find('option:selected');
+	planeInfo.pos.lat = eval(option.attr('lat'));
+	planeInfo.pos.lng = eval(option.attr('lng'));
+}
+
 function keyDownHandler(e)
 {
 	// console.log('key down: ' + e.keyCode);
 
 	// call handler of each key
 	ctrlKeys.forEach(item => {
-		if (item.keyCode == e.keyCode)
+		if (!item.isPress && (item.keyCode == e.keyCode))
 		{
 			item.isPress = true;
 			if (item.keyHnlr) item.keyHnlr(e, true);
@@ -150,7 +158,7 @@ function keyUpHandler(e)
 
 	// call handler of each key
 	ctrlKeys.forEach(item => {
-		if (item.keyCode == e.keyCode)
+		if (item.isPress && (item.keyCode == e.keyCode))
 		{
 			// 延後停止, 留時間做結束動畫
 			window.setTimeout(function(){ item.isPress = false; }, 1000);
@@ -196,7 +204,7 @@ function keyNumPadHandler(e, isPress)
 				break;
 			case 100: // turn left
 			case 102: // turn right
-				changeTargetTurnSpeed(turnSpeedInv[shift]);
+				changeTargetTurnSpeed(minTurnChangeRate);
 				break;
 		}
 	}else{
@@ -243,7 +251,6 @@ function changeHighChangeRate(target)
 
 function renderMap()
 {
-	// ctrlKeys.forEach(item => { if(item.value) item.action(); });
 	ctrlKeys.forEach(item => { if (item.isPress && item.action) item.action(item.isPress, item.dir); });
 
 	let flySpeedTxt = (currFlySpeed * 1000 / renderInv) * 36 / 10;
@@ -254,8 +261,6 @@ function renderMap()
 	$('#heading').text(Math.round(100 * planeInfo.heading) / 100);
 	$('#tilt').text(Math.round(100 * planeInfo.tilt) / 100);
 	$('#curr-fly-speed').text(Math.round(flySpeedTxt * 100) / 100);
-	// $('#curr-fly-speed').text(Math.round(currFlySpeed * 1000 / renderInv));
-	// $('#targ-fly-speed').text(Math.round(targetFlySpeed * 1000 / renderInv));
 	$('#turnspeed').text(Math.round(100 * (currTurnSpeed * 1000 / renderInv)) / 100);
 
 	let cameraInfo = calculateCamera();
@@ -276,6 +281,7 @@ function forward(active, direction)
 
 function turn(active, direction)
 {
+	if ((turnSpeedStack.length <= 0) && active) changeTargetTurnSpeed(Math.min(currTurnSpeed + turnChangeRateInt, maxTurnChangeRate));
 	currTurnSpeed = (turnSpeedStack.length > 0) ? turnSpeedStack.pop() : targetTurnSpeed;
 	planeInfo.heading += direction * currTurnSpeed;
 	if (planeInfo.heading < 0)   planeInfo.heading += 360;
