@@ -39,18 +39,21 @@ let flySpeedInv = new Array(flySpeedInvBase.length);
 for (let n=0; n<flySpeedInvBase.length; ++n) flySpeedInv[n] = renderInv * flySpeedInvBase[n] / 1000;
 
 // 轉頭速度, 單位: 度/秒, 直接指不同檔位速度
-let turnSpeedInvBase = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+let turnSpeedInvBase = [2, 2.5, 2.5, 3, 3, 3.5, 4, 5, 5];
 let turnSpeedInv = new Array(turnSpeedInvBase.length);
 for (let n=0; n<turnSpeedInvBase.length; ++n) turnSpeedInv[n] = renderInv * turnSpeedInvBase[n] / 1000;
 
 let currFlySpeed = 0;
 let currTurnSpeed = 0;
-let currTurnDirct = 0;
+let currHighChangeRate = 0;
+// let currTurnDirct = 0;
 let targetFlySpeed = 0;
 let targetTurnSpeed = 0.0;
+let targetHighChangeRate = 0;
 
 let flySpeedStack = [];
 let turnSpeedStack = [];
+let highChangeRateStack = [];
 
 let ctrlKeys = [
 	{ keyCode: 48,  isPress: false, keyHnlr: keyNumHandler,    action: null,     dir:  0}, // shift: 0
@@ -63,8 +66,8 @@ let ctrlKeys = [
 	{ keyCode: 55,  isPress: false, keyHnlr: keyNumHandler,    action: null,     dir:  0}, // shift: 7
 	{ keyCode: 56,  isPress: false, keyHnlr: keyNumHandler,    action: null,     dir:  0}, // shift: 8
 	{ keyCode: 57,  isPress: false, keyHnlr: keyNumHandler,    action: null,     dir:  0}, // shift: 9
-	{ keyCode: 68,  isPress: false, keyHnlr: null,             action: altitude, dir: +1}, // IsAltitudeUp',   
-	{ keyCode: 67,  isPress: false, keyHnlr: null,             action: altitude, dir: -1}, // IsAltitudeDown', 
+	{ keyCode: 68,  isPress: false, keyHnlr: keyDCHandler,     action: altitude, dir: +1}, // IsAltitudeUp',   
+	{ keyCode: 67,  isPress: false, keyHnlr: keyDCHandler,     action: altitude, dir: -1}, // IsAltitudeDown', 
 	{ keyCode: 65,  isPress: false, keyHnlr: null,             action: tilt,     dir: +1}, // IsTiltUp',       
 	{ keyCode: 90,  isPress: false, keyHnlr: null,             action: tilt,     dir: -1}, // IsTiltDown',     
 	{ keyCode: 104, isPress: false, keyHnlr: keyNumPadHandler, action: forward,  dir:  0}, // IsFly',          
@@ -160,6 +163,19 @@ function keyUpHandler(e)
 	});
 }
 
+function keyDCHandler(e, isPress)
+{
+	// press D : fly up
+	// press C : fly down
+
+	if (isPress)
+	{
+		changeHighChangeRate(planeInfo.height / 100.0);
+	}else{
+		changeHighChangeRate(0);
+	}
+}
+
 function keyNumHandler(e, isPress)
 {
 	// press number 1 ~ 9
@@ -184,11 +200,11 @@ function keyNumPadHandler(e, isPress)
 				changeTargetFlySpeed(flySpeedInv[shift]);
 				break;
 			case 100: // turn left
-				currTurnDirct = -1;
+				// currTurnDirct = -1;
 				changeTargetTurnSpeed(turnSpeedInv[shift]);
 				break;
 			case 102: // turn right
-				currTurnDirct = +1;
+				// currTurnDirct = +1;
 				changeTargetTurnSpeed(turnSpeedInv[shift]);
 				break;
 		}
@@ -200,11 +216,11 @@ function keyNumPadHandler(e, isPress)
 				changeTargetFlySpeed(0);
 				break;
 			case 100: // turn left
-				currTurnDirct = -1;
+				// currTurnDirct = -1;
 				changeTargetTurnSpeed(0);
 				break;
 			case 102: // turn right
-				currTurnDirct = +1;
+				// currTurnDirct = +1;
 				changeTargetTurnSpeed(0);
 				break;
 		}
@@ -223,6 +239,13 @@ function changeTargetTurnSpeed(target)
 	targetTurnSpeed = target;
 	turnSpeedStack = [];
 	for (let n=0; n<stackSize; ++n) turnSpeedStack.push(currTurnSpeed + (stackSize-n) * (targetTurnSpeed - currTurnSpeed) / stackSize);
+}
+
+function changeHighChangeRate(target)
+{
+	targetHighChangeRate = target;
+	highChangeRateStack = [];
+	for (let n=0; n<stackSize; ++n) highChangeRateStack.push(currHighChangeRate + (stackSize-n) * (targetHighChangeRate - currHighChangeRate) / stackSize);
 }
 
 
@@ -266,25 +289,22 @@ function forward(active, direction)
 
 function turn(active, direction)
 {
-	// if (currTurnDirct == direction)
-	// {
-		currTurnSpeed = (turnSpeedStack.length > 0) ? turnSpeedStack.pop() : targetTurnSpeed;
-		planeInfo.heading += direction * currTurnSpeed;
-		if (planeInfo.heading < 0)   planeInfo.heading += 360;
-		if (planeInfo.heading > 360) planeInfo.heading -= 360;
-	// }
+	currTurnSpeed = (turnSpeedStack.length > 0) ? turnSpeedStack.pop() : targetTurnSpeed;
+	planeInfo.heading += direction * currTurnSpeed;
+	if (planeInfo.heading < 0)   planeInfo.heading += 360;
+	if (planeInfo.heading > 360) planeInfo.heading -= 360;
 }
 
 function altitude(active, direction)
 {
-	// if (!active) return;
-	planeInfo.height += direction * planeInfo.height / 100.0;
+	currHighChangeRate = (highChangeRateStack.length > 0) ? highChangeRateStack.pop() : planeInfo.height / 100.0;
+	planeInfo.height += direction * currHighChangeRate;
+	// planeInfo.height += direction * planeInfo.height / 100.0;
 	if (planeInfo.height < 0) planeInfo.height = 1;
 }
 
 function tilt(active, direction)
 {
-	// if (!active) return;
 	planeInfo.tilt += direction * 1;
 	if (planeInfo.tilt < 0 ) planeInfo.tilt = 0;
 	if (planeInfo.tilt > 89) planeInfo.tilt = 89;
