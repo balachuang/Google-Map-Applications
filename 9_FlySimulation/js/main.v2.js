@@ -17,13 +17,10 @@ let mapView = null;
 let geoCalculator = null;
 
 let shift = 0; // 檔位, 0 ~ 8
-// let flySpeed = 1;  
-// let turnSpeed = 0.1; 
 const renderInv = 50;
 const stackSize = 1000 / renderInv;
 
-// 飛行速度, 單位: m/s, 直接指不同檔位速度
-// let flySpeedInvBase = [1, 2, 10, 50, 100, 500, 1000, 2000, 5000];
+// 飛行速度, 單位: m/s, 直接指定不同檔位速度
 let flySpeedInvBase = [
 	1.39, // 步行 (5 km/h)
 	5.56, // 腳踏車 (20 km/h)
@@ -38,15 +35,14 @@ let flySpeedInvBase = [
 let flySpeedInv = new Array(flySpeedInvBase.length);
 for (let n=0; n<flySpeedInvBase.length; ++n) flySpeedInv[n] = renderInv * flySpeedInvBase[n] / 1000;
 
-// 轉頭速度, 單位: 度/秒, 直接指不同檔位速度
-let turnSpeedInvBase = [2, 2.5, 2.5, 3, 3, 3.5, 4, 5, 5];
+// 轉頭速度, 單位: 度/秒, 直接指定不同檔位速度
+let turnSpeedInvBase = [5, 5, 6, 6, 7, 7, 8, 9, 10];
 let turnSpeedInv = new Array(turnSpeedInvBase.length);
 for (let n=0; n<turnSpeedInvBase.length; ++n) turnSpeedInv[n] = renderInv * turnSpeedInvBase[n] / 1000;
 
 let currFlySpeed = 0;
 let currTurnSpeed = 0;
 let currHighChangeRate = 0;
-// let currTurnDirct = 0;
 let targetFlySpeed = 0;
 let targetTurnSpeed = 0.0;
 let targetHighChangeRate = 0;
@@ -167,7 +163,6 @@ function keyDCHandler(e, isPress)
 {
 	// press D : fly up
 	// press C : fly down
-
 	if (isPress)
 	{
 		changeHighChangeRate(planeInfo.height / 100.0);
@@ -200,11 +195,7 @@ function keyNumPadHandler(e, isPress)
 				changeTargetFlySpeed(flySpeedInv[shift]);
 				break;
 			case 100: // turn left
-				// currTurnDirct = -1;
-				changeTargetTurnSpeed(turnSpeedInv[shift]);
-				break;
 			case 102: // turn right
-				// currTurnDirct = +1;
 				changeTargetTurnSpeed(turnSpeedInv[shift]);
 				break;
 		}
@@ -216,11 +207,7 @@ function keyNumPadHandler(e, isPress)
 				changeTargetFlySpeed(0);
 				break;
 			case 100: // turn left
-				// currTurnDirct = -1;
-				changeTargetTurnSpeed(0);
-				break;
 			case 102: // turn right
-				// currTurnDirct = +1;
 				changeTargetTurnSpeed(0);
 				break;
 		}
