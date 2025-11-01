@@ -3,6 +3,7 @@
 // ==> 加上漸變功能
 
 // plane parameter
+let groundHeight = 0;
 let planeInfo = {
 	pos: { lat: 24.978899291207604, lng: 121.54248131780544 },
 	height: 300,
@@ -128,8 +129,10 @@ async function initGoogle()
 function resetPlanePosition(e)
 {
 	let option = $(this).find('option:selected');
+	groundHeight = eval(option.attr('gdh'));
 	planeInfo.pos.lat = eval(option.attr('lat'));
 	planeInfo.pos.lng = eval(option.attr('lng'));
+	planeInfo.height = groundHeight + 300;
 }
 
 function keyDownHandler(e)
@@ -167,7 +170,7 @@ function keyDCHandler(e, isPress)
 	// press C : fly down
 	if (isPress)
 	{
-		changeHighChangeRate(planeInfo.height / 100.0);
+		changeHighChangeRate((planeInfo.height - groundHeight) / 100.0);
 	}else{
 		changeHighChangeRate(0);
 	}
@@ -251,7 +254,7 @@ function renderMap()
 	$('#shift').text(shift + 1);
 	$('#lat').text(Math.round(10000 * planeInfo.pos.lat) / 10000);
 	$('#lng').text(Math.round(10000 * planeInfo.pos.lng) / 10000);
-	$('#altitude').text(Math.round(100 * planeInfo.height) / 100);
+	$('#altitude').text(Math.round(100 * (planeInfo.height - groundHeight)) / 100);
 	$('#heading').text(Math.round(100 * planeInfo.heading) / 100);
 	$('#tilt').text(Math.round(100 * planeInfo.tilt) / 100);
 	$('#curr-fly-speed').text(Math.round(flySpeedTxt * 100) / 100);
@@ -284,10 +287,9 @@ function turn(active, direction)
 
 function altitude(active, direction)
 {
-	currHighChangeRate = (highChangeRateStack.length > 0) ? highChangeRateStack.pop() : planeInfo.height / 100.0;
+	currHighChangeRate = (highChangeRateStack.length > 0) ? highChangeRateStack.pop() : (planeInfo.height - groundHeight) / 100.0;
 	planeInfo.height += direction * currHighChangeRate;
-	// planeInfo.height += direction * planeInfo.height / 100.0;
-	if (planeInfo.height < 0) planeInfo.height = 1;
+	if (planeInfo.height < groundHeight) planeInfo.height = groundHeight + 1;
 }
 
 function tilt(active, direction)
