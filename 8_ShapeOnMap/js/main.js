@@ -2,16 +2,24 @@
 
 var mapView = null;
 
-var mapCircle;
-var mapRectangle;
+var shapeCircle;
+var shapeRectangle;
+var shapeTriangle;
 
 var circleEventHandlerId;
 var rectangleEventHandlerId;
+var triangleEventHandlerId;
 
 var initPoint = {
 	lat: 24.978899291207604,
 	lng: 121.54248131780544
 };
+
+var currTriangle = [
+	{ lat: 25.014, lng: 121.543 },
+	{ lat: 24.934, lng: 121.493 },
+	{ lat: 24.934, lng: 121.592 },
+];
 
 var shapeDisplay = {
 	stroke: {
@@ -78,13 +86,15 @@ function initGoogle()
 
 	// for init only.
 	initShape();
-	mapCircle.setMap(mapView);
+	shapeCircle.setMap(mapView);
 	$('#circle-info').show();
+
+	// setInterval(function(){ console.log(currTriangle.length); }, 1000);
 }
 
 function initShape()
 {
-	mapCircle = new google.maps.Circle({
+	shapeCircle = new google.maps.Circle({
 		strokeColor: shapeDisplay.stroke.color,
 		strokeOpacity: shapeDisplay.stroke.opacity,
 		strokeWeight: shapeDisplay.stroke.weight,
@@ -95,9 +105,9 @@ function initShape()
 		center: initPoint,
 		radius: 5000,
 	});
-	circleEventHandlerId = mapCircle.addListener("radius_changed", showCircleInfo);
+	circleEventHandlerId = shapeCircle.addListener("radius_changed", showCircleInfo);
 
-	mapRectangle = new google.maps.Rectangle({
+	shapeRectangle = new google.maps.Rectangle({
 		strokeColor: shapeDisplay.stroke.color,
 		strokeOpacity: shapeDisplay.stroke.opacity,
 		strokeWeight: shapeDisplay.stroke.weight,
@@ -113,7 +123,26 @@ function initShape()
 			west: 121.493,
 		},
 	});
-	rectangleEventHandlerId = mapRectangle.addListener("bounds_changed", showRectangleInfo);
+	rectangleEventHandlerId = shapeRectangle.addListener("bounds_changed", showRectangleInfo);
+
+	shapeTriangle = new google.maps.Polygon({
+		strokeColor: shapeDisplay.stroke.color,
+		strokeOpacity: shapeDisplay.stroke.opacity,
+		strokeWeight: shapeDisplay.stroke.weight,
+		fillColor: shapeDisplay.fill.color,
+		fillOpacity: shapeDisplay.fill.opacity,
+		draggable: true,
+		editable: true,
+		paths: currTriangle,
+	});
+	triangleEventHandlerId = shapeTriangle.addListener('mouseup', showTriangleInfo);
+
+	// update currTriangle to Google LatLng format
+	currTriangle = [
+		{ lat: shapeTriangle.getPath().getAt(0).lat(), lng: shapeTriangle.getPath().getAt(0).lng() },
+		{ lat: shapeTriangle.getPath().getAt(1).lat(), lng: shapeTriangle.getPath().getAt(1).lng() },
+		{ lat: shapeTriangle.getPath().getAt(2).lat(), lng: shapeTriangle.getPath().getAt(2).lng() },
+	];
 }
 
 // read new radius from input and update to Circle object
@@ -126,14 +155,14 @@ function updateCircleRadius()
 	let rStr = $('#circle-info-radius').val();
 	try{
 		let r = eval(rStr);
-		mapCircle.setRadius(r);
+		shapeCircle.setRadius(r);
 	}catch(ex){
 		console.log('Update Raduis Fail' + ex);
 		showCircleInfo();
 	}
 
 	// re-add radius_changed event handler
-	circleEventHandlerId = mapCircle.addListener("radius_changed", showCircleInfo);
+	circleEventHandlerId = shapeCircle.addListener("radius_changed", showCircleInfo);
 }
 
 // read new radius from input and update to Circle object
@@ -150,53 +179,60 @@ function updateRectangleDimension()
 		let w = eval(wStr);
 		let h = eval(hStr);
 
-		const top  = mapRectangle.getBounds().getNorthEast().lat();
-		const left = mapRectangle.getBounds().getSouthWest().lng();
+		const top  = shapeRectangle.getBounds().getNorthEast().lat();
+		const left = shapeRectangle.getBounds().getSouthWest().lng();
 		const newNe = google.maps.geometry.spherical.computeOffset({lat: top, lng: left}, w, 90);
 		const newSw = google.maps.geometry.spherical.computeOffset({lat: top, lng: left}, h, 180);
 
-		mapRectangle.setBounds(new google.maps.LatLngBounds(newSw, newNe));
+		shapeRectangle.setBounds(new google.maps.LatLngBounds(newSw, newNe));
 	}catch(ex){
 		console.log('Update Raduis Fail' + ex);
 		showRectangleInfo();
 	}
 
 	// re-add bounds_changed event handler
-	rectangleEventHandlerId = mapRectangle.addListener("bounds_changed", showRectangleInfo);
+	rectangleEventHandlerId = shapeRectangle.addListener("bounds_changed", showRectangleInfo);
 }
 
 function switchChape(e)
 {
+	shapeCircle.setMap(null);
+	shapeRectangle.setMap(null);
+	shapeTriangle.setMap(null);
+
+	$('#circle-info').hide();
+	$('#rectangle-info').hide();
+	$('#triangle-info').hide();
+
 	switch($('#shape-selector').val())
 	{
 		case 'circle':
-			mapCircle.setMap(mapView);
-			mapRectangle.setMap(null);
+			shapeCircle.setMap(mapView);
 			$('#circle-info').show();
-			$('#rectangle-info').hide();
-			showCircleInfo();
+			showCircleInfo(e);
 			break;
 		case 'rectangle':
-			mapCircle.setMap(null);
-			mapRectangle.setMap(mapView);
-			$('#circle-info').hide();
+			shapeRectangle.setMap(mapView);
 			$('#rectangle-info').show();
-			$('#rectangle-info-width').text(mapCircle.getRadius());
-			$('#rectangle-info-height').text(mapCircle.getRadius());
-			showRectangleInfo();
+			showRectangleInfo(e);
+			break;
+		case 'triangle':
+			shapeTriangle.setMap(mapView);
+			$('#triangle-info').show();
+			showTriangleInfo(e);
 			break;
 	}
 }
 
 function showCircleInfo() {
-	const r = Math.round(mapCircle.getRadius() * 100) / 100;
+	const r = Math.round(shapeCircle.getRadius() * 100) / 100;
 	$('#circle-info-radius').val(r);
 }
 
 function showRectangleInfo()
 {
-	const ne = mapRectangle.getBounds().getNorthEast();
-	const sw = mapRectangle.getBounds().getSouthWest();
+	const ne = shapeRectangle.getBounds().getNorthEast();
+	const sw = shapeRectangle.getBounds().getSouthWest();
 	const top = ne.lat();
 	const bottom = sw.lat();
 	const right = ne.lng();
@@ -213,6 +249,36 @@ function showRectangleInfo()
 	height = Math.round(height * 100) / 100;
 	$('#rectangle-info-width' ).val(width);
 	$('#rectangle-info-height').val(height);
+}
+
+// 記錄原本的 path, 如果發現有新增點的時候, 再把 path 設回原本的.
+// 為了符合 path 的格式, 所以 getPath 和 setPath 要特別處理
+function showTriangleInfo(e)
+{
+	// 先檢查是否有新增點
+	if ((e.edge != undefined) && (e.vertex == undefined)) {
+		shapeTriangle.setPath([
+			new google.maps.LatLng({ lat: currTriangle[0].lat, lng: currTriangle[0].lng }),
+			new google.maps.LatLng({ lat: currTriangle[1].lat, lng: currTriangle[1].lng }),
+			new google.maps.LatLng({ lat: currTriangle[2].lat, lng: currTriangle[2].lng }),
+		]);
+	} else {
+		currTriangle = [
+			{ lat: shapeTriangle.getPath().getAt(0).lat(), lng: shapeTriangle.getPath().getAt(0).lng() },
+			{ lat: shapeTriangle.getPath().getAt(1).lat(), lng: shapeTriangle.getPath().getAt(1).lng() },
+			{ lat: shapeTriangle.getPath().getAt(2).lat(), lng: shapeTriangle.getPath().getAt(2).lng() },
+		];
+	}
+
+	// 再來計算
+	let a = google.maps.geometry.spherical.computeDistanceBetween(currTriangle[0], currTriangle[1]);
+	let b = google.maps.geometry.spherical.computeDistanceBetween(currTriangle[1], currTriangle[2]);
+	let c = google.maps.geometry.spherical.computeDistanceBetween(currTriangle[2], currTriangle[0]);
+	let P = a + b + c;
+	let p = P / 2;
+	let A = Math.sqrt(p * (p-a) * (p-b) * (p-c)) / 1000000;
+	$('#triangle-info-p' ).val(Math.round(P * 100) / 100);
+	$('#triangle-info-a' ).val(Math.round(A * 100) / 100);
 }
 
 // 手動計算已知中心點, 邊長為 10000 m 的方形 
