@@ -32,7 +32,7 @@ let flySpeedInvBase = [
 let flySpeedInv = new Array(flySpeedInvBase.length);
 for (let n=0; n<flySpeedInvBase.length; ++n) flySpeedInv[n] = renderInv * flySpeedInvBase[n] / 1000;
 
-// 轉頭速度, 單位: 度/秒, 直接指定不同檔位速度
+// 轉頭速度, 單位: 度/秒, 按越久轉越快.
 let minTurnChangeRate =  5 * renderInv / 1000; //  3 度/秒
 let maxTurnChangeRate = 15 * renderInv / 1000; // 10 度/秒
 let turnChangeRateInt = (maxTurnChangeRate - minTurnChangeRate) / 3;
@@ -106,17 +106,14 @@ async function initGoogle()
 	document.getElementById('google-map-container').append(mapView);
 
 	// key handler
+	// 目前找不到可以自動 focus 到 3D map 的方法, 一定要先手動點一下地圖, 才能開始飛
+	// const targetElement = document.elementFromPoint(100, 100);
+	// if (targetElement) targetElement.click();
+	// $(targetElement).click();
 	$('#fly-mode').change(resetPlanePosition);
 	$('#google-map-container').on('keydown', keyDownHandler);
 	$('#google-map-container').on('keyup', keyUpHandler);
-	$('#manual').click(function(){
-		$('#manual').hide();
-
-		// 目前找不到可以自動 focus 到 3D map 的方法, 一定要先手動點一下地圖, 才能開始飛
-		// const targetElement = document.elementFromPoint(100, 100);
-		// if (targetElement) targetElement.click();
-		// $(targetElement).click();
-	});
+	$('#manual').click(function(){ $('#manual').hide(); });
 
 	// render Google 3D Map
 	window.setInterval(renderMap, renderInv);
