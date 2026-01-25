@@ -155,7 +155,7 @@ function addCameraRange(idx)
 		icon: {
 			// path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
 			// path: `M 0 0 L ${p14_x} -${p14_y} C ${p23_x} -${p23_y} ${p23_x} ${p23_y} ${p14_x} ${p14_y} Z`,
-			path: `M 0 0 L ${p14_x} -${p14_y} A ${camaraViewLen} ${camaraViewLen}, ${vrng} 1 1 ${p14_x} ${p14_y} Z`,
+			path: `M 0 0 L ${p14_x} -${p14_y} A ${camaraViewLen} ${camaraViewLen}, ${vrng} 0 1 ${p14_x} ${p14_y} Z`,
 			fillColor: 'blue',
 			fillOpacity: 0.5,
 			strokeWeight: 0,
