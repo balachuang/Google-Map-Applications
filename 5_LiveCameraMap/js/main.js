@@ -143,10 +143,10 @@ function addCameraRange(idx)
 	let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
 
 	let vrng = 60 / 2;
-	let p14_x = vrng * Math.cos(vrng * 180 / Math.PI);
-	let p14_y = vrng * Math.sin(vrng * 180 / Math.PI);
+	let p14_x = vrng * Math.cos(vrng * Math.PI / 180);
+	let p14_y = vrng * Math.sin(vrng * Math.PI / 180);
 	let p23_x = vrng;
-	let p23_y = vrng * Math.tan((vrng/2) * 180 / Math.PI);
+	let p23_y = vrng * Math.tan((vrng/2) * Math.PI / 180);
 
 	let rangeMarker = new google.maps.Marker({
 		position: camePosition, 
