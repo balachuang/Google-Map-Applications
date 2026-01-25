@@ -2,6 +2,7 @@
 
 var mapView = null;
 
+var camaraViewLen = 55;
 var targetCameraIdx = -1;
 var targetZoom = -1;
 var centerChangeHandler = null;
@@ -142,19 +143,19 @@ function addCameraRange(idx)
 {
 	let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
 
-	let vlen = 55;
 	let vrng = cameraInfo[idx].range / 2;
-	let p14_x = vlen * Math.cos(vrng * Math.PI / 180);
-	let p14_y = vlen * Math.sin(vrng * Math.PI / 180);
-	let p23_x = vlen;
-	let p23_y = vlen * Math.tan((vrng/2) * Math.PI / 180);
+	let p14_x = camaraViewLen * Math.cos(vrng * Math.PI / 180);
+	let p14_y = camaraViewLen * Math.sin(vrng * Math.PI / 180);
+	let p23_x = camaraViewLen;
+	let p23_y = camaraViewLen * Math.tan((vrng/2) * Math.PI / 180);
 
 	let rangeMarker = new google.maps.Marker({
 		position: camePosition, 
 		map: null, draggable: false, zIndex: 100,
 		icon: {
 			// path: 'M 0 0 L 50 -15 C 52 -8 52 8 50 15 Z',
-			path: `M 0 0 L ${p14_x} -${p14_y} C ${p23_x} -${p23_y} ${p23_x} ${p23_y} ${p14_x} ${p14_y} Z`,
+			// path: `M 0 0 L ${p14_x} -${p14_y} C ${p23_x} -${p23_y} ${p23_x} ${p23_y} ${p14_x} ${p14_y} Z`,
+			path: `M 0 0 L ${p14_x} -${p14_y} A ${camaraViewLen} ${camaraViewLen}, ${vrng} 0 0 ${p14_x} ${p14_y} Z`,
 			fillColor: 'blue',
 			fillOpacity: 0.5,
 			strokeWeight: 0,
