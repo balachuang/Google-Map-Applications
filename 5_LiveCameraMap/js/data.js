@@ -113,6 +113,10 @@ var cameraInfo = [
         'position': {'lat': 41.759218473253824, 'lng': 140.70409562721238}, 'angle': -45, 'zoom': 14,
         'url': 'https://www.youtube.com/watch?v=s--MDmshT3I'
     },{
+        'title': '函館站前循環, 每 20 秒切換一次',
+        'position': {'lat': 41.77302834217169, 'lng': 140.72849123925812}, 'angle': 0, 'zoom': 14,
+        'url': 'https://www.youtube.com/watch?v=s--MDmshT3I'
+    },{
         'title': '東京新宿歌舞伎町',
         'position': {'lat': 35.694186510102455, 'lng': 139.70112808440652}, 'angle': 100, 'zoom': 20,
         'url': 'https://www.youtube.com/watch?v=DjdUEyjx8GM'
