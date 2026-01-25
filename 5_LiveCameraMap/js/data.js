@@ -1,4 +1,5 @@
-// angle: 順時針為正
+// angle: 向右為 0, 順時針為正
+// range: 視角範圍
 var cameraInfo = [
     // 新店
     {

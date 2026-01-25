@@ -142,7 +142,7 @@ function addCameraRange(idx)
 {
 	let camePosition = new google.maps.LatLng({ lng: cameraInfo[idx].position.lng, lat: cameraInfo[idx].position.lat });
 
-	let vrng = 35 / 2;
+	let vrng = 60 / 2;
 	let p14_x = vrng * Math.cos(vrng / Math.PI);
 	let p14_y = vrng * Math.sin(vrng / Math.PI);
 	let p23_x = vrng;
